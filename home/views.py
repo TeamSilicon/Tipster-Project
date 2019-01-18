@@ -64,8 +64,8 @@ def featured(request):
         })
 
 
-def game_details(request, pk):
-    games_detail = get_object_or_404(Prono, pk=pk)
+def game_details(request, game_id):
+    games_detail = get_object_or_404(Prono, pk=game_id)
     return render(request, 'mysite/game_details.html', {'game': games_detail})
 # no risk no reward
 
