@@ -7,7 +7,7 @@ html, body {
 .vip{
     height: 100%;
     width: 100%;
-    background:linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),url(assets/stadium-bg-default.jpg);
+    background:linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),url(assets/default.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -214,8 +214,8 @@ h1 {
     font-size: 18px;
     color: #fff;
     font-weight: 700;
-    letter-spacing:1px; 
-    text-align: center; 
+    letter-spacing:1px;
+    text-align: center;
 }
 .vip__event_forecast p span {
     font-weight: 700;
