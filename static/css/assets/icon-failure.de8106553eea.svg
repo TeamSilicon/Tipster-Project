@@ -1,0 +1,43 @@
+<svg width="15" height="15" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>&#208;&#157;&#208;&#181; &#208;&#191;&#209;&#128;&#208;&#190;&#209;&#136;&#208;&#181;&#208;&#187;</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-210 -30)">
+<rect x="210" y="30" width="15" height="15" fill="#E5E5E5"/>
+<clipPath id="clip-0" clip-rule="evenodd">
+<path d="M -50 -334L 325 -334L 325 2181L -50 2181L -50 -334Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="&#208;&#147;&#208;&#187;&#208;&#176;&#208;&#178;&#208;&#189;&#208;&#176;&#209;&#143;" clip-path="url(#clip-0)">
+<path d="M -50 -334L 325 -334L 325 2181L -50 2181L -50 -334Z" fill="#17181C"/>
+<g id="&#208;&#164;&#209;&#131;&#209;&#130;&#208;&#177;&#208;&#190;&#208;&#187;">
+<clipPath id="clip-1" clip-rule="evenodd">
+<path d="M -35 6L 310 6L 310 66L -35 66L -35 6Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="&#208;&#159;&#209;&#128;&#208;&#190;&#208;&#179;&#208;&#189;&#208;&#190;&#208;&#183;" clip-path="url(#clip-1)">
+<g id="bg tittle  &#209;&#129;&#208;&#186;&#209;&#128;&#209;&#131;&#208;&#179;&#208;&#187;&#208;&#181;&#208;&#189;&#208;&#184;&#208;&#181;">
+<use xlink:href="#path0_fill" transform="translate(-35 6)" fill="#FFFFFF"/>
+</g>
+<g id="bg tittle">
+<use xlink:href="#path1_fill" transform="translate(-35 6)" fill="#FFFFFF"/>
+</g>
+<g id="&#208;&#157;&#208;&#181; &#208;&#191;&#209;&#128;&#208;&#190;&#209;&#136;&#208;&#181;&#208;&#187;">
+<g id="box">
+<use xlink:href="#path2_fill" transform="translate(210 30)" fill="#ED5A5A"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path3_stroke" transform="translate(214.688 34.6875)" fill="#FFFFFF"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path3_stroke" transform="matrix(-1 0 0 1 220.312 34.6875)" fill="#FFFFFF"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 0 0L 345 0L 345 55C 345 57.7614 342.761 60 340 60L 5 60C 2.23858 60 0 57.7614 0 55L 0 0Z"/>
+<path id="path1_fill" d="M 0 0L 345 0L 345 60L 0 60L 0 0Z"/>
+<path id="path2_fill" d="M 15 7.5C 15 11.6421 11.6421 15 7.5 15C 3.35786 15 0 11.6421 0 7.5C 0 3.35786 3.35786 0 7.5 0C 11.6421 0 15 3.35786 15 7.5Z"/>
+<path id="path3_stroke" d="M -0.353553 5.27145C -0.548816 5.46671 -0.548816 5.78329 -0.353553 5.97855C -0.158291 6.17382 0.158291 6.17382 0.353553 5.97855L -0.353553 5.27145ZM 5.97855 0.353553C 6.17382 0.158291 6.17382 -0.158291 5.97855 -0.353553C 5.78329 -0.548816 5.46671 -0.548816 5.27145 -0.353553L 5.97855 0.353553ZM 0.353553 5.97855L 5.97855 0.353553L 5.27145 -0.353553L -0.353553 5.27145L 0.353553 5.97855Z"/>
+</defs>
+</svg>
