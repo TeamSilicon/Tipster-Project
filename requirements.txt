@@ -11,6 +11,7 @@ packaging==19.0
 pip-upgrader==1.4.6
 psycopg2-binary==2.7.7
 pyparsing==2.3.1
+python-dotenv==0.10.1
 pytz==2018.9
 requests==2.21.0
 six==1.12.0
