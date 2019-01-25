@@ -1,15 +1,20 @@
 import os
 import dj_database_url
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
+# with increased verbosity:
+load_dotenv(verbose=True)
+
+# Getting credentials
+DJANGO_SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9l)yqf8!$&eb5rvp0pjaiie5de7j1y==qi=86q+&6k=8y7%+=p'
+SECRET_KEY = DJANGO_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -69,7 +74,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'games_db',
         'USER': 'peterson',
-        'PASSWORD': 'Dennis5050',
+        'PASSWORD': DATABASE_PASSWORD,
         'HOST': 'localhost',
         'PORT': '',
     }
