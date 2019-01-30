@@ -47,10 +47,11 @@ class ZuluBet(scrapy.Spider):
                 # if games_info list is not empty
                 print(str(empty_games_counter)+" Games could not be parsed")
             else:
+                match_date = game_info[0][0].strip()
                 game_time = game_info[0][1].strip()
-                full_date = datetime.datetime.strptime(game_time, "%H:%M")
-                full_date = full_date + timedelta(hours=2)
-                formatted_date = full_date.strftime("%H:%M")
+                formatted_time = datetime.datetime.strptime(game_time, "%H:%M")
+                formatted_time = formatted_time + timedelta(hours=2)
+                start_time = formatted_time.strftime("%H:%M")
                 try:
                     results = game_info[0][14].split(':')
                     if len(results) == 2:
@@ -63,8 +64,8 @@ class ZuluBet(scrapy.Spider):
                     # Adding to error games that there was no result
                     error_games += [no_score]
 
-                    result_home = str(result_home)
-                    result_away = str(result_away)
+                result_home = str(result_home)
+                result_away = str(result_away)
 
                 def overall_result():
                     if result_home == 'no_result' or result_away == 'no_result':
@@ -85,47 +86,47 @@ class ZuluBet(scrapy.Spider):
                         elif game_info[0][8] == 'X2':
                             win_odd = 0
                             # get odd for double chance
-                            return ['no_results_yet', win_odd]
-                        else:
-                            if game_info[0][8] == 'X':
-                                win_odd = game_info[0][11].split(":")[1]
-                                if result_home == result_away:
-                                    return ['drawwin', win_odd]
-                                else:
-                                    return ['drawlose', win_odd]
-                            elif game_info[0][8] == '1':
-                                win_odd = game_info[0][10].split(":")[1]
-                                if result_home > result_away:
-                                    return ['homewin', win_odd]
-                                else:
-                                    return ['homelose', win_odd]
-                            elif game_info[0][8] == '2':
-                                win_odd = game_info[0][12].split(":")[1]
-                                if result_away > result_home:
-                                    return ['awaywin', win_odd]
-                                else:
-                                    return ['awaylose', win_odd]
-                            elif game_info[0][8] == '12':
-                                win_odd = 0
-                                if result_away != result_home:
-                                    return ['12win', win_odd]
-                                else:
-                                    return ['12lose', win_odd]
-                            elif game_info[0][8] == '1X':
-                                win_odd = 0
-                                if result_home >= result_away:
-                                    return ['1Xwin', win_odd]
-                                else:
-                                    return ['1Xlose', win_odd]
-                            elif game_info[0][8] == 'X2':
-                                win_odd = 0
-                                if result_home <= result_away:
-                                    return ['X2win', win_odd]
-                                else:
-                                    return ['X2lose', win_odd]
+                        return ['no_results_yet', win_odd]
+                    else:
+                        if game_info[0][8] == 'X':
+                            win_odd = game_info[0][11].split(":")[1]
+                            if result_home == result_away:
+                                return ['drawwin', win_odd]
+                            else:
+                                return ['drawlose', win_odd]
+                        elif game_info[0][8] == '1':
+                            win_odd = game_info[0][10].split(":")[1]
+                            if result_home > result_away:
+                                return ['homewin', win_odd]
+                            else:
+                                return ['homelose', win_odd]
+                        elif game_info[0][8] == '2':
+                            win_odd = game_info[0][12].split(":")[1]
+                            if result_away > result_home:
+                                return ['awaywin', win_odd]
+                            else:
+                                return ['awaylose', win_odd]
+                        elif game_info[0][8] == '12':
+                            win_odd = 0
+                            if result_away != result_home:
+                                return ['12win', win_odd]
+                            else:
+                                return ['12lose', win_odd]
+                        elif game_info[0][8] == '1X':
+                            win_odd = 0
+                            if result_home >= result_away:
+                                return ['1Xwin', win_odd]
+                            else:
+                                return ['1Xlose', win_odd]
+                        elif game_info[0][8] == 'X2':
+                            win_odd = 0
+                            if result_home <= result_away:
+                                return ['X2win', win_odd]
+                            else:
+                                return ['X2lose', win_odd]
                 yield {
-                    'match_date': self.match_date,
-                    'time': formatted_date,
+                    'match_date': match_date,
+                    'time': start_time,
                     'teams': game_info[0][2],
                     'tip': game_info[0][8],
                     'tip_odd': overall_result()[1],
