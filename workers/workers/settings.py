@@ -16,7 +16,7 @@ import django
 
 sys.path.append(os.path.dirname(os.path.abspath('.')))
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'iCrawl.settings'
 
 # This is required only if Django Version > 1.8
 django.setup()
