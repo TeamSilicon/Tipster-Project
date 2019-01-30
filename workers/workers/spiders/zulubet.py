@@ -10,4 +10,6 @@ class ZuluBet(scrapy.Spider):
     ]
 
     def parse(self, response):
-        tr_elems = response.css("tr", bgcolor=re.compile('^#.*')).extract()
+        # Getting only table rows with bgcolor property
+        tr_elems = response.css('tr[bgcolor]').extract()
+        print("Today games are " + str(len(tr_elems)))  # number of games

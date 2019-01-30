@@ -1,0 +1,177 @@
+@import "compass/css3";
+
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+
+body {
+  @include background(
+    linear-gradient(left, #272838, #2b2d41, #393549, #433545)
+  );
+  font-family: 'Raleway', sans-serif;
+}
+
+form#login-form {
+  background: #fff;
+  width: 35em;
+  margin: 2em auto;
+  overflow: hidden;
+  position: relative;
+  
+  @include border-radius(0.3em);
+  @include box-shadow(0 0 0.2em #000);
+  
+  div.heading {
+    background: #f85f64;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 1.5em;
+  }
+  
+  div.left {
+    width: 50%;
+    float: left;
+    padding: 1.7em 1.5em 2.5em 1.5em;
+    
+    @include box-sizing(border-box);
+  }
+  
+  div.right {
+    width: 50%;
+    float: right;
+    padding: 1.7em 1.5em 2.5em 1.5em;
+    
+    @include box-sizing(border-box);
+  }
+  
+  &:before {
+    content: 'or';
+    color: gray;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    height: 0.5em;
+    width: 0.5em;
+    left: -1.5em;
+    top: 1.2em;
+    z-index: 900;
+  }
+  
+  &:after {
+    content: '';
+    position: absolute;
+    background: rgba(gray, 0.3);
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    height: 7.25em;
+    width: 0.1em;
+    left: -0.85em;    
+    top: -6.8em;
+    
+    @include box-shadow(0 8.8em 0 0 rgba(gray, 0.3));
+  }
+}
+
+div.left {
+  label {
+    display: inline-block;
+    color: gray;
+    font-size: 1.1em;
+    margin-top: 0.6em;
+  }
+    
+  input[type="email"], input[type="password"] {
+    border: 0.1em solid darken(#eee, 6%);
+    padding: 1em;
+    margin: 0.6em 0;
+    
+    @include border-radius(0.2em);
+    @include box-shadow(0 0 0.2em rgba(darken(#eee, 6%), 0.2));
+    @include transition(0.15s all ease-in-out);
+    
+    &:focus {
+      outline: none;
+      border: 0.1em solid darken(#ccc, 6%);
+    }
+  }
+  
+  input[type="submit"] {
+    background: #f85f64;
+    color: #fff;
+    outline: none;
+    text-transform: uppercase;
+    padding: 1.2em;
+    overflow: hidden;
+    border: none;
+    letter-spacing: 0.1em;
+    margin: 0.5em 0;
+    font-weight: bold;
+    
+    @include border-radius(0.4em);
+    @include transition(0.15s all ease-in-out);
+    
+    &:hover {
+      background: rgba(#f85f64, 0.8);
+    }
+  }
+}
+
+div.right {
+  
+  div.connect {
+    color: gray;
+    font-size: 1.1em;
+    text-align: center;
+  }
+  
+  a {
+    display: inline-block;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: white;
+    width: 9em;
+    padding: 0.55em 0.3em;
+    clear: both;
+    text-align: center;    
+    margin: 0.5em 0.1em;
+    
+    @include border-radius(0.3em);
+  }
+  
+  a.facebook {
+    background: #3a589a;
+    margin-top: 0.8em;
+    @include transition(0.15s all ease-in-out);
+    
+    &:hover {
+      background: rgba(#3a589a, 0.8);
+    }
+  }
+  
+  a.twitter {
+    background: #4099ff;
+    @include transition(0.15s all ease-in-out);
+    
+    &:hover {
+      background: rgba(#4099ff, 0.8);
+    }
+  }
+  
+  a.google-plus {
+    background: #e9544f;
+    @include transition(0.15s all ease-in-out);
+    
+    &:hover {
+      background: rgba(#e9544f, 0.8);
+    }
+  }
+}
