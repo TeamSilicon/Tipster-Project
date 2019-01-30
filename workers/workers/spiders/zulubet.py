@@ -20,7 +20,7 @@ class ZuluBet(scrapy.Spider):
         removing_mf_usertime = re.compile(r'^mf_usertime(.*);')
         empty_games_counter = 0
         for gameNo in range(len(tr_elems)):
-            team = removing_mf_usertime.sub('', tr_elems[gameNo].getText())
+            team = removing_mf_usertime.sub('', tr_elems[gameNo].getText)
             groupings_trial = re.compile(r'''(
             \d+-\d+,\s)    # match_date
             (\d+:\d+\s)    # time
