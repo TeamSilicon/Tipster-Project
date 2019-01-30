@@ -3,11 +3,11 @@ import datetime
 import bs4
 import re
 from datetime import timedelta
-from .models import Prono
+from .models import ZuluBet
 # from .send_mail import send_mail
 
 
-class ZuluBet:
+class ZuluGames:
     def __init__(self, page_url, match_date):
         self.match_date = match_date  # date when the match is played
         self.page_url = page_url
@@ -132,7 +132,7 @@ class ZuluBet:
                                         return ['X2win', win_odd]
                                     else:
                                         return ['X2lose', win_odd]
-                        obj, created = Prono.objects.update_or_create(
+                        obj, created = ZuluBet.objects.update_or_create(
                             teams=game_info[0][2],
                             defaults={
                                 'match_date': self.match_date, 'time': formatted_date,
@@ -144,5 +144,5 @@ class ZuluBet:
                             })
 
                 # send_mail(len(error_games))
-            games = Prono.objects.filter(match_date=self.match_date).order_by('time', 'teams')[:games_number]
+            games = ZuluBet.objects.filter(match_date=self.match_date).order_by('time', 'teams')[:games_number]
             return games

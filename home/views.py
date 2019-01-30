@@ -2,9 +2,9 @@ import datetime
 from datetime import timedelta
 
 from django.shortcuts import render, get_object_or_404
-from .models import Prono
+from .models import ZuluBet
 from .cashbetting import CashBet
-from .zulubet import ZuluBet
+from .zulubet import ZuluGames
 
 
 def topnavselector():
@@ -65,7 +65,7 @@ def featured(request):
 
 
 def game_details(request, pk):
-    games_detail = get_object_or_404(Prono, pk=pk)
+    games_detail = get_object_or_404(ZuluBet, pk=pk)
     return render(request, 'mysite/game_details.html', {'game': games_detail})
 # no risk no reward
 
