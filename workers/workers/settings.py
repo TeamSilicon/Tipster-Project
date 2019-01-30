@@ -10,15 +10,13 @@
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 import os
 import sys
-import django
-
 # Django integration
 
-# sys.path.append(os.path.dirname(os.path.abspath('.')))
-#
-# os.environ['DJANGO_SETTINGS_MODULE'] = 'iCrawl.settings'
-#
-# # This is required only if Django Version > 1.8
+sys.path.append(os.path.dirname(os.path.abspath('.')))
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'iCrawl.settings'
+
+# This is required only if Django Version > 1.8
 # django.setup()
 
 # DJANGO INTEGRATION
@@ -78,9 +76,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'workers.pipelines.WorkersPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'workers.pipelines.WorkersPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
