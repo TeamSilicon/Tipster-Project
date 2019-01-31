@@ -10,6 +10,7 @@
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 import os
 import sys
+import django
 # Django integration
 
 sys.path.append(os.path.dirname(os.path.abspath('.')))
@@ -17,7 +18,7 @@ sys.path.append(os.path.dirname(os.path.abspath('.')))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'iCrawl.settings'
 
 # This is required only if Django Version > 1.8
-# django.setup()
+django.setup()
 
 # DJANGO INTEGRATION
 # Rest of settings are below ...

@@ -2,7 +2,7 @@ import datetime
 from datetime import timedelta
 
 from django.shortcuts import render, get_object_or_404
-from .models import ZuluBet
+from home.models import ZuluBet
 from .cashbetting import CashBet
 from .zulubet import ZuluGames
 

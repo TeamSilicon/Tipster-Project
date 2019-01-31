@@ -16,30 +16,30 @@ class ZuluBet(models.Model):
             self.ft_results]
 
 
-class Progress(models.Model):
-    from_date = models.DateTimeField(
-        default=timezone.now)
-    upto_date = models.DateTimeField(
-        blank=True, null=True)
-    counter_lost_odd = models.CharField(max_length=20)
-    counter_won_odd = models.CharField(max_length=20)
-    counter_lose = models.CharField(max_length=20)
-    counter_win = models.CharField(max_length=20)
-
-    def __str__(self):
-        return self.from_date
-
-    def __str__(self):
-        return self.upto_date
-
-    def __str__(self):
-        return self.counter_lost_odd
-
-    def __str__(self):
-        return self.counter_win
-
-    def __str__(self):
-        return self.counter_lose
-
-    def __str__(self):
-        return self.counter_won_odd
+# class Progress(models.Model):
+#     from_date = models.DateTimeField(
+#         default=timezone.now)
+#     upto_date = models.DateTimeField(
+#         blank=True, null=True)
+#     counter_lost_odd = models.CharField(max_length=20)
+#     counter_won_odd = models.CharField(max_length=20)
+#     counter_lose = models.CharField(max_length=20)
+#     counter_win = models.CharField(max_length=20)
+#
+#     def __str__(self):
+#         return self.from_date
+#
+#     def __str__(self):
+#         return self.upto_date
+#
+#     def __str__(self):
+#         return self.counter_lost_odd
+#
+#     def __str__(self):
+#         return self.counter_win
+#
+#     def __str__(self):
+#         return self.counter_lose
+#
+#     def __str__(self):
+#         return self.counter_won_odd
