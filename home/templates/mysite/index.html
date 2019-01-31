@@ -25,11 +25,11 @@
         <span class="forecasts__date">
           <b>{{ game.time }}</b>
         </span>
-        Pick <b style="font-size: 11px;">{{ game.chance }}</b>
-        <i>Result</i> <b style="font-size: 12px;">{{ game.match_result }}</b>
+        Pick <b style="font-size: 11px;">{{ game.tip }}</b>
+        <!-- <i>Result</i> <b style="font-size: 12px;">{{ game.match_result }}</b> -->
       </span>
-      {% if game.result_overall == 'homewin' or game.result_overall == 'awaywin' or game.result_overall == '12win' or game.result_overall == '1Xwin' or game.result_overall == 'X2win' %}
-      <i class="forecasts__result icon icon_success" title="won"></i>
+      <!--{% if game.result_overall == 'homewin' or game.result_overall == 'awaywin' or game.result_overall == '12win' or game.result_overall == '1Xwin' or game.result_overall == 'X2win' %}
+       <i class="forecasts__result icon icon_success" title="won"></i>
       {% endif %}
       {% if game.result_overall == 'drawwin' %}
       <i class="forecasts__result icon icon_success" title="won"></i>
@@ -42,7 +42,7 @@
       {% endif %}
       <span
       class="forecasts__coeff forecasts__coeff_free">{{ game.win_odd }}
-    </span>
+    </span> -->
   </a>
   {% endfor %}
 </div>

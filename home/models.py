@@ -10,10 +10,10 @@ class ZuluBet(models.Model):
     tip_odd = models.CharField(max_length=20)
     ft_results = models.CharField(max_length=40)
 
-    def __str__(self):
-        return [
-            self.match_date, self.time, self.teams, self.tip, self.tip_odd,
-            self.ft_results]
+    # def __str__(self):
+    #     return [
+    #         self.match_date, self.time, self.teams, self.tip, self.tip_odd,
+    #         self.ft_results]
 
 
 # class Progress(models.Model):

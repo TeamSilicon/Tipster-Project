@@ -19,7 +19,7 @@ SECRET_KEY = DJANGO_SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", ".herokuapp.com"]
+ALLOWED_HOSTS = ["127.0.0.1", ".herokuapp.com", 'localhost']
 
 # Application definition
 
@@ -71,13 +71,17 @@ WSGI_APPLICATION = 'iCrawl.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'games_db',
-        'USER': 'peterson',
-        'PASSWORD': DATABASE_PASSWORD,
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'games_db',
+    #     'USER': 'peterson',
+    #     'PASSWORD': DATABASE_PASSWORD,
+    #     'HOST': 'localhost',
+    #     'PORT': '',
+    # }
 }
 
 
@@ -112,7 +116,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/

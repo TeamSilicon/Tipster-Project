@@ -4,13 +4,19 @@ from datetime import timedelta
 from django.shortcuts import render, get_object_or_404
 from home.models import ZuluBet
 from .cashbetting import CashBet
-from .zulubet import ZuluGames
 
 
 def topnavselector():
     date = datetime.datetime.now()
 
     return date
+
+
+def home(request):
+    request_from = "tod"
+    games = ZuluBet.objects.all()
+    return render(request, 'mysite/index.html',
+                  {"games": games, "request_tom": request_from})
 
 
 def homepage_today(request):
