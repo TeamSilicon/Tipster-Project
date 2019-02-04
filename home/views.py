@@ -1,54 +1,39 @@
 import datetime
 from datetime import timedelta
-
 from django.shortcuts import render, get_object_or_404
 from home.models import ZuluBet
 from .cashbetting import CashBet
 
+# scrapy api
+from scrapy.crawler import CrawlerProcess
+from scrapy.utils.project import get_project_settings
+
 
 def topnavselector():
     date = datetime.datetime.now()
-
     return date
 
 
 def home(request):
-    request_from = "tod"
+    # match_date = today.strftime("%d-%m")  # date when the match is played
+    if request.path == "/":
+        today = topnavselector()
+        request_from = 'today'
+    elif request.path == "/tomorrow/":
+        today = topnavselector() + timedelta(days=1)
+        request_from = 'tomorrow'
+    elif request.path == "/yesterday/":
+        today = topnavselector() + timedelta(days=-1)
+        request_from = 'yesterday'
+    url = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
+    # starting zulu spider
+    crawler = CrawlerProcess(get_project_settings())
+    crawler.crawl('workers.zulubet', url=url)
+    crawler.start()  # block here until the crawling is finished
+
     games = ZuluBet.objects.all()
     return render(request, 'mysite/index.html',
                   {"games": games, "request_tom": request_from})
-
-
-def homepage_today(request):
-    today = topnavselector()
-    res = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
-    match_date = today.strftime("%d-%m")  # date when the match is played
-    games = ZuluBet(res, match_date).zulu_procedure()
-    request_from = "tod"
-    print(res)
-    return render(request, 'mysite/index.html',
-                  {"games": games, "request_tom": request_from})
-
-
-def yesterday(request):
-    today = topnavselector() - timedelta(days=1)
-    res = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
-    match_date = today.strftime("%d-%m")  # date when the match is played
-    games = ZuluBet(res, match_date).zulu_procedure()
-    request_from = "yest"
-    print(res)
-    return render(request, 'mysite/index.html',
-                  {"games": games, "request_tom": request_from})
-
-
-def tomorrow(request):
-    today = topnavselector() + timedelta(days=1)
-    res = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
-    match_date = today.strftime("%d-%m")  # date when the match is played
-    games = ZuluBet(res, match_date).zulu_procedure()
-    request_from = "tom"
-    print(res)
-    return render(request, 'mysite/index.html', {"games": games, "request_tom": request_from })
 
 
 month = {

@@ -1,0 +1,23 @@
+2019-01-31 22:41:49 [scrapy.utils.log] INFO: Scrapy 1.5.2 started (bot: workers)
+2019-01-31 22:41:49 [scrapy.utils.log] INFO: Versions: lxml 4.3.0.0, libxml2 2.9.9, cssselect 1.0.3, parsel 1.5.1, w3lib 1.20.0, Twisted 18.9.0, Python 3.6.5 |Anaconda, Inc.| (default, Apr 29 2018, 16:14:56) - [GCC 7.2.0], pyOpenSSL 19.0.0 (OpenSSL 1.1.1a  20 Nov 2018), cryptography 2.5, Platform Linux-4.19.0-parrot1-13t-amd64-x86_64-with-debian-stable
+2019-01-31 22:42:00 [scrapy.utils.log] INFO: Scrapy 1.5.2 started (bot: workers)
+2019-01-31 22:42:00 [scrapy.utils.log] INFO: Versions: lxml 4.3.0.0, libxml2 2.9.9, cssselect 1.0.3, parsel 1.5.1, w3lib 1.20.0, Twisted 18.9.0, Python 3.6.5 |Anaconda, Inc.| (default, Apr 29 2018, 16:14:56) - [GCC 7.2.0], pyOpenSSL 19.0.0 (OpenSSL 1.1.1a  20 Nov 2018), cryptography 2.5, Platform Linux-4.19.0-parrot1-13t-amd64-x86_64-with-debian-stable
+2019-01-31 22:42:00 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'workers', 'LOG_FILE': 'scrapy.log', 'NEWSPIDER_MODULE': 'workers.spiders', 'ROBOTSTXT_OBEY': True, 'SPIDER_MODULES': ['workers.spiders']}
+2019-01-31 22:42:00 [scrapy.extensions.telnet] INFO: Telnet Password: 1018037e9b13df27
+2019-01-31 22:42:00 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.memusage.MemoryUsage',
+ 'scrapy.extensions.logstats.LogStats']
+2019-01-31 22:42:00 [twisted] CRITICAL: Unhandled error in Deferred:
+2019-01-31 22:42:00 [twisted] CRITICAL: 
+Traceback (most recent call last):
+  File "/home/peterson/Current_Projects/Tipster-Project/venv/lib/python3.6/site-packages/twisted/internet/defer.py", line 1418, in _inlineCallbacks
+    result = g.send(result)
+  File "/home/peterson/Current_Projects/Tipster-Project/venv/lib/python3.6/site-packages/scrapy/crawler.py", line 79, in crawl
+    self.spider = self._create_spider(*args, **kwargs)
+  File "/home/peterson/Current_Projects/Tipster-Project/venv/lib/python3.6/site-packages/scrapy/crawler.py", line 102, in _create_spider
+    return self.spidercls.from_crawler(self, *args, **kwargs)
+  File "/home/peterson/Current_Projects/Tipster-Project/venv/lib/python3.6/site-packages/scrapy/spiders/__init__.py", line 51, in from_crawler
+    spider = cls(*args, **kwargs)
+TypeError: __init__() missing 1 required positional argument: 'urls'

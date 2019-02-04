@@ -3,14 +3,20 @@ import scrapy
 import datetime
 from bs4 import BeautifulSoup
 from datetime import timedelta
+from scrapy.http import Request
 
 
 class ZuluBet(scrapy.Spider):
     name = "zulubet"
+    # We are going to pass these args from our django view.
+    # To make everything dynamic, we need to override them inside __init__ method
 
-    start_urls = [
-        'http://www.zulubet.com/',
-    ]
+    def __init__(self, *args, **kwargs):
+        self.url = kwargs.get('url')or kwargs.get('domain')
+        print("Dennoh Was here again %s" % self.url)
+
+    def start_requests(self):
+        return [Request(self.url, callback=self.parse, dont_filter=True)]
 
     def parse(self, response):
         # Getting only table rows with bgcolor property

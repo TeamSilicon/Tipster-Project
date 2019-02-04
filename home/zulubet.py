@@ -135,10 +135,14 @@ class ZuluGames:
                         obj, created = ZuluBet.objects.update_or_create(
                             teams=game_info[0][2],
                             defaults={
-                                'match_date': self.match_date, 'time': formatted_date,
-                                'teams': game_info[0][2], 'chance': game_info[0][8],
-                                'odd1': game_info[0][10], 'oddX': game_info[0][11],
-                                'odd2': game_info[0][12], 'win_odd': overall_result()[1],
+                                'match_date': self.match_date,
+                                'time': formatted_date,
+                                'teams': game_info[0][2],
+                                'chance': game_info[0][8],
+                                'odd1': game_info[0][10],
+                                'oddX': game_info[0][11],
+                                'odd2': game_info[0][12],
+                                'win_odd': overall_result()[1],
                                 'match_result': game_info[0][14],
                                 'result_overall': overall_result()[0]
                             })

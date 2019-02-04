@@ -26,23 +26,25 @@
           <b>{{ game.time }}</b>
         </span>
         Pick <b style="font-size: 11px;">{{ game.tip }}</b>
-        <!-- <i>Result</i> <b style="font-size: 12px;">{{ game.match_result }}</b> -->
-      </span>
-      <!--{% if game.result_overall == 'homewin' or game.result_overall == 'awaywin' or game.result_overall == '12win' or game.result_overall == '1Xwin' or game.result_overall == 'X2win' %}
+        </span>
+      {% if game.ft_results == 'homewin' or game.ft_results == 'awaywin' or game.ft_results == '12win' or game.ft_results == '1Xwin' or game.ft_results == 'X2win' %}
+      <i>Result</i> <b style="font-size: 12px;color: green;">WOOON</b>
        <i class="forecasts__result icon icon_success" title="won"></i>
       {% endif %}
-      {% if game.result_overall == 'drawwin' %}
+      {% if game.ft_results == 'drawwin' %}
+      <i>Result</i> <b style="font-size: 12px;color: green;">WOOON</b>
       <i class="forecasts__result icon icon_success" title="won"></i>
       {% endif %}
-      {% if game.result_overall == 'drawlose' or game.result_overall == 'homelose' or game.result_overall == 'awaylose' or game.result_overall == '12lose' or game.result_overall == '1Xlose' or game.result_overall == 'X2lose' %}
+      {% if game.ft_results == 'drawlose' or game.ft_results == 'homelose' or game.ft_results == 'awaylose' or game.ft_results == '12lose' or game.ft_results == '1Xlose' or game.ft_results == 'X2lose' %}
+      <i>Result</i> <b style="font-size: 12px; color: red;">LOST</b>
       <i class="forecasts__result icon icon_failure" title="lost"></i>
       {% endif %}
-      {% if game.result_overall == 'no_results_yet' %}
+      {% if game.ft_results == 'no_results_yet' %}
+      <i>Result</i> <b style="font-size: 12px;">...</b>
       <i class="forecasts__result icon icon_pending" title="waiting"></i>
       {% endif %}
-      <span
-      class="forecasts__coeff forecasts__coeff_free">{{ game.win_odd }}
-    </span> -->
+      <span class="forecasts__coeff forecasts__coeff_free">{{ game.tip_odd }}
+    </span>
   </a>
   {% endfor %}
 </div>
