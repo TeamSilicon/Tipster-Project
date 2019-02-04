@@ -3,10 +3,7 @@ from datetime import timedelta
 from django.shortcuts import render, get_object_or_404
 from home.models import ZuluBet
 from .cashbetting import CashBet
-
-# scrapy api
-from scrapy.crawler import CrawlerProcess
-from scrapy.utils.project import get_project_settings
+from workers.run_spider import zulu_spider
 
 
 def topnavselector():
@@ -26,11 +23,7 @@ def home(request):
         today = topnavselector() + timedelta(days=-1)
         request_from = 'yesterday'
     url = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
-    # starting zulu spider
-    crawler = CrawlerProcess(get_project_settings())
-    crawler.crawl('workers.zulubet', url=url)
-    crawler.start()  # block here until the crawling is finished
-
+    zulu_spider(url)
     games = ZuluBet.objects.all()
     return render(request, 'mysite/index.html',
                   {"games": games, "request_tom": request_from})

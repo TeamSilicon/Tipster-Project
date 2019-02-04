@@ -24,8 +24,8 @@ django.setup()
 # Rest of settings are below ...
 BOT_NAME = 'workers'
 
-SPIDER_MODULES = ['workers.workers.spiders']
-NEWSPIDER_MODULE = 'workers.workers.spiders'
+SPIDER_MODULES = ['workers.spiders']
+NEWSPIDER_MODULE = 'workers.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -78,7 +78,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'workers.workers.pipelines.WorkersPipeline': 300,
+   'workers.pipelines.WorkersPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
