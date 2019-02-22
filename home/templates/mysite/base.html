@@ -10,12 +10,12 @@
   <meta name="copyright" content="© Dennis Peterson 2015-2018"/>
   <title>Hustler | All In One</title>
   <!--Font Family  -->
-  <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+  {% comment %} <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet"> {% endcomment %}
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
   <!--custom css-->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"> {% endcomment %}
+  {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> {% endcomment %}
 </head>
 <body>
   <!-- navbar -->
@@ -26,16 +26,16 @@
       <ul class="right">
         <li><a href="/comingsoon/" aria-label="search"><i class="feather" data-feather="search"></i></a></li>
         <li><a href="/comingsoon/" class="black-text" aria-label="Wallet">Wallet</a></li>
-        <li><a href="/comingsoon/" class="black-text" aria-label="Settings">Settings</a></li>
+        <li><a href="/comingsoon/" class="black-text" aria-label="Account">Account</a></li>
       </ul>
     </div>
-    <div class="nav-content">
+    {% comment %} <div class="nav-content">
       <ul class="tabs tabs-transparent">
         <li class="tab"><a target="_self" href="{% url 'yesterday' %}" class="{% if request_tom == 'yesterday' %} active {% endif %} black-text">Yesterday</a></li>
         <li class="tab"><a target="_self" href="{% url 'today' %}" class="{% if request_tom == 'today' %} active {% endif %} black-text">Today</a></li>
         <li class="tab"><a target="_self" href="{% url 'tomorrow' %}" class="black-text {% if request_tom == 'tomorrow' %} active {% endif %}">Tomorrow</a></li>
       </ul>
-    </div>
+    </div> {% endcomment %}
   </nav>
   <div class="wrapper">
     {% block content %}
@@ -77,8 +77,8 @@
     $('.tabs').tabs();
   });
 </script>
-<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-<script type='text/javascript'>
+{% comment %} <script type="text/javascript" src="{% static 'js/main.js' %}"></script> {% endcomment %}
+{% comment %} <script type='text/javascript'>
 window.__lo_site_id = 133908;
 
 (function() {
@@ -86,6 +86,6 @@ window.__lo_site_id = 133908;
   wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
 })();
-</script>
+</script> {% endcomment %}
 </body>
 </html>
