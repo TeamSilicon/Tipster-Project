@@ -3,7 +3,7 @@ from datetime import timedelta
 from django.shortcuts import render, get_object_or_404
 from home.models import ZuluBet
 from .cashbetting import CashBet
-from workers.run_spider import zulu_spider
+from .zulubet import ZuluGames
 
 
 def topnavselector():
@@ -23,7 +23,7 @@ def home(request):
         today = topnavselector() + timedelta(days=-1)
         request_from = 'yesterday'
     url = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
-    zulu_spider(url)
+    ZuluGames(url, today)
     games = ZuluBet.objects.all()
     return render(request, 'mysite/index.html',
                   {"games": games, "request_tom": request_from})
