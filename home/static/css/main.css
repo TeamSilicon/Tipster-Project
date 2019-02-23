@@ -95,9 +95,6 @@ color: #000 !important;
 	text-overflow:ellipsis;
 	overflow:hidden;
 }
-div.forecasts__list > .forecasts__item > i.flag {
-	margin-top: 10px;
-}
 .abtto_start{
 	background: #efefef;
 }
@@ -282,15 +279,6 @@ a.item {
 a.item:hover {
 	margin-left: -14px;
 }
-a.item .flag {
-	width: 82px;
-	height: 80px;
-	line-height: 80px;
-	text-align: center;
-	padding: 4px 0 0 19px;
-	font-size: 0;
-	float: left;
-}
 a.item .info {
 	float: left;
 }
@@ -324,13 +312,6 @@ a.item .info .y span {
 		float: none;
 		padding: 5px 0;
 	}
-	a.item .flag {
-		width: 50px;
-		height: 70px;
-		line-height: 70px;
-		float: none;
-	}
-
 	a.item:hover{
 		margin-left: 0;
 	}
