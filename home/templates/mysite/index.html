@@ -5,13 +5,13 @@
     <i class="icon icon_soccer"></i>
     <span class="forecasts__sport">Football</span>
     <!-- Getting Predicated Date From Url  -->
-    {% if request_tom == "yest" %}
+    {% if request_tom == "yesterday" %}
     <span class="forecasts__day">Yesterday</span>
     {% endif %}
-    {% if request_tom == "tod" %}
+    {% if request_tom == "today" %}
     <span class="forecasts__day">Today</span>
     {% endif %}
-    {% if request_tom == "tom" %}
+    {% if request_tom == "tomorrow" %}
     <span class="forecasts__day">Tomorrow</span>
     {% endif %}
     <span class="forecasts__coefficient center">Odds</span>

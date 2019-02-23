@@ -25,6 +25,7 @@ def home(request):
     url = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
     ZuluGames(url, today)
     games = ZuluBet.objects.all()
+    print("Testing testing %s" % request_from)
     return render(request, 'mysite/index.html',
                   {"games": games, "request_tom": request_from})
 
