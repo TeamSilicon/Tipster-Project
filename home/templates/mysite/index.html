@@ -26,19 +26,19 @@
         </span>Pick <b style="font-size: 11px;">{{ game.tip }}</b>
       </span>
       <!-- Game Status text and icon -->
-      {% if game.ft_results == 'homewin' or game.ft_results == 'awaywin' or game.ft_results == '12win' or game.ft_results == '1Xwin' or game.ft_results == 'X2win' %}
+      {% if game.outcome_text == 'homewin' or game.outcome_text == 'awaywin' or game.outcome_text == '12win' or game.outcome_text == '1Xwin' or game.outcome_text == 'X2win' %}
       <i>Result</i> <b style="font-size: 12px;color: green;">WOOON</b>
       <i class="forecasts__result icon icon_success" title="won"></i>
       {% endif %}
-      {% if game.ft_results == 'drawwin' %}
+      {% if game.outcome_text == 'drawwin' %}
       <i>Result</i> <b style="font-size: 12px;color: green;">WOOON</b>
       <i class="forecasts__result icon icon_success" title="won"></i>
       {% endif %}
-      {% if game.ft_results == 'drawlose' or game.ft_results == 'homelose' or game.ft_results == 'awaylose' or game.ft_results == '12lose' or game.ft_results == '1Xlose' or game.ft_results == 'X2lose' %}
+      {% if game.outcome_text == 'drawlose' or game.outcome_text == 'homelose' or game.outcome_text == 'awaylose' or game.outcome_text == '12lose' or game.outcome_text == '1Xlose' or game.outcome_text == 'X2lose' %}
       <i>Result</i> <b style="font-size: 12px; color: red;">LOST</b>
       <i class="forecasts__result icon icon_failure" title="lost"></i>
       {% endif %}
-      {% if game.ft_results == 'no_results_yet' %}
+      {% if game.outcome_text == 'no_results_yet' %}
       <i>Result</i> <b style="font-size: 12px;">...</b>
       <i class="forecasts__result icon icon_pending" title="waiting"></i>
       {% endif %}

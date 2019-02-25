@@ -9,6 +9,7 @@ class ZuluBet(models.Model):
     tip = models.CharField(max_length=40)
     tip_odd = models.CharField(max_length=20)
     ft_results = models.CharField(max_length=40)
+    outcome_text = models.CharField(max_length=40)
 
     # def __str__(self):
     #     return [

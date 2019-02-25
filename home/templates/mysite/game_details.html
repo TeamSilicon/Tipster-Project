@@ -2,38 +2,46 @@
 {% load staticfiles %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Match Details</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/game_details.css' %}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <title>Match Details</title> <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/game_details.css' %}">
 </head>
 <body>
-   
-    <div class="vip">
-        <div class="vip__teams">
-           <span class="vip__about">
-               FOOTBALL  &gt; Brazil &gt;  Brasileiro Serie B
-           </span>
-           <div class="vip__vs">
-            <div class="vip__vs-logo">
-                <img src="/i/partaker/orig_url_317.png" alt="">
-            </div>
-            <div class="vip__vs-count"><img src="{% static 'css/assets/vs.png' %}" alt=""></div>
-            <div class="vip__vs-logo">
-                <img src="/i/partaker/orig_url_90.png" alt="">
-            </div>
+
+  <div class="vip">
+    <div class="vip__teams">
+      <nav>
+        <div class="nav-wrapper">
+          <div class="col s12 center">
+            <a href="/" class="breadcrumb">Football</a>
+            <a href="#!" class="breadcrumb">Country</a>
+            <a href="#!" class="breadcrumb">League</a>
+          </div>
         </div>
+      </nav>
+      <div class="vip__vs">
+        <div class="vip__vs-logo">
+          <img src="/i/partaker/orig_url_317.png" alt="">
+        </div>
+        <div class="vip__vs-count"><img src="{% static 'css/assets/vs.png' %}" alt=""></div>
+        <div class="vip__vs-logo">
+          <img src="/i/partaker/orig_url_90.png" alt="">
+        </div>
+      </div>
     </div>
 
     <div class="vip__info">
-        <h2 class="vip__title">THE MATCH PREDICTION</h2>
-        <h1 class="vip__title vip__title_teams">{{ game.teams }}</h1>
-        <span class="vip__time"> <b>{{ game.match_date }} {{ game.time }}</b></span>
-    </div> 
+      <h2 class="vip__title">THE MATCH PREDICTION</h2>
+      <h1 class="vip__title vip__title_teams">{{ game.teams }}</h1>
+      <span class="vip__time"> <b>{{ game.match_date }} {{ game.time }}</b></span>
+    </div>
     <div class="vip__event vip__event_forecast">
-        <p>Pick <b>{{ game.chance }}</b><span>ODD {{ game.win_odd }}</span></p> 
+      <p>Pick <b>{{ game.chance }}</b><span>ODD {{ game.win_odd }}</span></p>
     </div>
 
-</div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

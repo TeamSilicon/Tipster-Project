@@ -9,8 +9,8 @@ from .models import ZuluBet
 
 class ZuluGames:
     def __init__(self, page_url, match_date):
-        self.match_date = match_date  # date when the match is played
         self.page_url = page_url
+        self.match_date = match_date  # date when the match is played
 
     def zulu_procedure(self):
         zulu_page = requests.get(self.page_url)
@@ -138,13 +138,10 @@ class ZuluGames:
                                 'match_date': self.match_date,
                                 'time': formatted_date,
                                 'teams': game_info[0][2],
-                                'chance': game_info[0][8],
-                                'odd1': game_info[0][10],
-                                'oddX': game_info[0][11],
-                                'odd2': game_info[0][12],
-                                'win_odd': overall_result()[1],
-                                'match_result': game_info[0][14],
-                                'result_overall': overall_result()[0]
+                                'tip': game_info[0][8],
+                                'tip_odd': overall_result()[1],
+                                'ft_results': game_info[0][14],
+                                'outcome_text': overall_result()[0]
                             })
 
                 # send_mail(len(error_games))

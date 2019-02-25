@@ -23,9 +23,7 @@ def home(request):
         today = topnavselector() + timedelta(days=-1)
         request_from = 'yesterday'
     url = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
-    ZuluGames(url, today)
-    games = ZuluBet.objects.all()
-    print("Testing testing %s" % request_from)
+    games = ZuluGames(url, today).zulu_procedure
     return render(request, 'mysite/index.html',
                   {"games": games, "request_tom": request_from})
 
