@@ -37,64 +37,7 @@ a {
 .nav-wrapper{
   border-bottom: 1px solid rgba(32,35,95,.2);
 }
-nav,.nav-extended{
-  background: #f8f8f8;
-}
 
-/* Navigation Bar */
-.sidenav{
-  bottom: 0;
-  border: 0;
-  overflow: hidden;
-  background-color: #222;
-}
-.user-roal {
-  color: #fff;
-  margin-top: -16px;
-  font-size: 13px;
-  font-weight: 400 !important;
-  text-shadow: 1px 1px 1px #444;
-}
-.sidenav .row {
-  margin-bottom: -8px;
-}
-.sidenav:hover{
-  overflow-y: scroll;
-}
-/* Customized scroll bar */
-.sidenav::-webkit-scrollbar {
-  width: 10px;
-}
-.sidenav::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-}
-.sidenav::-webkit-scrollbar-thumb {
-  background-color: #999;
-  border-radius: 4px;
-  outline: 1px solid slategrey;
-}
-/* end of scroll bar */
-.sidenav .subheader,.sidenav li>a {
-  color: #fff;
-  line-height: 40px;
-  height: 40px;
-}
-.sidenav .collapsible-body, .sidenav.fixed .collapsible-body {
-  border: 0;
-  background-color: #222;
-}
-.sidenav li>a:hover {
-  background-color: #222;
-}
-.divider {
-  background-color: #353535;
-}
-.sidenav .collapsible-header{
-  padding: 0 32px;
-}
-.sidenav .collapsible-body li a, .sidenav.fixed .collapsible-body li a {
-  padding: 0 60px;
-}
 
 @media only screen and (min-width : 992px) {
   a.item {

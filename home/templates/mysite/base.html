@@ -12,16 +12,15 @@
   <!--Font Family  -->
   <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
   <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+  {% comment %} <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/> {% endcomment %}
   <!--custom css-->
   <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
   <!-- navbar -->
-  <nav class="nav-extended black-text">
+  <nav class="nav-extended">
     <div class="nav-wrapper">
-
       <a href="/" class="brand-logo black-text left">Tipster</a>
       <!-- <span class="show-on-medium-and-up">The hustle never stops!</span> -->
       <ul class="right">
@@ -37,6 +36,7 @@
       </ul>
     </div>
   </nav>
+  {% comment %} End of navbar {% endcomment %}
   <div class="wrapper">
     {% block content %}
     <!--main content  -->
@@ -68,11 +68,8 @@
   <!--custom js-->
   <script type="text/javascript">
   $(document).ready(function(){
-    $('.sidenav').sidenav();
     //for feather Icons
     feather.replace();
-    // For collapsible menu items
-    $('.collapsible').collapsible();
     // for activating tabs transition
     $('.tabs').tabs();
   });

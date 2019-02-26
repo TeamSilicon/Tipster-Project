@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Transition Phase</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+
+</head>
+<body>
+  <nav class="nav-extended">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo black-text left">Tipster</a>
+      <!-- <span class="show-on-medium-and-up">The hustle never stops!</span> -->
+      <ul class="right">
+        <li><a href="/comingsoon/" class="black-text" aria-label="Wallet">Wallet</a></li>
+        <li><a href="/comingsoon/" class="black-text" aria-label="Account">Account</a></li>
+      </ul>
+    </div>
+    <div class="nav-content">
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a target="_self" href="{% url 'yesterday' %}" class="{% if request_tom == 'yesterday' %} active {% endif %} black-text">Yesterday</a></li>
+        <li class="tab"><a target="_self" href="{% url 'today' %}" class="{% if request_tom == 'today' %} active {% endif %} black-text">Today</a></li>
+        <li class="tab"><a target="_self" href="{% url 'tomorrow' %}" class="black-text {% if request_tom == 'tomorrow' %} active {% endif %}">Tomorrow</a></li>
+      </ul>
+    </div>
+  </nav>
+</body>
+</html>
