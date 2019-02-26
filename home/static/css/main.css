@@ -57,8 +57,17 @@ nav a {
 		height: 64px;
 	}
 }
+.black {
+	  background-color: #FFFFFF !important;
+	}
 .black-text {
 	color: #000000 !important;
+}
+.white {
+	  background-color: #FFFFFF !important;
+	}
+.white-text {
+  color: #FFFFFF !important;
 }
 /*  */
 nav .nav-wrapper {

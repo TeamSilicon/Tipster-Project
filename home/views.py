@@ -54,12 +54,12 @@ def jackpot(request):
 
 def overTips(request):
     pass
-    
+
 def slip(request):
     pass
 
 
-def game_details(request, pk):
+def game_detail(request, pk):
     games_detail = get_object_or_404(ZuluBet, pk=pk)
     return render(request, 'mysite/game_details.html', {'game': games_detail})
 # no risk no reward
