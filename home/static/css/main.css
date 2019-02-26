@@ -9,7 +9,17 @@ body{
 	background-color: #222;
 
 }
-
+.feather {
+	width: 24px;
+	height: 24px;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	fill: none;
+	padding-right: 10px;
+	vertical-align: middle;
+}
 nav {
 	color: #fff;
 	background-color: #f8f8f8;
@@ -50,7 +60,6 @@ nav a {
 .black-text {
 	color: #000000 !important;
 }
-
 /*  */
 nav .nav-wrapper {
 	position: relative;
@@ -121,7 +130,7 @@ nav ul.left {
 }
 a {
 	text-decoration: none;
-	color: 000;
+	color: #000;
 }
 .tabs {
 	position: relative;
@@ -143,17 +152,7 @@ a {
 .tabs.tabs-transparent .indicator {
 	background-color: darkgrey;
 }
-.feather {
-	width: 24px;
-	height: 24px;
-	stroke: currentColor;
-	stroke-width: 2;
-	stroke-linecap: round;
-	stroke-linejoin: round;
-	fill: none;
-	padding-right: 10px;
-	vertical-align: middle;
-}
+
 .tabs .tab {
 	display: inline-block;
 	text-align: center;
@@ -194,7 +193,14 @@ tabs .indicator {
 	background-color: #f6b2b5;
 	will-change: left, right;
 }
-
+/*********************
+  Media Query Classes
+**********************/
+@media only screen and (max-width: 600px) {
+  .hide-on-small-only, .hide-on-small-and-down {
+    display: none !important;
+  }
+}
 @media only screen and (max-width: 992px) {
 	.tabs {
 		display: -webkit-box;
@@ -278,6 +284,9 @@ color: #000 !important;
 	height: inherit;
 	line-height: 60px;
 	color:rgba(0,0,0,.7);
+}
+.center{
+	text-align: center;
 }
 .forecasts__item{
 	position:relative;
