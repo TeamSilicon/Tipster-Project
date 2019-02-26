@@ -46,7 +46,16 @@ def featured(request):
         "games": games_dict, "request_tom": request_from
         })
 
-def Goal_Goal(request):
+def goal_Goal(request):
+    pass
+
+def jackpot(request):
+    pass
+
+def overTips(request):
+    pass
+    
+def slip(request):
     pass
 
 
