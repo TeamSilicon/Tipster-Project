@@ -2,8 +2,8 @@ import datetime
 from datetime import timedelta
 from django.shortcuts import render, get_object_or_404
 from home.models import ZuluBet
-from .cashbetting import CashBet
-from .zulubet import ZuluGames
+from home.cashbetting import CashBet
+from home.zulubet import ZuluGames
 
 
 def topnavselector():
@@ -11,7 +11,7 @@ def topnavselector():
     return date
 
 
-def home(request):
+def all_games(request):
     # match_date = today.strftime("%d-%m")  # date when the match is played
     if request.path == "/":
         today = topnavselector()
@@ -45,6 +45,9 @@ def featured(request):
     return render(request, 'mysite/featured.html', {
         "games": games_dict, "request_tom": request_from
         })
+
+def Goal_Goal(request):
+    pass
 
 
 def game_details(request, pk):

@@ -4,4 +4,4 @@ This is to inform you that there was a problem in Getting ${GAMES} game(s).
 FIX THAT Please!
 https://hustler.herokuapp.com
 
-Yours Truly Mr Bot.
+Mr Bot.
