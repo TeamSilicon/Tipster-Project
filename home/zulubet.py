@@ -4,7 +4,7 @@ import bs4
 import re
 from datetime import timedelta
 from .models import ZuluBet
-# from .send_mail import send_mail
+from .send_mail import send_mail
 
 
 class ZuluGames:
@@ -144,6 +144,6 @@ class ZuluGames:
                                 'outcome_text': overall_result()[0]
                             })
 
-                # send_mail(len(error_games))
+                send_mail(len(error_games))
             games = ZuluBet.objects.filter(match_date=self.match_date).order_by('time', 'teams')[:games_number]
             return games
