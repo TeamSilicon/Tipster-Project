@@ -158,7 +158,7 @@ a {
 .tabs.tabs-transparent .tab a.active {
 	color: #fff;
 }
-.tabs.tabs-transparent .indicator {
+.tabs.tabs-transparent {
 	background-color: darkgrey;
 }
 
@@ -195,13 +195,7 @@ a {
 	background-color: transparent;
 	color: #ee6e73;
 }
-tabs .indicator {
-	position: absolute;
-	bottom: 0;
-	height: 2px;
-	background-color: #f6b2b5;
-	will-change: left, right;
-}
+
 /*********************
   Media Query Classes
 **********************/
