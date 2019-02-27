@@ -6,7 +6,7 @@
 body{
 	font-family: 'Play', sans-serif;
 	font-size:1em;
-	background-color: #222;
+	background-color: #e5e5e5;
 
 }
 .feather {
@@ -20,12 +20,18 @@ body{
 	padding-right: 10px;
 	vertical-align: middle;
 }
+.navbar-fixed {
+  position: relative;
+  height: 56px;
+  z-index: 997;
+}
 nav {
 	color: #fff;
 	background-color: #f8f8f8;
 	width: 100%;
 	height: 56px;
 	line-height: 56px;
+	position: fixed;
 }
 
 nav.nav-extended {
@@ -221,14 +227,7 @@ a {
 		padding: 0 12px;
 	}
 }
-
 /*  */
-.wrapper{
-	margin-bottom: 65px;
-	padding-left: 3px;
-	border-bottom-left-radius:5px;
-	border-bottom-right-radius:5px
-}
 .nav-content{
 	position: relative;
 }
@@ -243,10 +242,13 @@ a {
 	font-size:13px;
 	text-align:center;
 }
-/* .tab a{
-color: #000 !important;
-} */
-
+/* main body css */
+body .wrapper{
+	padding-top: 49px;
+	padding-bottom: 50px;
+	border-bottom-left-radius:5px;
+	border-bottom-right-radius:5px
+}
 .forecasts{
 	background-color:#fff;
 	border-radius:3px;
@@ -439,7 +441,7 @@ color: #000 !important;
 	margin-top:35px;line-height:18px;font-size:12px;text-transform:uppercase;
 }
 
-/* footer */
+/* footer css */
 .navigation {
 	width: 100%;
 	height: 50px;
