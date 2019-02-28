@@ -18,8 +18,8 @@
   </div>
   <div class="forecasts__list">
     {% for game in games %}
-    <a href="{% url 'game_detail' pk=game.pk%}" class="forecasts__item">
-      <h4 class="forecasts__teams">{{ game.teams }}</h4>
+    <div class="forecasts__item">
+      <h4 class="forecasts__teams"><a href="href="{% url 'game_detail' pk=game.pk %}">{{ game.teams }}</a></h4>
       <span class="forecasts__league">
         <span class="forecasts__date"><b>{{ game.time }}</b>
           <!-- tip  -->
@@ -44,7 +44,7 @@
       {% endif %}
       <!--Game odd  -->
       <span class="forecasts__coeff forecasts__coeff_free">{{ game.tip_odd }}</span>
-    </a>
+    </div>
     {% endfor %}
   </div>
 </div>
