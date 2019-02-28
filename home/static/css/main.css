@@ -285,7 +285,6 @@ body .wrapper{
 	width:70px;
 	margin-left:auto;
 	background-color: #e5e5e5;
-	font-size:12px;
 	height: inherit;
 	line-height: 60px;
 	color:rgba(0,0,0,.7);
@@ -293,6 +292,7 @@ body .wrapper{
 .center{
 	text-align: center;
 }
+/* Game card list  */
 .forecasts__item{
 	position:relative;
 	height:60px;
