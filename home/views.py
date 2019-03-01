@@ -12,7 +12,6 @@ def topnavselector():
 
 
 def all_games(request):
-    # match_date = today.strftime("%d-%m")  # date when the match is played
     if request.path == "/":
         today = topnavselector()
         request_from = 'today'
@@ -22,10 +21,11 @@ def all_games(request):
     elif request.path == "/yesterday/":
         today = topnavselector() + timedelta(days=-1)
         request_from = 'yesterday'
+    match_date = "/".join(today.strftime("%d-%m").split('-'))  # date when the match is played
     url = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
     games = ZuluGames(url, today).zulu_procedure
     return render(request, 'mysite/index.html',
-                  {"games": games, "request_tom": request_from})
+                  {"games": games, "request_tom": request_from, "match_date": match_date})
 
 
 month = {

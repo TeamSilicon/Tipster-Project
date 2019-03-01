@@ -276,10 +276,11 @@ body .wrapper{
 	font-size:20px;
 	font-weight:700;
 }
-.forecasts__day{
-	margin-left:4px;
+.forecasts__day_num, .forecasts__day{
+	margin-left:8px;
 	font-size:20px;
 	font-weight:300;
+	cursor: pointer;
 }
 .forecasts__coefficient{
 	width:73px;
@@ -343,6 +344,7 @@ body .wrapper{
 	font-size:10px;
 	color:#1b3c5e;
 }
+
 .forecasts__coeff{
 	width:70px;
 	background-color:#e5e5e5;
