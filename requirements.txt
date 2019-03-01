@@ -9,6 +9,7 @@ colorclass==2.2.0
 dj-database-url==0.5.0
 Django==2.1.7
 docopt==0.6.2
+gunicorn==19.9.0
 idna==2.8
 packaging==19.0
 pip-upgrader==1.4.6
