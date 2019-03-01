@@ -21,7 +21,7 @@ def all_games(request):
     elif request.path == "/yesterday/":
         today = topnavselector() + timedelta(days=-1)
         request_from = 'yesterday'
-    match_date = "/".join(today.strftime("%d-%m").split('-'))  # date when the match is played
+    match_date = today.strftime("%d-%m").replace('-', '/')  # date when the match is played in / formart
     url = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
     games = ZuluGames(url, today).zulu_procedure
     return render(request, 'mysite/index.html',
@@ -38,7 +38,7 @@ month = {
 def featured(request):
     today = topnavselector()
     # page_url = "http://cashbettingtips.blogspot.com/2019/01/11-january.html"
-    page_url = 'http://cashbettingtips.blogspot.com/%d/0%d/%d-%s.html' % (today.year, today.month, today.day, month[today.month])
+    page_url = 'http://cashbettingtips.blogspot.com/%d/%d/%d-%s.html' % (today.year, today.month.zfill(2), today.day, month[today.month])
     # match_date = today.strftime("%d-%m")  # date when the match is played
     games_dict = CashBet(page_url).procedure1()
     request_from = "tod"
