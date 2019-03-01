@@ -306,7 +306,13 @@ body .wrapper{
 	-ms-flex-pack:center;
 	justify-content:center;
 	border-top:1px solid rgba(32,35,95,.2);
-	padding-left:15px;text-decoration:none
+	padding-left:15px;
+	text-decoration:none
+}
+.forecasts__item:nth-child(odd){
+	border-top:1px solid green;
+	/* border-bottom:1px solid green; */
+
 }
 .forecasts__teams{
 	margin:0 0 0 5px;
@@ -483,13 +489,16 @@ body .wrapper{
 }
 .icon_success{
 	background-image:url(assets/icon-success.svg);
+	transform: rotate(15deg);
+	top: 45%;
 }
 .icon_pending{
 	background-image:url(assets/pending.svg)
 }
 .icon_pending,.icon_failure,.icon_success{
-	width:15px;height:15px;
-	border-radius:50%
+	width:15px;
+	height:15px;
+	border-radius:50%;
 }
 .icon_failure{
 	background-image:url(assets/icon-failure.svg);
