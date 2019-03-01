@@ -577,3 +577,20 @@ a.item .info .y span {
 	}
 
 }
+/* temporary */
+.container {
+	width: 100%;
+	height: 100vh;
+	background: url(assets/stadium-bg-default.jpg) no-repeat;
+	background-size: cover;
+	background-position: center;
+	position: fixed;
+}
+.container .center{
+	height: 50%;
+	left: 50%;
+	top: 49%;
+	position: absolute;
+	width: 50%;
+	margin: -15% 0 0 -25%;
+}

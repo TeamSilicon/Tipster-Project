@@ -18,46 +18,48 @@
 <body>
   <!-- navbar -->
   <div class="navbar-fixed">
-  <nav class="nav-extended">
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo black-text left">Tipster</a>
-      <!-- <span class="show-on-medium-and-up">The hustle never stops!</span> -->
-      <ul class="right">
-        <li><a href="/comingsoon/" class="black-text" title="Betslip" aria-label="BetSlip">{{ games.count }}<i class="feather" data-feather="list"></i></a></li>
-        <li><a href="/comingsoon/" class="black-text" title="Account" aria-label="Account"><i class="feather" data-feather="user"></i></a></li>
-      </ul>
-    </div>
-    <div class="nav-content">
-      <ul class="tabs tabs-transparent">
-        <li class="tab"><a target="_self" href="{% url 'yesterday' %}" class="{% if request_tom == 'yesterday' %} active {% endif %} black-text">Yesterday</a></li>
-        <li class="tab"><a target="_self" href="{% url 'today' %}" class="{% if request_tom == 'today' %} active {% endif %} black-text">Today</a></li>
-        <li class="tab"><a target="_self" href="{% url 'tomorrow' %}" class="black-text {% if request_tom == 'tomorrow' %} active {% endif %}">Tomorrow</a></li>
-      </ul>
-    </div>
-  </nav>
-</div>
-  {% comment %} End of navbar {% endcomment %}
-  <div class="wrapper">
-    {% block content %}
-    <!--main content  -->
-    {% endblock %}
+    <nav class="nav-extended">
+      <div class="nav-wrapper">
+        <a href="/" class="brand-logo black-text left">Tipster</a>
+        <!-- <span class="show-on-medium-and-up">The hustle never stops!</span> -->
+        <ul class="right">
+          <li><a href="/comingsoon/" class="black-text" title="Betslip" aria-label="BetSlip">{{ games.count }}<i class="feather" data-feather="list"></i></a></li>
+          <li><a href="/comingsoon/" class="black-text" title="Account" aria-label="Account"><i class="feather" data-feather="user"></i></a></li>
+        </ul>
+      </div>
+      {% block nav-content %}
+      <div class="nav-content">
+        <ul class="tabs tabs-transparent">
+          <li class="tab"><a target="_self" href="{% url 'yesterday' %}" class="{% if request_tom == 'yesterday' %} active {% endif %} black-text">Yesterday</a></li>
+          <li class="tab"><a target="_self" href="{% url 'today' %}" class="{% if request_tom == 'today' %} active {% endif %} black-text">Today</a></li>
+          <li class="tab"><a target="_self" href="{% url 'tomorrow' %}" class="black-text {% if request_tom == 'tomorrow' %} active {% endif %}">Tomorrow</a></li>
+        </ul>
+      </div>
+      {% endblock %}
+    </nav>
   </div>
+  {% comment %} End of navbar {% endcomment %}
+  <!--main content  -->
+  {% block content %}
+  <div class="wrapper">
+  </div>
+  {% endblock %}
   <!--footer  -->
   <div class="navigation">
     <ul class="tabs tabs-transparent">
-      <li class="tab"><a target="_self" href="/today/" title="All Games" class="{% if '/today/' == request.path or '/yesterday/' == request.path or '/tomorrow/' == request.path %} active {% endif %} black-text">
+      <li class="tab"><a target="_self" href="{% url 'today' %}" title="All Games" class="{% if '/today/' == request.path or '/yesterday/' == request.path or '/tomorrow/' == request.path %} active {% endif %} black-text">
         <i class="feather" data-feather="home"></i><span class="hide-on-small-only">All Games</span></a>
       </li>
-      <li class="tab"><a target="_self" href="/G-G/" title="G-G" class="{% if '/G-G/' == request.path %} active {% endif %} black-text">
+      <li class="tab"><a target="_self" href="{% url 'comingsoon' %}" title="G-G" class="{% if '/G-G/' == request.path %} active {% endif %} black-text">
         <i class="feather hide-on-small-only" style="color:#DB1A25" data-feather="heart"></i>G-G</a>
       </li>
-      <li class="tab"><a target="_self" href="/hot/" title="Featured" class="{% if '/featured/' == request.path %} active {% endif %} black-text">
+      <li class="tab"><a target="_self" href="{% url 'comingsoon' %}" title="Featured" class="{% if '/featured/' == request.path %} active {% endif %} black-text">
         <i class="feather" style="color:#DB1A25" data-feather="zap"></i><span class="hide-on-small-only">Hot</span></a>
       </li>
-      <li class="tab"><a target="_self" href="/jackpot/" title="Jackpot" class="{% if '/jackpot/' == request.path %} active {% endif %} black-text" >
+      <li class="tab"><a target="_self" href="{% url 'jackpot' %}" title="Jackpot" class="{% if '/jackpot/' == request.path %} active {% endif %} black-text" >
         <i class="feather hide-on-small-only" style="color:#73D216" data-feather="target"></i>Jackpot</a>
       </li>
-      <li class="tab"><a target="_self" href="/comingsoon/" title="Over" class="{% if '/Over2.5/' == request.path %} active {% endif %} black-text">
+      <li class="tab"><a target="_self" href="{% url 'comingsoon' %}" title="Over" class="{% if '/Over2.5/' == request.path %} active {% endif %} black-text">
         <i class="feather" data-feather="plus"></i><span class="hide-on-small-only">Over 2.5</span></a>
       </li>
     </ul>
