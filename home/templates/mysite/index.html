@@ -20,16 +20,16 @@
     {% for game in games %}
     <div class="forecasts__item">
       <h4 class="forecasts__teams">
-        <a href="href="{% url 'game_detail' pk=game.pk %}">{{ game.teams }}</a>
+        <a href="{% url 'game_detail' pk=game.pk %}">{{ game.teams }}</a>
       </h4>
       <span class="forecasts__league">
         <span class="forecasts__date"><b>{{ game.time }}</b>
           <!-- tip  -->
         </span>Pick <b style="font-size: 11px;">
-          <a href="href="{% url 'game_detail' pk=game.pk %}">{{ game.tip }}</a></b>
+          <a href="{% url 'game_detail' pk=game.pk %}">{{ game.tip }}</a></b>
       </span>
       <!-- Game Status text and icon -->
-      <a href="href="{% url 'game_detail' pk=game.pk %}">
+      <a href="{% url 'game_detail' pk=game.pk %}">
       {% if game.outcome_text == 'homewin' or game.outcome_text == 'awaywin' or game.outcome_text == '12win' or game.outcome_text == '1Xwin' or game.outcome_text == 'X2win' %}
       <i>Result</i> <b style="font-size: 12px;color: green;">WOOON</b>
       <i class="forecasts__result icon icon_success" title="won"></i>
@@ -48,7 +48,7 @@
       {% endif %}
       </a>
       <!--Game odd  -->
-      <span class="forecasts__coeff forecasts__coeff_free">{{ game.tip_odd }}</span>
+      <span class="forecasts__coeff center">{{ game.tip_odd }}</span>
     </div>
     {% endfor %}
   </div>

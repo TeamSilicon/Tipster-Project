@@ -337,11 +337,15 @@ body .wrapper{
 	color:#1b3c5e;
 }
 .forecasts__coeff{
-	width:70px;background-color:#e5e5e5;
-	position:absolute;top:0;right:0;text-align:center;
-	line-height:60px;font-size:14px;font-weight:500;color:#4b4b4b
-}
-.forecasts__coeff {
+	width:70px;
+	background-color:#e5e5e5;
+	position:absolute;
+	top:0;
+	right:0;
+	line-height:60px;
+	font-size:14px;
+	font-weight:500;
+	color:#4b4b4b;
 	border-right: 2px solid #279d79;
 	border-left: 2px solid #279d79;
 }
