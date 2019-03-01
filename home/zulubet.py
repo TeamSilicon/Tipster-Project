@@ -145,5 +145,5 @@ class ZuluGames:
                             })
 
                 # send_mail(len(error_games))
-            games = ZuluBet.objects.filter(match_date=match_date).order_by('time', 'teams')
+            games = ZuluBet.objects.filter(match_date=self.match_date).order_by('time', 'teams')
             return games
