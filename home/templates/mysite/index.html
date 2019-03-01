@@ -22,31 +22,30 @@
       <h4 class="forecasts__teams">
         <a href="{% url 'game_detail' pk=game.pk %}">{{ game.teams }}</a>
       </h4>
-      <span class="forecasts__league">
-        <span class="forecasts__date"><b>{{ game.time }}</b>
-          <!-- tip  -->
-        </span>Pick <b style="font-size: 11px;">
-          <a href="{% url 'game_detail' pk=game.pk %}">{{ game.tip }}</a></b>
-      </span>
+      <div class="forecasts__league">
+        <span class="forecasts__date"><b>{{ game.time }}</b></span>
+        <!-- tip  -->
+        <span>Pick <b><a href="{% url 'game_detail' pk=game.pk %}">{{ game.tip }}</a></b> </span>
       <!-- Game Status text and icon -->
       <a href="{% url 'game_detail' pk=game.pk %}">
       {% if game.outcome_text == 'homewin' or game.outcome_text == 'awaywin' or game.outcome_text == '12win' or game.outcome_text == '1Xwin' or game.outcome_text == 'X2win' %}
-      <i>Result</i> <b style="font-size: 12px;color: green;">WOOON</b>
+      <span>Result</span> <b style="color: green;">WOOON</b>
       <i class="forecasts__result icon icon_success" title="won"></i>
       {% endif %}
       {% if game.outcome_text == 'drawwin' %}
-      <i>Result</i> <b style="font-size: 12px;color: green;">WOOON</b>
+      <span>Result</span> <b style="color: green;">WOOON</b>
       <i class="forecasts__result icon icon_success" title="won"></i>
       {% endif %}
       {% if game.outcome_text == 'drawlose' or game.outcome_text == 'homelose' or game.outcome_text == 'awaylose' or game.outcome_text == '12lose' or game.outcome_text == '1Xlose' or game.outcome_text == 'X2lose' %}
-      <i>Result</i> <b style="font-size: 12px; color: red;">LOST</b>
+      <span>Result</span> <b style="color: red;">LOST</b>
       <i class="forecasts__result icon icon_failure" title="lost"></i>
       {% endif %}
       {% if game.outcome_text == 'no_results_yet' %}
-      <i>Result</i> <b style="font-size: 12px;">...</b>
+      <span>Result</span> <b>...</b>
       <i class="forecasts__result icon icon_pending" title="waiting"></i>
       {% endif %}
       </a>
+      </div>
       <!--Game odd  -->
       <span class="forecasts__coeff center">{{ game.tip_odd }}</span>
     </div>
