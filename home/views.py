@@ -4,6 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from home.models import ZuluBet
 from home.cashbetting import CashBet
 from home.zulubet import ZuluGames
+from home.jackpot import possible_combinations
 
 
 def topnavselector():
@@ -50,7 +51,11 @@ def goal_Goal(request):
     pass
 
 def jackpot(request):
-    pass
+    games = possible_combinations(['France - Germany', 'Spain - Italia', 'Brazil - Spain'])
+    return render(request, 'mysite/jackpot.html', {
+        "games": games
+        })
+
 
 def overTips(request):
     pass
