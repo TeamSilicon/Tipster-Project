@@ -1,7 +1,7 @@
 import datetime
 from datetime import timedelta
 from django.shortcuts import render, get_object_or_404
-from home.models import ZuluBet
+from home.models import AllGames
 from home.cashbetting import CashBet
 from home.zulubet import ZuluGames
 from home.jackpot import possible_combinations
@@ -48,10 +48,15 @@ def featured(request):
         })
 
 def goal_Goal(request):
-    pass
+    games = AllGames.objects.filter(goal_goal='')
+    return render(request, 'mysite/featured.html', {
+        "games": games_dict, "request_tom": request_from
+        })
+
 
 def jackpot(request):
     games = possible_combinations(['France - Germany', 'Spain - Italia', 'Brazil - Spain'])
+    print (len(games))
     return render(request, 'mysite/jackpot.html', {
         "games": games
         })
@@ -65,7 +70,7 @@ def slip(request):
 
 
 def game_detail(request, pk):
-    games_detail = get_object_or_404(ZuluBet, pk=pk)
+    games_detail = get_object_or_404(AllGames, pk=pk)
     return render(request, 'mysite/game_details.html', {'game': games_detail})
 # no risk no reward
 

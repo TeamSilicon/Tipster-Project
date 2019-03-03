@@ -3,7 +3,7 @@ import datetime
 import bs4
 import re
 from datetime import timedelta
-from .models import ZuluBet
+from home.models import AllGames
 # from .send_mail import send_mail
 
 
@@ -132,7 +132,7 @@ class ZuluGames:
                                         return ['X2win', win_odd]
                                     else:
                                         return ['X2lose', win_odd]
-                        obj, created = ZuluBet.objects.update_or_create(
+                        obj, created = AllGames.objects.update_or_create(
                             teams=game_info[0][2],
                             defaults={
                                 'match_date': self.match_date,
@@ -145,5 +145,6 @@ class ZuluGames:
                             })
 
                 # send_mail(len(error_games))
-            games = ZuluBet.objects.filter(match_date=self.match_date).order_by('time', 'teams')
+                # filter(match_date=self.match_date)
+            games = AllGames.objects.filter(match_date=self.match_date).order_by('time', 'teams')
             return games

@@ -2,20 +2,19 @@ from django.db import models
 from django.utils import timezone
 
 
-class ZuluBet(models.Model):
+class AllGames(models.Model):
     match_date = models.CharField(max_length=40)
     time = models.CharField(max_length=40)
     teams = models.CharField(max_length=400, primary_key=True)
     tip = models.CharField(max_length=40)
-    tip_odd = models.CharField(max_length=20)
+    tip_odd = models.CharField(max_length=5, default="0.00")
+    tipGG = models.BooleanField(default="False")
+    tipGG_odd = models.CharField(max_length=5, default="0.00")
+    tipOv = models.CharField(max_length=5, default="2.5")
+    tipOV_odd = models.CharField(max_length=5, default="0.00")
+
     ft_results = models.CharField(max_length=40)
     outcome_text = models.CharField(max_length=40)
-
-    # def __str__(self):
-    #     return [
-    #         self.match_date, self.time, self.teams, self.tip, self.tip_odd,
-    #         self.ft_results]
-
 
 # class Progress(models.Model):
 #     from_date = models.DateTimeField(

@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import ZuluBet
+from .models import AllGames
 
 # Register your models here.
 
-admin.site.register(ZuluBet)
+admin.site.register(AllGames)
 # admin.site.register(Progress)

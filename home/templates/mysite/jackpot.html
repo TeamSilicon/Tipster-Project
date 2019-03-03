@@ -4,8 +4,9 @@
 
 {% endblock %}
 {% block content %}
-
-<ul type="circle">
-  <li>{{ games }}</li>
-</ul>
+<ol type="circle">
+  {% for each in games %}
+  <li>{{ each }}</li>
+  {% endfor %}
+</ol>
 {% endblock %}
