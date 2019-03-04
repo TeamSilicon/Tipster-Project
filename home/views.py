@@ -8,7 +8,7 @@ from home.jackpot import possible_combinations
 
 
 def topnavselector():
-    date = datetime.datetime.now()
+    date = datetime.date.today() # to get current date yy-mm-dd
     return date
 
 
@@ -28,6 +28,31 @@ def all_games(request):
     return render(request, 'mysite/index.html',
                   {"games": games, "request_tom": request_from, "match_date": match_date})
 
+def goal_Goal(request):
+    if request.path == "/goalgoal/" or request.path == "/goalgoal/today/":
+        today = topnavselector()
+        request_from = 'today'
+    elif request.path == "/goalgoal/tomorrow/":
+        today = topnavselector() + timedelta(days=1)
+        request_from = 'tomorrow'
+    elif request.path == "/goalgoal/yesterday/":
+        today = topnavselector() + timedelta(days=-1)
+        request_from = 'yesterday'
+
+    games = AllGames.objects.filter(tipGG=0)
+    return render(request, 'mysite/goalgoal.html', {
+        "games": games, "request_tom": request_from
+        })
+
+
+def jackpot(request):
+    games = possible_combinations(['France - Germany', 'Spain - Italia', 'Brazil - Spain'])
+    print (len(games))
+    return render(request, 'mysite/jackpot.html', {
+        "games": games
+        })
+
+
 
 month = {
     1: "january", 2: "february", 3: "march", 4: "april", 5: "may", 6: "june",
@@ -46,31 +71,6 @@ def featured(request):
     return render(request, 'mysite/featured.html', {
         "games": games_dict, "request_tom": request_from
         })
-
-def goal_Goal(request):
-    games = AllGames.objects.filter(tipGG=0)
-    print("url is %s" % request.path)
-    if request.path == "/goalgoal/" or request.path == "/goalgoal/today/":
-        today = topnavselector()
-        request_from = 'today'
-    elif request.path == "/goalgoal/tomorrow/":
-        today = topnavselector() + timedelta(days=1)
-        request_from = 'tomorrow'
-    elif request.path == "/goalgoal/yesterday/":
-        today = topnavselector() + timedelta(days=-1)
-        request_from = 'yesterday'
-    return render(request, 'mysite/goalgoal.html', {
-        "games": games, "request_tom": request_from
-        })
-
-
-def jackpot(request):
-    games = possible_combinations(['France - Germany', 'Spain - Italia', 'Brazil - Spain'])
-    print (len(games))
-    return render(request, 'mysite/jackpot.html', {
-        "games": games
-        })
-
 
 def overTips(request):
     pass
