@@ -12,7 +12,6 @@ class AllGames(models.Model):
     tipGG_odd = models.CharField(max_length=5, default="0.00")
     tipOv = models.CharField(max_length=5, default="2.5")
     tipOV_odd = models.CharField(max_length=5, default="0.00")
-
     ft_results = models.CharField(max_length=40)
     outcome_text = models.CharField(max_length=40)
 
