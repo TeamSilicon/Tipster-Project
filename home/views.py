@@ -48,9 +48,19 @@ def featured(request):
         })
 
 def goal_Goal(request):
-    games = AllGames.objects.filter(goal_goal='')
-    return render(request, 'mysite/featured.html', {
-        "games": games_dict, "request_tom": request_from
+    games = AllGames.objects.filter(tipGG=0)
+    print("url is %s" % request.path)
+    if request.path == "/goalgoal/" or request.path == "/goalgoal/today/":
+        today = topnavselector()
+        request_from = 'today'
+    elif request.path == "/goalgoal/tomorrow/":
+        today = topnavselector() + timedelta(days=1)
+        request_from = 'tomorrow'
+    elif request.path == "/goalgoal/yesterday/":
+        today = topnavselector() + timedelta(days=-1)
+        request_from = 'yesterday'
+    return render(request, 'mysite/goalgoal.html', {
+        "games": games, "request_tom": request_from
         })
 
 
