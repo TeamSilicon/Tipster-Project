@@ -38,8 +38,7 @@ def goal_Goal(request):
     elif request.path == "/goalgoal/yesterday/":
         today = topnavselector() + timedelta(days=-1)
         request_from = 'yesterday'
-
-    games = AllGames.objects.filter(tipGG=0)
+    games = AllGames.objects.filter(tipGG=True, match_date=today).order_by('time', 'teams')
     return render(request, 'mysite/goalgoal.html', {
         "games": games, "request_tom": request_from
         })
