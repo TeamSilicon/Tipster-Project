@@ -63,7 +63,7 @@ def featured(request):
 
 
 def jackpot(request):
-    games = possible_combinations(['France - Germany', 'Spain - Italia', 'Brazil - Spain'])
+    games = possible_combinations(['Kenya - Germany', 'Spain - Italia', 'Brazil - Spain'])
     print (len(games))
     return render(request, 'mysite/jackpot.html', {
         "games": games
