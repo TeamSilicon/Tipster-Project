@@ -228,10 +228,12 @@ Media Query Classes
 		padding: 0 12px;
 	}
 }
-/*  */
+/* for nav-content */
 .nav-content{
 	position: relative;
 }
+
+/*  */
 .tabs{
 	display:-ms-flexbox;
 	display:flex;

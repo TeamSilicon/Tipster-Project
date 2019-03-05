@@ -24,7 +24,7 @@
         <!-- <span class="show-on-medium-and-up">The hustle never stops!</span> -->
         <ul class="right">
           <li><a href="/comingsoon/" class="black-text" title="Betslip" aria-label="BetSlip">{{ games.count }}<i class="feather" data-feather="list"></i></a></li>
-          <li><a href="/comingsoon/" class="black-text" title="Account" aria-label="Account"><i class="feather" data-feather="user"></i></a></li>
+          <li><a href="#" class="black-text" title="Account" aria-label="Account"><i class="feather" data-feather="user"></i></a></li>
         </ul>
       </div>
       {% block nav-content %}
@@ -46,7 +46,7 @@
       <li class="tab"><a target="_self" href="/goalgoal/" title="G-G" class="{% if '/goalgoal/' == request.path or request.path == '/goalgoal/today/' or request.path == '/goalgoal/yesterday/' or request.path == '/goalgoal/tomorrow/' %} active {% endif %} black-text">
         <i class="feather hide-on-small-only" style="color:#DB1A25" data-feather="heart"></i>G-G</a>
       </li>
-      <li class="tab"><a target="_self" href="{% url 'comingsoon' %}" title="Featured" class="{% if '/featured/' == request.path %} active {% endif %} black-text">
+      <li class="tab"><a target="_self" href="{% url 'featured' %}" title="Featured" class="{% if '/featured/' == request.path %} active {% endif %} black-text">
         <i class="feather" style="color:#DB1A25" data-feather="zap"></i><span class="hide-on-small-only">Hot</span></a>
       </li>
       <li class="tab"><a target="_self" href="{% url 'jackpot' %}" title="Jackpot" class="{% if '/jackpot/' == request.path %} active {% endif %} black-text" >
@@ -60,7 +60,7 @@
   <!-- For optimized loading-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
-  <!-- feather icos -->
+  <!-- feather icons -->
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
   <!--custom js-->

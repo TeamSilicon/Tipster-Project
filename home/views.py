@@ -43,16 +43,6 @@ def goal_Goal(request):
         "games": games, "request_tom": request_from
         })
 
-
-def jackpot(request):
-    games = possible_combinations(['France - Germany', 'Spain - Italia', 'Brazil - Spain'])
-    print (len(games))
-    return render(request, 'mysite/jackpot.html', {
-        "games": games
-        })
-
-
-
 month = {
     1: "january", 2: "february", 3: "march", 4: "april", 5: "may", 6: "june",
     7: "july", 8: "august", 9: "september", 10: "october", 11: "november",
@@ -62,14 +52,23 @@ month = {
 
 def featured(request):
     today = topnavselector()
-    # page_url = "http://cashbettingtips.blogspot.com/2019/01/11-january.html"
-    page_url = 'http://cashbettingtips.blogspot.com/%d/%s/%s-%s.html' % (today.year, str(today.month).zfill(2), str(today.day).zfill(2), month[today.month])
+    page_url = "http://cashbettingtips.blogspot.com/2018/12/01-january.html"
+    # page_url = 'http://cashbettingtips.blogspot.com/%d/%s/%s-%s.html' % (today.year, str(today.month).zfill(2), str(today.day).zfill(2), month[today.month])
     # match_date = today.strftime("%d-%m")  # date when the match is played
     games_dict = CashBet(page_url).procedure1()
     request_from = "tod"
     return render(request, 'mysite/featured.html', {
         "games": games_dict, "request_tom": request_from
         })
+
+
+def jackpot(request):
+    games = possible_combinations(['France - Germany', 'Spain - Italia', 'Brazil - Spain'])
+    print (len(games))
+    return render(request, 'mysite/jackpot.html', {
+        "games": games
+        })
+
 
 def overTips(request):
     pass

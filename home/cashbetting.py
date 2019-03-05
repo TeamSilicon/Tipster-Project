@@ -17,14 +17,16 @@ class CashBet:
             print('There was a problem getting cash1 data: %s' % error)
         cash_soup = bs4.BeautifulSoup(page.text, 'html.parser')
         if type(cash_soup) == bs4.BeautifulSoup:
-            games = cash_soup.findAll("span", style="font-family: sans-serif;")
+            games = cash_soup.findAll("span", style="background-color: white; color: #333333; font-family: AppYet-Regular-Sans; font-size: 16px;")
             games_num = len(games)
+            print(games_num)
             # parsing data to method 2
             for match in range(games_num):
                 get_reg = re.compile(
                     r'(.*?)\s*(12|1x|1|2|x2|x|(un|ov)\d+.\d+)\s*(@\d+.\d+)')
                 game_info.append(get_reg.findall(games[match].getText()))
 
+        print(game_info)
         def empty(seq):
             try:
                 return all(map(empty, seq))
@@ -42,8 +44,7 @@ class CashBet:
                             "tip": each[1], 'odds': each[3],
                             "time": "..."
                             })
-        # print("Printing from procedure1")
-        # print(game_info)
+        print("Printing from procedure1")
         return all_games
 
     def procedure2(self, game_info2):
