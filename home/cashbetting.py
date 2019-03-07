@@ -2,7 +2,6 @@ import requests
 import bs4
 import re
 
-
 class CashBet:
     def __init__(self, page_url):
         self.page_url = page_url
@@ -21,9 +20,9 @@ class CashBet:
             games_num = len(games)
             print(games_num)
             # parsing data to method 2
+            get_reg = re.compile(
+                r'(.*?)\s*(12|1x|1|2|x2|x|(un|ov)\d+.\d+)\s*(@\d+.\d+)')
             for match in range(games_num):
-                get_reg = re.compile(
-                    r'(.*?)\s*(12|1x|1|2|x2|x|(un|ov)\d+.\d+)\s*(@\d+.\d+)')
                 game_info.append(get_reg.findall(games[match].getText()))
 
         print(game_info)

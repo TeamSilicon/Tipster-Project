@@ -3,8 +3,8 @@ from datetime import timedelta
 from django.shortcuts import render, get_object_or_404
 from home.models import AllGames
 from home.cashbetting import CashBet
-from home.zulubet import ZuluGames
 from home.jackpot import possible_combinations
+from home.boilerplate import boiler
 
 
 def topnavselector():
@@ -22,11 +22,14 @@ def all_games(request):
     elif request.path == "/yesterday/":
         today = topnavselector() + timedelta(days=-1)
         request_from = 'yesterday'
-    match_date = today.strftime("%d-%m").replace('-', '/')  # date when the match is played in / formart
+
+    # print(ZuluGames.zulu_procedure)
+    # match_date = today.strftime("%d-%m").replace('-', '/')  # date when the match is played in / formart
     url = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
-    games = ZuluGames(url, today).zulu_procedure
-    return render(request, 'mysite/index.html',
-                  {"games": games, "request_tom": request_from, "match_date": match_date})
+    games = boiler(url, today)
+    return render(request, "mysite/comingsoon.html")
+    # return render(request, 'mysite/index.html',
+                  # {"games": games, "request_tom": request_from, "match_date": match_date})
 
 def goal_Goal(request):
     if request.path == "/goalgoal/" or request.path == "/goalgoal/today/":

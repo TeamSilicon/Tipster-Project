@@ -14,20 +14,19 @@ class ZuluGames:
 
     def zulu_procedure(self):
         zulu_page = requests.get(self.page_url)
+        games_collec = []
         try:
             zulu_page.raise_for_status()
         except Exception as error:
             print('There was a problem getting web data: %s' % error)
 
         zulu_soup = bs4.BeautifulSoup(zulu_page.content, 'html.parser')
-
         if type(zulu_soup) == bs4.BeautifulSoup:
             tr_elems = zulu_soup.findAll("tr", bgcolor=re.compile('^#.*'))
             games_number = len(tr_elems)
             print("Today games are " + str(games_number))
             if games_number != 0:
-                # Games that could not be parsed
-                error_games = []
+                error_games = [] # Games that could not be parsed
                 # Extracting games
                 removing_mf_usertime = re.compile(r'^mf_usertime(.*);')
                 empty_games_counter = 0
@@ -57,9 +56,9 @@ class ZuluGames:
                         # if games_info list is not empty
                         print(str(empty_games_counter)+" Games could not be parsed")
                     else:
-                        game_time = game_info[0][1].strip()
+                        game_time = game_info[0][1].strip() # updating time to EAT
                         full_date = datetime.datetime.strptime(game_time, "%H:%M")
-                        full_date = full_date + timedelta(hours=2)
+                        full_date = full_date + timedelta(hours=0)
                         formatted_date = full_date.strftime("%H:%M")
                         try:
                             results = game_info[0][14].split(':')
@@ -132,18 +131,19 @@ class ZuluGames:
                                         return ['X2win', win_odd]
                                     else:
                                         return ['X2lose', win_odd]
-                        obj, created = AllGames.objects.update_or_create(
-                            teams=game_info[0][2],
-                            defaults={
-                                'match_date': self.match_date,
-                                'time': formatted_date,
-                                'teams': game_info[0][2],
-                                'tip': game_info[0][8],
-                                'tip_odd': overall_result()[1],
-                                'ft_results': game_info[0][14],
-                                'outcome_text': overall_result()[0]
-                            })
-
+                        # obj, created = AllGames.objects.update_or_create(
+                        #     teams=game_info[0][2],
+                        #     defaults={
+                        #         'match_date': self.match_date,
+                        #         'time': formatted_date,
+                        #         'teams': game_info[0][2],
+                        #         'tip': game_info[0][8],
+                        #         'tip_odd': overall_result()[1],
+                        #         'ft_results': game_info[0][14],
+                        #         'outcome_text': overall_result()[0]
+                        #     })
+                        games_collec.append([self.match_date, formatted_date, game_info[0][2],game_info[0][8], overall_result()[1], overall_result()[0]])
+        return games_collec
         #         # send_mail(len(error_games))
-            games = AllGames.objects.filter(match_date=self.match_date).order_by('time', 'teams')
-            return games
+            # games = AllGames.objects.filter(match_date=self.match_date).order_by('time', 'teams')
+            # return games
