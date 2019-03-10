@@ -24,12 +24,12 @@ def all_games(request):
         request_from = 'yesterday'
 
     # print(ZuluGames.zulu_procedure)
-    # match_date = today.strftime("%d-%m").replace('-', '/')  # date when the match is played in / formart
+    match_date = today.strftime("%d-%m").replace('-', '/')  # date when the match is played in / formart
     url = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
-    games = boiler(url, today)
-    return render(request, "mysite/comingsoon.html")
-    # return render(request, 'mysite/index.html',
-                  # {"games": games, "request_tom": request_from, "match_date": match_date})
+    boiler(url, today)
+    games = AllGames.objects.filter(match_date=today).order_by('time', 'teams')
+    return render(request, 'mysite/index.html',
+                  {"games": games, "request_tom": request_from, "match_date": match_date})
 
 def goal_Goal(request):
     if request.path == "/goalgoal/" or request.path == "/goalgoal/today/":

@@ -72,8 +72,8 @@ class ZuluGames:
                                 # Adding to error games that there was no result
                                 error_games += [no_score]
 
-                        result_home = str(result_home)
-                        result_away = str(result_away)
+                        # result_home = result_home
+                        # result_away = result_away
 
                         def overall_result():
                             if result_home == 'no_result' or result_away == 'no_result':
@@ -131,19 +131,7 @@ class ZuluGames:
                                         return ['X2win', win_odd]
                                     else:
                                         return ['X2lose', win_odd]
-                        # obj, created = AllGames.objects.update_or_create(
-                        #     teams=game_info[0][2],
-                        #     defaults={
-                        #         'match_date': self.match_date,
-                        #         'time': formatted_time,
-                        #         'teams': game_info[0][2],
-                        #         'tip': game_info[0][8],
-                        #         'tip_odd': overall_result()[1],
-                        #         'ft_results': game_info[0][14],
-                        #         'outcome_text': overall_result()[0]
-                        #     })            # game date        game time     ,   #tip         # score       ,    #names       ,   "game odds",        "results"
-                        games_collec.append([self.match_date, formatted_time, game_info[0][8], game_info[0][14], game_info[0][2], overall_result()[1], overall_result()[0]])
+                                                # game date        game time     ,   #tip         # score       ,    #names       ,   "game odds",        "results"
+                        games_collec.append([self.match_date, formatted_time, game_info[0][8], game_info[0][14], game_info[0][2], str(overall_result()[1]).strip(), overall_result()[0]])
         return games_collec
         #         # send_mail(len(error_games))
-            # games = AllGames.objects.filter(match_date=self.match_date).order_by('time', 'teams')
-            # return games
