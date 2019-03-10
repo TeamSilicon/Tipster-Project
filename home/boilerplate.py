@@ -20,7 +20,7 @@ def boiler(url, today):
                 if SequenceMatcher(None, cust_arr[each][1], cust2[each2][0]).ratio() > 0.6:
                     count+=1
                     ##                    print("%s / %s  Efficiency %s" % (cust_arr[each][2], cust2[each2][3], SequenceMatcher(None, cust_arr[each][2], cust2[each2][3]).ratio()))
-                    success_compr.append(cust2[each2][3])
+                    success_compr.append(cust2[each2])
                     print("index for each %d" % each)
                     del cust_arr[each]
                     ##                    cust_arr[each][2]+" looks like \n
@@ -42,4 +42,4 @@ def boiler(url, today):
     print("Games that could be compared are %d out of %d" % (count, len(cust2)))
     cust2_clean = [x for x in cust2 if x!="remv"]
     print("Games one length unmatched: %s\nGames two length unmatched: %s" %(len(cust_arr), len(cust2_clean)))
-    print(cust_arr.extend(cust2_clean).extend(cust2))
+    print(cust_arr+cust2_clean+cust2)

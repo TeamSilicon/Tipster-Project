@@ -59,7 +59,7 @@ class ZuluGames:
                         game_time = game_info[0][1].strip() # updating time to EAT
                         full_date = datetime.datetime.strptime(game_time, "%H:%M")
                         full_date = full_date + timedelta(hours=0)
-                        formatted_date = full_date.strftime("%H:%M")
+                        formatted_time = full_date.strftime("%H:%M")
                         try:
                             results = game_info[0][14].split(':')
                             if len(results) == 2:
@@ -135,14 +135,14 @@ class ZuluGames:
                         #     teams=game_info[0][2],
                         #     defaults={
                         #         'match_date': self.match_date,
-                        #         'time': formatted_date,
+                        #         'time': formatted_time,
                         #         'teams': game_info[0][2],
                         #         'tip': game_info[0][8],
                         #         'tip_odd': overall_result()[1],
                         #         'ft_results': game_info[0][14],
                         #         'outcome_text': overall_result()[0]
-                        #     })
-                        games_collec.append([self.match_date, formatted_date, game_info[0][2],game_info[0][8], overall_result()[1], overall_result()[0]])
+                        #     })            # game date        game time     ,   #tip         # score       ,    #names       ,   "game odds",        "results"
+                        games_collec.append([self.match_date, formatted_time, game_info[0][8], game_info[0][14], game_info[0][2], overall_result()[1], overall_result()[0]])
         return games_collec
         #         # send_mail(len(error_games))
             # games = AllGames.objects.filter(match_date=self.match_date).order_by('time', 'teams')
