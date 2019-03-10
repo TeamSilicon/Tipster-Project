@@ -32,7 +32,7 @@ def all_games(request):
     headers = {'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36' }
     page_names = []
 
-    while True:
+    while False:
         page_names= []
         for index, page in  enumerate(page_urls):
             try:
@@ -66,7 +66,7 @@ def all_games(request):
         if len(page_names) == 2:
             break
 
-    boiler(page_names[0], page_names[1], today)
+    # boiler(page_names[0], page_names[1], today)
     games = AllGames.objects.filter(match_date=today).order_by('time', 'teams')
     return render(request, 'mysite/index.html',
                   {"games": games, "request_tom": request_from, "match_date": match_date})
