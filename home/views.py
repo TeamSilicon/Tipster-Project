@@ -31,29 +31,41 @@ def all_games(request):
     page_urls = [zulu_page, arena_page]
     headers = {'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36' }
     page_names = []
-    for index, page in  enumerate(page_urls):
-        try:
-            page_name = requests.get(page, headers=headers, timeout=5)
+
+    while True:
+        page_names= []
+        for index, page in  enumerate(page_urls):
             try:
-                page_name.raise_for_status()
-            except Exception as error:
-                print('There was a problem getting web data: %s' % error)
-            print("Page %d done!!!. Proceeding to the next trial" % index)
-            page_names.append(page_name)
-        except requests.ConnectionError as e:
-            print("OOPS!! Connection Error. Make sure you are connected to Internet. Technical Details given below.\n")
-            print(str(e))
-            time.sleep(4) # wait 4 seconds before we make the next request
-        except requests.Timeout as e:
-            print("OOPS!! Timeout Error")
-            print(str(e))
-            time.sleep(4) # wait 4 seconds before we make the next request
-        except requests.RequestException as e:
-            print("OOPS!! General Error")
-            print(str(e))
-            time.sleep(4) # wait 4 seconds before we make the next request
-        except KeyboardInterrupt:
-            print("Someone closed the program")
+                page_name = requests.get(page, headers=headers, timeout=10)
+                try:
+                    page_name.raise_for_status()
+                except Exception as error:
+                    print('There was a problem getting web data: %s' % error)
+                if page_name.status_code != 200:
+                    print('There was a problem getting web data: %s' % error)
+                    break
+                print("Page %d done!!!. Proceeding to the next trial" % index)
+                page_names.append(page_name)
+            except requests.ConnectionError as e:
+                print("OOPS!! Connection Error. Make sure you are connected to Internet. Technical Details given below.\n")
+                print(str(e))
+                time.sleep(4) # wait 4 seconds before we make the next request
+                break
+            except requests.Timeout as e:
+                print("OOPS!! Timeout Error")
+                print(str(e))
+                time.sleep(4) # wait 4 seconds before we make the next request
+                break
+            except requests.RequestException as e:
+                print("OOPS!! General Error")
+                print(str(e))
+                time.sleep(4) # wait 4 seconds before we make the next request
+                break
+            except KeyboardInterrupt:
+                print("Someone closed the program")
+        if len(page_names) == 2:
+            break
+
     boiler(page_names[0], page_names[1], today)
     games = AllGames.objects.filter(match_date=today).order_by('time', 'teams')
     return render(request, 'mysite/index.html',
