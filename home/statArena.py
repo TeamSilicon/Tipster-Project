@@ -12,7 +12,7 @@ def stat_arena(page, match_date):
         get_algo = re.compile(
         r'''(
         \d+:\d+)\s+   # time
-        (12|1X|1|2|X2|X) # tip
+        (12|1X|1|2|X2|X)* # tip
         (\s*\d+\s*:\d+\s*)*     # outcome
         (.*)   # team names
         ''', re.VERBOSE)
