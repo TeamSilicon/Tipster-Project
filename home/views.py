@@ -26,7 +26,7 @@ def all_games(request):
     # print(ZuluGames.zulu_procedure)
     match_date = today.strftime("%d-%m").replace('-', '/')  # date when the match is played in / formart
     url = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
-    url2 ="https://www.statarea.com/predictions/date/{}-{}-{}/starttime" % (today.year, today.month, today.day)
+    url2 ="https://www.statarea.com/predictions/date/%s-%s-%s/starttime" % (today.year, today.month, today.day)
     boiler(url, url2, today)
     games = AllGames.objects.filter(match_date=today).order_by('time', 'teams')
     return render(request, 'mysite/index.html',

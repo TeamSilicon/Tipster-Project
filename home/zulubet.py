@@ -72,66 +72,8 @@ class ZuluGames:
                                 # Adding to error games that there was no result
                                 error_games += [no_score]
 
-                        # result_home = result_home
-                        # result_away = result_away
-
-                        def overall_result():
-                            if result_home == 'no_result' or result_away == 'no_result':
-                                win_odd = 0.0
-                                if game_info[0][8] == 'X':
-                                    win_odd = game_info[0][11].split(":")[1]
-                                elif game_info[0][8] == '1':
-                                    win_odd = game_info[0][10].split(":")[1]
-                                elif game_info[0][8] == '2':
-                                    win_odd = game_info[0][12].split(":")[1]
-                                elif game_info[0][8] == '12':
-                                    win_odd = 0
-                                    # get odd for double chance
-                                elif game_info[0][8] == '1X':
-                                    win_odd = 0
-                                    # get odd for double chance
-                                elif game_info[0][8] == 'X2':
-                                    win_odd = 0
-                                    # get odd for double chance
-                                return ['no_results_yet', win_odd]
-                            else:
-                                if game_info[0][8] == 'X':
-                                    win_odd = game_info[0][11].split(":")[1]
-                                    if result_home == result_away:
-                                        return ['drawwin', win_odd]
-                                    else:
-                                        return ['drawlose', win_odd]
-                                elif game_info[0][8] == '1':
-                                    win_odd = game_info[0][10].split(":")[1]
-                                    if result_home > result_away:
-                                        return ['homewin', win_odd]
-                                    else:
-                                        return ['homelose', win_odd]
-                                elif game_info[0][8] == '2':
-                                    win_odd = game_info[0][12].split(":")[1]
-                                    if result_away > result_home:
-                                        return ['awaywin', win_odd]
-                                    else:
-                                        return ['awaylose', win_odd]
-                                elif game_info[0][8] == '12':
-                                    win_odd = 0
-                                    if result_away != result_home:
-                                        return ['12win', win_odd]
-                                    else:
-                                        return ['12lose', win_odd]
-                                elif game_info[0][8] == '1X':
-                                    win_odd = 0
-                                    if result_home >= result_away:
-                                        return ['1Xwin', win_odd]
-                                    else:
-                                        return ['1Xlose', win_odd]
-                                elif game_info[0][8] == 'X2':
-                                    win_odd = 0
-                                    if result_home <= result_away:
-                                        return ['X2win', win_odd]
-                                    else:
-                                        return ['X2lose', win_odd]
+                        outcome, tip_odd = overall_result(result_home, result_away, game_info[0][8], game_info[0][11], game_info[0][10], game_info[0][12])
                                                 # game date        game time     ,   #tip         # score       ,    #names       ,   "game odds",        "results"
-                        games_collec.append([self.match_date, formatted_time, game_info[0][8], game_info[0][14], game_info[0][2], str(overall_result()[1]).strip(), overall_result()[0]])
+                        games_collec.append([self.match_date, formatted_time, game_info[0][8], game_info[0][14], game_info[0][2], str(tip_odd).strip(), outcome])
         return games_collec
         #         # send_mail(len(error_games))
