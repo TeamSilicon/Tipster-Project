@@ -31,15 +31,15 @@ def boiler(url, today):
                     status=0
             else:
                 status = 0
-        print("Counter Level %d" % count)
-        print("status %d" % status)
+        # print("Counter Level %d" % count)
+        # print("status %d" % status)
         if status == 1:
-            print("index for each2 outer %d" % each2)
+            # print("index for each2 outer %d" % each2)
             cust2[each2] = 'remv'
             status = 0
 
-        print("Inner Loop remaining %d" % len(cust_arr))
+        # print("Inner Loop remaining %d" % len(cust_arr))
     print("Games that could be compared are %d out of %d" % (count, len(cust2)))
     cust2_clean = [x for x in cust2 if x!="remv"]
     print("Games one length unmatched: %s\nGames two length unmatched: %s" %(len(cust_arr), len(cust2_clean)))
-    print(cust2_clean)
+    print(cust_arr.extend(cust2_clean).extend(cust2))
