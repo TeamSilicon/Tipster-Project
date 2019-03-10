@@ -4,9 +4,9 @@ from home.zulubet import ZuluGames
 from home.models import AllGames
 from difflib import SequenceMatcher
 
-def boiler(url, today):
+def boiler(url, url2, today):
     zulu_arr = ZuluGames(url, today).zulu_procedure()
-    stat_arr = stat_arena()
+    stat_arr = stat_arena(url2, today)
     print("Games One length: %s\nGames two length: %s" % (len(zulu_arr), len(stat_arr)))
     count = 0
     success_compr = []
