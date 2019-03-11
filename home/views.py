@@ -120,9 +120,9 @@ def slip(request):
     pass
 
 
-def game_detail(request, pk):
-    games_detail = get_object_or_404(AllGames, pk=pk)
-    return render(request, 'mysite/game_details.html', {'game': games_detail})
+# def game_detail(request, pk):
+#     games_detail = get_object_or_404(AllGames, pk=pk)
+#     return render(request, 'mysite/game_details.html', {'game': games_detail})
 # no risk no reward
 
 
