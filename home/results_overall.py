@@ -6,11 +6,11 @@ def overall_result(result_home, result_away, tip, tipx_odd,tip1_odd,tip2_odd):
     elif result_home == 'no_result' or result_away == 'no_result':
         win_odd = 0.0
         if tip == 'X':
-            win_odd = tipx_odd.split(":")[1]
+            win_odd = tipx_odd
         elif tip == '1':
-            win_odd = tip1_odd.split(":")[1]
+            win_odd = tip1_odd
         elif tip == '2':
-            win_odd = tip2_odd.split(":")[1]
+            win_odd = tip2_odd
         elif tip == '12':
             win_odd = 0
             # get odd for double chance
@@ -23,19 +23,19 @@ def overall_result(result_home, result_away, tip, tipx_odd,tip1_odd,tip2_odd):
         return ['no_results_yet', win_odd]
     else:
         if tip == 'X':
-            win_odd = tipx_odd.split(":")[1]
+            win_odd = tipx_odd
             if result_home == result_away:
                 return ['drawwin', win_odd]
             else:
                 return ['drawlose', win_odd]
         elif tip == '1':
-            win_odd = tip1_odd.split(":")[1]
+            win_odd = tip1_odd
             if result_home > result_away:
                 return ['homewin', win_odd]
             else:
                 return ['homelose', win_odd]
         elif tip == '2':
-            win_odd = tip2_odd.split(":")[1]
+            win_odd = tip2_odd
             if result_away > result_home:
                 return ['awaywin', win_odd]
             else:

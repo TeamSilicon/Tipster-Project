@@ -33,7 +33,7 @@ def stat_arena(page, match_date):
             else:
                 result_home = 'no_result'
                 result_away = 'no_result'
-            tipx_odd=tip1_odd=tip2_odd="0:0"  # making odd zero by default
+            tipx_odd=tip1_odd=tip2_odd="0"  # making odd zero by default
             outcome, tip_odd = overall_result(result_home, result_away, tip, tipx_odd,tip1_odd,tip2_odd)
             games_store.append([match_date, game_time, tip, score, teams, tip_odd, outcome])
         return games_store
