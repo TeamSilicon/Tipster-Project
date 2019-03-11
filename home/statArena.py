@@ -17,7 +17,7 @@ def stat_arena(page, match_date):
             game_time = game_time.strftime("%H:%M")
             tip = each.find(class_="tip").getText()
             teams = each.find(class_="teams").getText()
-            print(teams)
+            # print(teams)
             try :
                 score = each.find(class_="result").getText().strip()
             except AttributeError:
