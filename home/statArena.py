@@ -28,8 +28,8 @@ def stat_arena(page, match_date):
                     result_home = int(results[0])
                     result_away = int(results[1])
                 except ValueError:
-                    result_home = 'no_result'
-                    result_away = 'no_result'
+                    result_home = 'post'
+                    result_away = 'post'
             else:
                 result_home = 'no_result'
                 result_away = 'no_result'

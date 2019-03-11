@@ -1,6 +1,9 @@
 
 def overall_result(result_home, result_away, tip, tipx_odd,tip1_odd,tip2_odd):
-    if result_home == 'no_result' or result_away == 'no_result':
+    if result_away == "post" or result_home == "post":
+        win_odd = 0
+        return ["postponed", win_odd]
+    elif result_home == 'no_result' or result_away == 'no_result':
         win_odd = 0.0
         if tip == 'X':
             win_odd = tipx_odd.split(":")[1]
