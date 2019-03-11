@@ -46,7 +46,7 @@ def zulu_procedure(zulu_page, match_date):
                 else:
                     game_time = game_info[0][1].strip() # updating time to EAT
                     full_date = datetime.datetime.strptime(game_time, "%H:%M")
-                    full_date = full_date + timedelta(hours=2)
+                    full_date = full_date + timedelta(hours=3)
                     formatted_time = full_date.strftime("%H:%M")
                     try:
                         results = game_info[0][14].split(':')

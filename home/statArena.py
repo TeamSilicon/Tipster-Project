@@ -13,7 +13,7 @@ def stat_arena(page, match_date):
         for each in games:
             game_time = each.find(class_="time").getText().strip()
             game_time = datetime.datetime.strptime(game_time, "%H:%M")
-            game_time = game_time + timedelta(hours=2)  # updating time to EAT
+            game_time = game_time + timedelta(hours=0)  # updating time to EAT
             game_time = game_time.strftime("%H:%M")
             tip = each.find(class_="tip").getText()
             teams = each.find(class_="teams").getText()
@@ -21,9 +21,9 @@ def stat_arena(page, match_date):
             try :
                 score = each.find(class_="result").getText().strip()
             except AttributeError:
-                score = "none"
+                score = ''
             results = score.split(":")
-            if len(results) == 2 and score !="none":
+            if len(results) == 2 and score !='':
                 try:
                     result_home = int(results[0])
                     result_away = int(results[1])
