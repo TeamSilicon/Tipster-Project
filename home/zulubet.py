@@ -35,17 +35,17 @@ def zulu_procedure(zulu_page, match_date):
             else:
                 result_home = 'no_result'
                 result_away = 'no_result'
-            if tip == "": # Quickfix for where tip is none
-                tip_dict = {'home_team_odd': home_team_odd, "away_odd": away_odd, "draw_odd": draw_odd}
-                tip_dict = list(dict(sorted(tip_dict.items(), key=lambda k: k[1])).keys())
-                if tip_dict.index("draw_odd") == 0:
-                    tip="x"
-                elif tip_dict.index("home_team_odd") == 0:
-                    tip="1x"
-                elif tip_dict.index("away_odd") == 0:
-                    tip='x2'
+            if tip == "" and home_team_odd !="" and away_odd !="" and draw_odd !="": # Quickfix for where tip is none
+                tip_dict = {'home_team_odd': float(home_team_odd), "away_odd": float(away_odd), "draw_odd": float(draw_odd) }
+                tip_dict = sorted(tip_dict.items(), key=lambda k: k[1])
+                if tip_dict[0][0] =="draw_odd":
+                    tip="X"
+                elif tip_dict[0][0] =="home_team_odd":
+                    tip="1X"
+                elif tip_dict[0][0] =="away_odd":
+                    tip='X2'
 
-            print("%s, %s, %s, %s, %s, %s" %(result_home, result_away, tip, draw_odd, home_team_odd, away_odd))
+            # print("%s, %s, %s, %s, %s, %s" %(result_home, result_away, tip, draw_odd, home_team_odd, away_odd))
             outcome, tip_odd = overall_result(result_home, result_away, tip, draw_odd, home_team_odd, away_odd)
                                # game date ,game time     ,   #tip         # score       ,    #names       ,   "game odds",        "results"
             games_collec.append([match_date, formatted_time, tip, score, teams, str(tip_odd).strip(), outcome])
