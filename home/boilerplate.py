@@ -44,7 +44,8 @@ def boiler(zulu_page, page, today):
     print("Games that could be compared are %d out of %d" % (len(success_compr), len(stat_arr)))
     stat_arr_clean = [x for x in stat_arr if x!="remv"]
     print("Games one length unmatched: %s\nGames two length unmatched: %s" %(len(zulu_arr), len(stat_arr_clean)))
-    combined_games = zulu_arr + success_compr + stat_arr_clean
+    combined_games = zulu_arr + success_compr
+    # + stat_arr_clean removed
     for each in combined_games:
         obj, created = AllGames.objects.update_or_create(
             teams=each[4],
