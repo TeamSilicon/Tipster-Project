@@ -13,6 +13,7 @@ def zulu_procedure(zulu_page, match_date):
     if games_number != 0:
         for tr in tr_elems: # Extracting games
             try:
+                print(tr.select('td > noscript')[0].getText())
                 date, time = tr.select('td > noscript')[0].getText().split(",")
                 teams = tr.find_all('td')[1].getText().strip()
                 tip = tr.select("td > font > b")[0].getText()
@@ -34,7 +35,17 @@ def zulu_procedure(zulu_page, match_date):
             else:
                 result_home = 'no_result'
                 result_away = 'no_result'
+            if tip == "": # Quickfix for where tip is none
+                tip_dict = {'home_team_odd': home_team_odd, "away_odd": away_odd, "draw_odd": draw_odd}
+                tip_dict = list(dict(sorted(tip_dict.items(), key=lambda k: k[1])).keys())
+                if tip_dict.index("draw_odd") == 0:
+                    tip="x"
+                elif tip_dict.index("home_team_odd") == 0:
+                    tip="1x"
+                elif tip_dict.index("away_odd") == 0:
+                    tip='x2'
 
+            print("%s, %s, %s, %s, %s, %s" %(result_home, result_away, tip, draw_odd, home_team_odd, away_odd))
             outcome, tip_odd = overall_result(result_home, result_away, tip, draw_odd, home_team_odd, away_odd)
                                # game date ,game time     ,   #tip         # score       ,    #names       ,   "game odds",        "results"
             games_collec.append([match_date, formatted_time, tip, score, teams, str(tip_odd).strip(), outcome])
