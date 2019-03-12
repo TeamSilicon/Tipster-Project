@@ -67,7 +67,7 @@ def updater(request):
                 print("Someone closed the program")
         if len(page_names) == 3:
             break
-    # boiler(page_names[0], page_names[1], page_names[2], today)
+    boiler(page_names[0], page_names[1], page_names[2], today)
     return [today, request_from, match_date]
 
 
