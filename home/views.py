@@ -1,8 +1,7 @@
 import datetime
 from datetime import timedelta
 from django.shortcuts import render, get_object_or_404
-from home.models import AllGames
-from home.cashbetting import CashBet
+from home.models import AllGames, Featured
 from home.jackpot import possible_combinations
 from home.boilerplate import boiler
 import time
@@ -13,25 +12,28 @@ def topnavselector():
     date = datetime.date.today() # to get current date yy-mm-dd
     return date
 
-
 def all_games(request):
-    if request.path == "/":
+    today, request_from, match_date = updater(request)
+    games = AllGames.objects.filter(match_date=today).order_by('time', 'teams')
+    return render(request, 'mysite/index.html',
+                  {"games": games, "request_tom": request_from, "match_date": match_date})
+def updater(request):
+    if request.path == "/" or request.path == "/goalgoal/" or request.path == "/goalgoal/today/" or request.path == "/featured/" or request.path == "/featured/today/" :
         today = topnavselector()
         request_from = 'today'
-    elif request.path == "/tomorrow/":
+    elif request.path == "/tomorrow/" or request.path == "/goalgoal/tomorrow/" or request.path == "/featured/tomorrow/":
         today = topnavselector() + timedelta(days=1)
         request_from = 'tomorrow'
-    elif request.path == "/yesterday/":
+    elif request.path == "/yesterday/" or request.path == "/goalgoal/yesterday/" or request.path == "/featured/yesterday/":
         today = topnavselector() + timedelta(days=-1)
         request_from = 'yesterday'
-
     match_date = today.strftime("%d-%m").replace('-', '/')  # date when the match is played in / formart
     zulu_page = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
     arena_page ="https://www.statarea.com/predictions/date/%s-%s-%s/starttime" % (today.year, today.month, today.day)
-    page_urls = [zulu_page, arena_page]
+    featured_page ="https://www.statarea.com/toppredictions/date/%s-%s-%s/" % (today.year, today.month, today.day)
+    page_urls = [zulu_page, arena_page, featured_page]
     headers = {'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36' }
-    page_names = []
-
+    page_names= []
     while True:
         page_names= []
         for index, page in  enumerate(page_urls):
@@ -63,45 +65,24 @@ def all_games(request):
                 break
             except KeyboardInterrupt:
                 print("Someone closed the program")
-        if len(page_names) == 2:
+        if len(page_names) == 3:
             break
+    boiler(page_names[0], page_names[1], page_names[2], today)
+    return [today, request_from, match_date]
 
-    boiler(page_names[0], page_names[1], today)
-    games = AllGames.objects.filter(match_date=today).order_by('time', 'teams')
-    return render(request, 'mysite/index.html',
-                  {"games": games, "request_tom": request_from, "match_date": match_date})
 
 def goal_Goal(request):
-    if request.path == "/goalgoal/" or request.path == "/goalgoal/today/":
-        today = topnavselector()
-        request_from = 'today'
-    elif request.path == "/goalgoal/tomorrow/":
-        today = topnavselector() + timedelta(days=1)
-        request_from = 'tomorrow'
-    elif request.path == "/goalgoal/yesterday/":
-        today = topnavselector() + timedelta(days=-1)
-        request_from = 'yesterday'
+    today, request_from, match_date =updater(request)
     games = AllGames.objects.filter(tipGG=True, match_date=today).order_by('time', 'teams')
     return render(request, 'mysite/goalgoal.html', {
-        "games": games, "request_tom": request_from
+        "games": games, "request_tom": request_from, "match_date": match_date
         })
 
-month = {
-    1: "january", 2: "february", 3: "march", 4: "april", 5: "may", 6: "june",
-    7: "july", 8: "august", 9: "september", 10: "october", 11: "november",
-    12: "december"
-    }
-
-
 def featured(request):
-    today = topnavselector()
-    page_url = "http://cashbettingtips.blogspot.com/2018/12/01-january.html"
-    # page_url = 'http://cashbettingtips.blogspot.com/%d/%s/%s-%s.html' % (today.year, str(today.month).zfill(2), str(today.day).zfill(2), month[today.month])
-    # match_date = today.strftime("%d-%m")  # date when the match is played
-    games_dict = CashBet(page_url).procedure1()
-    request_from = "tod"
+    today, request_from, match_date = updater(request)
+    games = Featured.objects.filter(match_date=today).order_by('time', 'teams')
     return render(request, 'mysite/featured.html', {
-        "games": games_dict, "request_tom": request_from
+        "games": games, "request_tom": request_from, "match_date": match_date
         })
 
 

@@ -1,12 +1,13 @@
 #! this is where huge comparison goes b4 data is insterted into database
 from home.statArena import stat_arena
 from home.zulubet import zulu_procedure
-from home.models import AllGames
+from home.models import AllGames, Featured
 from difflib import SequenceMatcher
 
-def boiler(zulu_page, page, today):
+def boiler(zulu_page, page, page2, today):
     zulu_arr = zulu_procedure(zulu_page, today)
     stat_arr = stat_arena(page, today)
+    featured_arr = stat_arena(page2, today)
     print("Games One length: %s\nGames two length: %s" % (len(zulu_arr), len(stat_arr)))
     success_compr = []
     status = 0
@@ -48,6 +49,18 @@ def boiler(zulu_page, page, today):
     # + stat_arr_clean removed
     for each in combined_games:
         obj, created = AllGames.objects.update_or_create(
+            teams=each[4],
+            defaults={
+                'match_date': each[0],
+                'time': each[1],
+                'teams': each[4],
+                'tip': each[2],
+                'tip_odd': each[5],
+                'ft_results': each[3],
+                'outcome_text': each[6]
+            })
+    for each in featured_arr:
+        Featured.objects.update_or_create(
             teams=each[4],
             defaults={
                 'match_date': each[0],
