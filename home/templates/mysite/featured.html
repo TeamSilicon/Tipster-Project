@@ -1,10 +1,19 @@
 {% extends 'mysite/base.html' %}
 {% load staticfiles %}
+{% block nav-content %}
+<div class="nav-content">
+  <ul class="tabs tabs-transparent">
+    <li class="tab"><a target="_self" href="{% url 'yesterday' %}" class="{% if request_tom == 'yesterday' %} active {% endif %} black-text">Yesterday</a></li>
+    <li class="tab"><a target="_self" href="{% url 'today' %}" class="{% if request_tom == 'today' %} active {% endif %} black-text">Today</a></li>
+    <li class="tab"><a target="_self" href="{% url 'tomorrow' %}" class="black-text {% if request_tom == 'tomorrow' %} active {% endif %}">Tomorrow</a></li>
+  </ul>
+</div>
+{% endblock %}
 {% block content %}
 <div class="wrap">
   {% for each in games %}
-  <a href="#reg" class="item">
-    <div class="flag"><img src="{% static 'css/assets/flag_default.png' %}"></div>
+  <div class="item">
+    <div class="flag center"><img src="{% static 'css/assets/flag_default.png' %}"></div>
     <div class="info">
       <div class="name">{{ each.teams }}</div>
       <div class="y">
@@ -12,7 +21,7 @@
       </div>
     </div>
     <div class="clr"></div>
-  </a>
+  </div>
   {% endfor %}
 </div>
 {% endblock %}

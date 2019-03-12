@@ -296,7 +296,7 @@ body .wrapper{
 	text-align: center;
 }
 /* Game card list  */
-.forecasts__item{
+.forecasts__item , .item {
 	position:relative;
 	height:60px;
 	display:-webkit-box;
@@ -510,52 +510,66 @@ body .wrapper{
 /* featured games css */
 .wrap {
 	margin: 0 auto;
-	padding: 0 10px 0 10px;
+	/* padding: 0 10px 0 10px; */
 	color: #fff;
 }
-a.item {
+div.item {
 	height: 80px;
 	background: url(assets/x7.png) no-repeat 0 0;
-	position: relative;
-	display: block;
 }
-a.item:hover {
+div.item:hover {
 	margin-left: -14px;
 }
-a.item .info {
+ div.item .flag {
+/*	width: 82px;
+	height: 80px;
+	line-height: 80px; */
+	padding: 4px 0 0 19px;
+	font-size: 0;
 	float: left;
 }
+/* div.item .info {
+	float: left;
+} */
 
-a.item .info .name {
+div.item .info .name {
 	text-transform: uppercase;
-	font-weight: 800;
 	color: #374044;
 	font-size: 18px;
 	padding: 19px 0 0 0;
+	font-weight: 800;
+	display: inline-block;
 }
 
-a.item .info .y {
+div.item .info .y {
 	color: #374044;
 	font-size: 15px;
 	padding: 6px 0 0 0;
 }
 
-a.item .info .y span {
+div.item .info .y span {
 	color: #0272c8;
 	padding-right: 4px;
 }
 @media (max-width: 800px){
-	a.item {
+	div.item {
 		display: flex;
 	}
-	a.item .info .name {
+	div.item .info .name {
 		padding: 0;
 	}
-	a.item .info {
+	div.item .info {
 		float: none;
 		padding: 5px 0;
 	}
-	a.item:hover{
+	div.item .flag {
+		width: 50px;
+		height: 70px;
+		line-height: 70px;
+		float: none;
+	}
+
+	div.item:hover{
 		margin-left: 0;
 	}
 
@@ -571,10 +585,10 @@ a.item .info .y span {
 }
 
 @media (max-width: 400px) {
-	a.item .info .name {
+	div.item .info .name {
 		font-size: 15px;
 	}
-	a.item .info .y {
+	div.item .info .y {
 		padding-top: 0;
 	}
 
