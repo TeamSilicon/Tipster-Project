@@ -14,7 +14,11 @@ def zulu_procedure(zulu_page, match_date):
         for tr in tr_elems: # Extracting games
             try:
                 # print(tr.select('td > noscript')[0].getText())
-                date, time = tr.select('td > noscript')[0].getText().split(",")
+                try:
+                    date, time = tr.select('td > noscript')[0].getText().split(",")
+                except ValueError:
+                    print("I have been fixed")
+                    time = tr.select('td > noscript')[0].getText()
                 teams = tr.find_all('td')[1].getText().strip()
                 tip = tr.select("td > font > b")[0].getText()
                 home_team_odd = tr.find_all('td', class_="aver_odds_full")[0].getText().strip()
