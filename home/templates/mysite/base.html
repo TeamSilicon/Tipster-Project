@@ -8,7 +8,7 @@
   <meta name="Description" content="High accuracy games, For Serious Investors"/>
   <meta name="author" content="Dennis Peterson"/>
   <meta name="copyright" content="© Dennis Peterson 2015-2019"/>
-  <title>Hustler | All In One</title>
+  <title>TheBelters | All In One</title>
   <link rel="shortcut icon" type="image/png" href="{% static 'css/favs/favicon.png' %}"/>
   <!--Font Family  -->
   <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
@@ -20,7 +20,7 @@
   <div class="navbar-fixed">
     <nav class="nav-extended">
       <div class="nav-wrapper">
-        <a href="/" class="brand-logo black-text left">Tipster</a>
+        <a href="/" class="brand-logo black-text left">TheBelters</a>
         <!-- <span class="show-on-medium-and-up">The hustle never stops!</span> -->
         <ul class="right">
           <li><a href="/comingsoon/" class="black-text" title="Betslip" aria-label="BetSlip">{{ games.count }}<i class="feather" data-feather="list"></i></a></li>
@@ -47,7 +47,7 @@
         <i class="feather hide-on-small-only" style="color:#DB1A25" data-feather="heart"></i>G-G</a>
       </li>
       <li class="tab"><a target="_self" href="{% url 'featured' %}" title="Featured" class="{% if '/featured/' == request.path %} active {% endif %} black-text">
-        <i class="feather" style="color:#DB1A25" data-feather="zap"></i><span class="hide-on-small-only">Hot</span></a>
+        <i class="feather" style="color:#DB1A25" data-feather="zap"></i><span class="hide-on-small-only">Featured</span></a>
       </li>
       <li class="tab"><a target="_self" href="{% url 'jackpot' %}" title="Jackpot" class="{% if '/jackpot/' == request.path %} active {% endif %} black-text" >
         <i class="feather hide-on-small-only" style="color:#73D216" data-feather="target"></i>Jackpot</a>
