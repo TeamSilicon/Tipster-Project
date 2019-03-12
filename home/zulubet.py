@@ -13,7 +13,7 @@ def zulu_procedure(zulu_page, match_date):
     if games_number != 0:
         for tr in tr_elems: # Extracting games
             try:
-                print(tr.select('td > noscript')[0].getText())
+                # print(tr.select('td > noscript')[0].getText())
                 date, time = tr.select('td > noscript')[0].getText().split(",")
                 teams = tr.find_all('td')[1].getText().strip()
                 tip = tr.select("td > font > b")[0].getText()
