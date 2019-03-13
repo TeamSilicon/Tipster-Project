@@ -55,6 +55,7 @@ def zulu_procedure(zulu_page, match_date):
             games_collec.append([match_date, formatted_time, tip, score, teams, str(tip_odd).strip(), outcome])
 
     print("%d Games could not be parsed" % len(error_games))
+    print(error_games)
     print("Today games are " + str(games_number-len(error_games)))
     return games_collec
 #         # send_mail(len(error_games))
