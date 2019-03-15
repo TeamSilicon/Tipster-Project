@@ -23,8 +23,11 @@ def boiler(zulu_page, page, page2, today):
                     if stat_arr[each2][3].strip() != "":
                         res = stat_arr[each2][3]
                     else:
-                        res = zulu_arr[each][3]
-                    success_compr.append([zulu_arr[each][0],zulu_arr[each][1],"%s,%s" % (zulu_arr[each][2],stat_arr[each2][2]),res,stat_arr[each2][4],zulu_arr[each][5],zulu_arr[each][6]])
+                        if stat_arr[each2][3] == "":
+                            res = zulu_arr[each][3]
+                        else:
+                            res = stat_arr[each2][3]
+                    success_compr.append([zulu_arr[each][0],zulu_arr[each][1],"%s,%s" % (zulu_arr[each][2],stat_arr[each2][2]),res,stat_arr[each2][4],zulu_arr[each][5], zulu_arr[each][6], stat_arr[each2][7]])
                     # print("index for each %d" % each)
                     del zulu_arr[each]
                     ##                    zulu_arr[each][4]+" looks like \n
@@ -45,7 +48,7 @@ def boiler(zulu_page, page, page2, today):
     print("Games that could be compared are %d out of %d" % (len(success_compr), len(stat_arr)))
     stat_arr_clean = [x for x in stat_arr if x!="remv"]
     print("Games one length unmatched: %s\nGames two length unmatched: %s" %(len(zulu_arr), len(stat_arr_clean)))
-    combined_games = zulu_arr + success_compr 
+    combined_games = zulu_arr + success_compr
     # + stat_arr_clean removed
     for each in combined_games:
         obj, created = AllGames.objects.update_or_create(
@@ -57,7 +60,8 @@ def boiler(zulu_page, page, page2, today):
                 'tip': each[2],
                 'tip_odd': each[5],
                 'ft_results': each[3],
-                'outcome_text': each[6]
+                'outcome_text': each[6],
+                'tipGG': each[7],
             })
     for each in featured_arr:
         Featured.objects.update_or_create(

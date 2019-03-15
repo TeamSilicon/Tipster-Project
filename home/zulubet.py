@@ -48,11 +48,10 @@ def zulu_procedure(zulu_page, match_date):
                     tip="1X"
                 elif tip_dict[0][0] =="away_odd":
                     tip='X2'
-
             # print("%s, %s, %s, %s, %s, %s" %(result_home, result_away, tip, draw_odd, home_team_odd, away_odd))
             outcome, tip_odd = overall_result(result_home, result_away, tip, draw_odd, home_team_odd, away_odd)
                                # game date ,game time     ,   #tip         # score       ,    #names       ,   "game odds",        "results"
-            games_collec.append([match_date, formatted_time, tip, score, teams, str(tip_odd).strip(), outcome])
+            games_collec.append([match_date, formatted_time, tip, score, teams, str(tip_odd).strip(), outcome, False])
 
     print("%d Games could not be parsed" % len(error_games))
     print(error_games)
