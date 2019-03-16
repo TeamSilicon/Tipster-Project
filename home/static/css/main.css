@@ -180,7 +180,6 @@ a {
 }
 
 .tabs .tab a {
-	color: rgba(238, 110, 115, 0.7);
 	display: block;
 	width: 100%;
 	height: 100%;
@@ -202,9 +201,52 @@ a {
 	color: #ee6e73;
 }
 /*For dropdown  */
-
+.dropdown-content {
+	right: 0;
+	bottom: 0;
+	width: 162.5px;
+	position: fixed;
+	margin-bottom: 50px;
+	z-index: 4;
+}
+.dropdown-content div {
+	line-height: 40px;
+	cursor: pointer;
+	transition: 0.3s
+}
+/* change bg color on hover  */
+.dropdown-content div:hover {
+	background-color: #ddd;
+}
+/* bg color for active */
+.dropdown-content div:active {
+  background-color: #ccc;
+}
+.divider {
+  height: 1px;
+  overflow: hidden;
+  background-color: #e0e0e0;
+}
+.dropdown-content li.divider {
+  min-height: 0;
+  height: 1px;
+}
 /*End of dropdown  */
-
+/*for Tabs  */
+.tabs{
+	display:-ms-flexbox;
+	display:flex;
+	overflow:hidden;
+}
+.tab{
+	-ms-flex-preferred-size:100%;
+	flex-basis:100%;
+	font-size:13px;
+	text-align:center;
+  transition: 0.3s;
+	cursor: pointer;
+}
+/* ENd for tabs global */
 /*********************
 Media Query Classes
 **********************/
@@ -233,19 +275,6 @@ Media Query Classes
 /* for nav-content */
 .nav-content{
 	position: relative;
-}
-
-/*  */
-.tabs{
-	display:-ms-flexbox;
-	display:flex;
-	overflow:hidden;
-}
-.tab{
-	-ms-flex-preferred-size:100%;
-	flex-basis:100%;
-	font-size:13px;
-	text-align:center;
 }
 /* main body css */
 body .wrapper{
@@ -478,8 +507,7 @@ body .wrapper{
 	background-color: white;
 }
 .tabs.tabs-transparent .tab a:hover{
-	background-color: gainsboro;
-	background-color: rgba(0,0,0,0.05);
+	background-color: rgba(0,0,0,0.15);
 }
 
 .icon{

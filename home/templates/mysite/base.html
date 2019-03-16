@@ -53,24 +53,23 @@
         <i class="feather hide-on-small-only" style="color:#73D216" data-feather="target"></i>Jackpot</a>
       </li>
       <li class="tab">
-        <a target="_self" href="#" title="Over"
-         class="{% if '/Over2.5/' == request.path %} active {% endif %} black-text dropdown-trigger"
-         data-target='overTips'>
+        <a target="_self" href="#" title="Over" class="{% if '/Over2.5/' == request.path %} active {% endif %} black-text">
           <i class="feather" data-feather="plus"></i>
-          <span class="hide-on-small-only">Over 2.5</span>
+          <span class="hide-on-small-only">Over Tips</span>
         </a>
-        <ul id='overTips' class='dropdown-content'>
-          <li><a href="#!">one</a></li>
-          <li class="divider" tabindex="-1"></li>
-          <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-          <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-        </ul>
       </li>
     </ul>
   </div>
+  <div id='overTips' class='dropdown-content white center'>
+    <div><a href="{% url 'overTips' %}">Over 3.5</a></div>
+    <div class="divider" tabindex="-1"></div>
+    <div><a href="{% url 'overTips' %}">Over 2.5</a></div>
+    <div class="divider" tabindex="-1"></div>
+    <div><a href="{% url 'overTips' %}">Over 1.5</a></div>
+    <div class="divider" tabindex="-1"></div>
+  </div>
   <!-- For optimized loading-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
   <!-- feather icons -->
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
@@ -79,9 +78,16 @@
   $(document).ready(function(){
     //for feather Icons
     feather.replace();
-    // for activating tabs transition
-    $('.tabs').tabs();
-     $('.dropdown-trigger').dropdown();
+    $("li.tab").on("click", function(){
+      // Get all elements with class="tab" and remove the class "active"
+      var tablinks = $('.tab a');
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace("active", "");
+      }
+      // showing active Tab
+      $(this).children('a').className += "active";
+
+    });
   });
 </script>
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
