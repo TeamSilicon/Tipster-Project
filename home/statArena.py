@@ -30,21 +30,25 @@ def stat_arena(page, match_date):
                 print("from error" + each.select(".guestteam > .goals")[0].getText())
                 guestscore=hostscore='-'
                 score = ''
-            bts = each.select('.coefbox.last')[1].getText().strip()
             over15 = each.select('.coefbox')[-5].getText().strip()
             over25 = each.select('.coefbox')[-4].getText().strip()
             over35 = each.select('.coefbox')[-3].getText().strip()
-            gg_field = False
-            if bts != '':
+            bts = each.select('.coefbox')[-2].getText().strip()
+            over15_field=over25_field=over35_field=gg_field = False
+            def case(value):
                 try:
-                    bts = 100 - int(bts)
-                    if bts >=75:
-                        # print(bts)
-                        gg_field = True
+                    if value != '' and int(value) >=75:
+                        return True  #
+                    else:
+                        return False
+
                 except ValueError as err:
-                    print("bts value is not valid %s " % err)
-            else:
-                print("bts is blank : %s " % bts)
+                    print("%s value is not valid!! %s " % (value, err))
+                    return False
+            over15 = case(over15)
+            over25 = case(over25)
+            over35 = case(over35)
+            bts = case(bts)
             results = score.split(":")
             if len(results) == 2 and hostscore !='-' and guestscore !='-':
                 try:
@@ -59,7 +63,7 @@ def stat_arena(page, match_date):
             tipx_odd=tip1_odd=tip2_odd="0"  # making odd zero by default
             outcome, tip_odd = overall_result(result_home, result_away, tip, tipx_odd,tip1_odd,tip2_odd)
             # print([match_date, game_time, tip, score, teams, tip_odd, outcome]) # for testing
-            games_store.append([match_date, game_time, tip, score, teams, tip_odd, outcome, gg_field, over15, over25, over35])
+            games_store.append([match_date, game_time, tip, score, teams, tip_odd, outcome, bts, over15, over25, over35])
         return games_store
     else:
         return "not bs4 obj"

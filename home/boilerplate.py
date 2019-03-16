@@ -64,58 +64,61 @@ def boiler(zulu_page, page, page2, today):
                 'ft_results': each[3],
                 'outcome_text': each[6],
             })
+    print("allgames done")
     # for tipGG
     for each in stat_arr_orign:
-        TipGG.objects.update_or_create(
-            teams=each[4],
-            defaults={
-                'match_date': each[0],
-                'time': each[1],
-                'teams': each[4],
-                'tipGG': each[7],
-                'tipGG_odd': each[5],
-                'ft_results': each[3],
-                'outcome_text': each[6]
-            })
+        if each[7]:
+            TipGG.objects.update_or_create(
+                teams=each[4],
+                defaults={
+                    'match_date': each[0],
+                    'time': each[1],
+                    'teams': each[4],
+                    'tip_gg': each[7],
+                    'tip_gg_odd': each[5],
+                    'ft_results': each[3],
+                    'outcome_text': each[6]
+                })
         # for Over15
-    for each in stat_arr_orign:
-        Over15.objects.update_or_create(
-            teams=each[4],
-            defaults={
-                'match_date': each[0],
-                'time': each[1],
-                'teams': each[4],
-                'tipOv': each[8],
-                'tipOv_odd': each[5],
-                'ft_results': each[3],
-                'outcome_text': each[6]
-            })
-        # for Over25
-    for each in stat_arr_orign:
-        Over25.objects.update_or_create(
-            teams=each[4],
-            defaults={
-                'match_date': each[0],
-                'time': each[1],
-                'teams': each[4],
-                'tipOv': each[9],
-                'tipOv_odd': each[5],
-                'ft_results': each[3],
-                'outcome_text': each[6]
-            })
+        if each[8]:
+            Over15.objects.update_or_create(
+                teams=each[4],
+                defaults={
+                    'match_date': each[0],
+                    'time': each[1],
+                    'teams': each[4],
+                    'tip_ov': each[8],
+                    'tip_ov_odd': each[5],
+                    'ft_results': each[3],
+                    'outcome_text': each[6]
+                })
+        # for Over25:
+        if each[9]:
+            Over25.objects.update_or_create(
+                teams=each[4],
+                defaults={
+                    'match_date': each[0],
+                    'time': each[1],
+                    'teams': each[4],
+                    'tip_ov': each[9],
+                    'tip_ov_odd': each[5],
+                    'ft_results': each[3],
+                    'outcome_text': each[6]
+                })
         # for Over35
-    for each in stat_arr_orign:
-        Over35.objects.update_or_create(
-            teams=each[4],
-            defaults={
-                'match_date': each[0],
-                'time': each[1],
-                'teams': each[4],
-                'tipOv': each[10],
-                'tipOv_odd': each[5],
-                'ft_results': each[3],
-                'outcome_text': each[6]
-            })
+        if each[10]:
+            Over35.objects.update_or_create(
+                teams=each[4],
+                defaults={
+                    'match_date': each[0],
+                    'time': each[1],
+                    'teams': each[4],
+                    'tip_ov': each[10],
+                    'tip_ov_odd': each[5],
+                    'ft_results': each[3],
+                    'outcome_text': each[6]
+                })
+    print("Big Thing done")
     # for Featured Games
     for each in featured_arr:
         Featured.objects.update_or_create(
@@ -129,3 +132,4 @@ def boiler(zulu_page, page, page2, today):
                 'ft_results': each[3],
                 'outcome_text': each[6]
             })
+    print("Featured Games done")

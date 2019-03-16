@@ -1,7 +1,7 @@
 import datetime
 from datetime import timedelta
 from django.shortcuts import render, get_object_or_404
-from home.models import AllGames, Featured
+from home.models import AllGames, Featured,TipGG
 from home.jackpot import possible_combinations
 from home.boilerplate import boiler
 import time
@@ -73,7 +73,7 @@ def updater(request):
 
 def goal_Goal(request):
     today, request_from, match_date =updater(request)
-    games = AllGames.objects.filter(tipGG=True, match_date=today).order_by('time', 'teams')
+    games = TipGG.objects.filter(match_date=today).order_by('time', 'teams')
     return render(request, 'mysite/goalgoal.html', {
         "games": games, "request_tom": request_from, "match_date": match_date
         })
