@@ -34,9 +34,9 @@
   {% comment %} End of navbar {% endcomment %}
   <!--main content  -->
   <div class="wrapper">
-  {% block content %}
-  {% endblock %}
-</div>
+    {% block content %}
+    {% endblock %}
+  </div>
   <!--footer  -->
   <div class="navigation">
     <ul class="tabs tabs-transparent">
@@ -52,8 +52,19 @@
       <li class="tab"><a target="_self" href="{% url 'jackpot' %}" title="Jackpot" class="{% if '/jackpot/' == request.path %} active {% endif %} black-text" >
         <i class="feather hide-on-small-only" style="color:#73D216" data-feather="target"></i>Jackpot</a>
       </li>
-      <li class="tab"><a target="_self" href="{% url 'comingsoon' %}" title="Over" class="{% if '/Over2.5/' == request.path %} active {% endif %} black-text">
-        <i class="feather" data-feather="plus"></i><span class="hide-on-small-only">Over 2.5</span></a>
+      <li class="tab">
+        <a target="_self" href="#" title="Over"
+         class="{% if '/Over2.5/' == request.path %} active {% endif %} black-text dropdown-trigger"
+         data-target='overTips'>
+          <i class="feather" data-feather="plus"></i>
+          <span class="hide-on-small-only">Over 2.5</span>
+        </a>
+        <ul id='overTips' class='dropdown-content'>
+          <li><a href="#!">one</a></li>
+          <li class="divider" tabindex="-1"></li>
+          <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
+          <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
+        </ul>
       </li>
     </ul>
   </div>
@@ -70,6 +81,7 @@
     feather.replace();
     // for activating tabs transition
     $('.tabs').tabs();
+     $('.dropdown-trigger').dropdown();
   });
 </script>
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
