@@ -40,20 +40,20 @@
   <!--footer  -->
   <div class="navigation">
     <ul class="tabs tabs-transparent">
-      <li class="tab"><a target="_self" href="{% url 'today' %}" title="All Games" class="{% if '/today/' == request.path or '/yesterday/' == request.path or '/tomorrow/' == request.path %} active {% endif %} black-text">
+      <li class="tab"><a target="_self" href="{% url 'today' %}" title="All Games" class="black-text{% if '/today/' == request.path or '/yesterday/' == request.path or '/tomorrow/' == request.path %} active{% endif %}">
         <i class="feather" data-feather="home"></i><span class="hide-on-small-only">All Games</span></a>
       </li>
-      <li class="tab"><a target="_self" href="/goalgoal/" title="G-G" class="{% if '/goalgoal/' == request.path or request.path == '/goalgoal/today/' or request.path == '/goalgoal/yesterday/' or request.path == '/goalgoal/tomorrow/' %} active {% endif %} black-text">
+      <li class="tab"><a target="_self" href="/goalgoal/" title="G-G" class="black-text{% if '/goalgoal/' == request.path or request.path == '/goalgoal/today/' or request.path == '/goalgoal/yesterday/' or request.path == '/goalgoal/tomorrow/' %} active{% endif %}">
         <i class="feather hide-on-small-only" style="color:#DB1A25" data-feather="heart"></i>G-G</a>
       </li>
-      <li class="tab"><a target="_self" href="{% url 'featured' %}" title="Featured" class="{% if '/featured/' == request.path %} active {% endif %} black-text">
+      <li class="tab"><a target="_self" href="{% url 'featured' %}" title="Featured" class="black-text{% if '/featured/' == request.path %} active{% endif %}">
         <i class="feather" style="color:#DB1A25" data-feather="zap"></i><span class="hide-on-small-only">Featured</span></a>
       </li>
-      <li class="tab"><a target="_self" href="{% url 'jackpot' %}" title="Jackpot" class="{% if '/jackpot/' == request.path %} active {% endif %} black-text" >
+      <li class="tab"><a target="_self" href="{% url 'jackpot' %}" title="Jackpot" class="black-text{% if '/jackpot/' == request.path %} active{% endif %}" >
         <i class="feather hide-on-small-only" style="color:#73D216" data-feather="target"></i>Jackpot</a>
       </li>
       <li class="tab">
-        <a target="_self" href="#" title="Over" class="{% if '/Over2.5/' == request.path %} active {% endif %} black-text">
+        <a target="_self" href="#" title="Over" class="black-text{% if '/Over2.5/' == request.path %} active{% endif %}">
           <i class="feather" data-feather="plus"></i>
           <span class="hide-on-small-only">Over Tips</span>
         </a>
