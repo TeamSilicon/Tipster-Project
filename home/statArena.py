@@ -31,6 +31,9 @@ def stat_arena(page, match_date):
                 guestscore=hostscore='-'
                 score = ''
             bts = each.select('.coefbox.last')[1].getText().strip()
+            over15 = each.select('.coefbox')[-5].getText().strip()
+            over25 = each.select('.coefbox')[-4].getText().strip()
+            over35 = each.select('.coefbox')[-3].getText().strip()
             gg_field = False
             if bts != '':
                 try:
@@ -56,7 +59,7 @@ def stat_arena(page, match_date):
             tipx_odd=tip1_odd=tip2_odd="0"  # making odd zero by default
             outcome, tip_odd = overall_result(result_home, result_away, tip, tipx_odd,tip1_odd,tip2_odd)
             # print([match_date, game_time, tip, score, teams, tip_odd, outcome]) # for testing
-            games_store.append([match_date, game_time, tip, score, teams, tip_odd, outcome, gg_field])
+            games_store.append([match_date, game_time, tip, score, teams, tip_odd, outcome, gg_field, over15, over25, over35])
         return games_store
     else:
         return "not bs4 obj"

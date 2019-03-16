@@ -1,11 +1,12 @@
 #! this is where huge comparison goes b4 data is insterted into database
 from home.statArena import stat_arena
 from home.zulubet import zulu_procedure
-from home.models import AllGames, Featured
+from home.models import AllGames, Featured, TipGG, Over15, Over25, Over35
 from difflib import SequenceMatcher
 
 def boiler(zulu_page, page, page2, today):
     zulu_arr = zulu_procedure(zulu_page, today)
+    stat_arr_orign = stat_arena(page, today)
     stat_arr = stat_arena(page, today)
     featured_arr = stat_arena(page2, today)
     print("Games One length: %s\nGames two length: %s" % (len(zulu_arr), len(stat_arr)))
@@ -50,6 +51,7 @@ def boiler(zulu_page, page, page2, today):
     print("Games one length unmatched: %s\nGames two length unmatched: %s" %(len(zulu_arr), len(stat_arr_clean)))
     combined_games = zulu_arr + success_compr
     # + stat_arr_clean removed
+    # for allgames
     for each in combined_games:
         obj, created = AllGames.objects.update_or_create(
             teams=each[4],
@@ -61,8 +63,60 @@ def boiler(zulu_page, page, page2, today):
                 'tip_odd': each[5],
                 'ft_results': each[3],
                 'outcome_text': each[6],
-                'tipGG': each[7],
             })
+    # for tipGG
+    for each in stat_arr_orign:
+        TipGG.objects.update_or_create(
+            teams=each[4],
+            defaults={
+                'match_date': each[0],
+                'time': each[1],
+                'teams': each[4],
+                'tipGG': each[7],
+                'tipGG_odd': each[5],
+                'ft_results': each[3],
+                'outcome_text': each[6]
+            })
+        # for Over15
+    for each in stat_arr_orign:
+        Over15.objects.update_or_create(
+            teams=each[4],
+            defaults={
+                'match_date': each[0],
+                'time': each[1],
+                'teams': each[4],
+                'tipOv': each[8],
+                'tipOv_odd': each[5],
+                'ft_results': each[3],
+                'outcome_text': each[6]
+            })
+        # for Over25
+    for each in stat_arr_orign:
+        Over25.objects.update_or_create(
+            teams=each[4],
+            defaults={
+                'match_date': each[0],
+                'time': each[1],
+                'teams': each[4],
+                'tipOv': each[9],
+                'tipOv_odd': each[5],
+                'ft_results': each[3],
+                'outcome_text': each[6]
+            })
+        # for Over35
+    for each in stat_arr_orign:
+        Over35.objects.update_or_create(
+            teams=each[4],
+            defaults={
+                'match_date': each[0],
+                'time': each[1],
+                'teams': each[4],
+                'tipOv': each[10],
+                'tipOv_odd': each[5],
+                'ft_results': each[3],
+                'outcome_text': each[6]
+            })
+    # for Featured Games
     for each in featured_arr:
         Featured.objects.update_or_create(
             teams=each[4],
