@@ -2,7 +2,7 @@ import datetime
 from datetime import timedelta
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
-from home.models import AllGames, Featured,TipGG
+from home.models import AllGames, Featured, TipGG, Over35, Over25, Over15
 from home.jackpot import possible_combinations
 from home.boilerplate import boiler
 from django.http import HttpResponse
