@@ -1,0 +1,67 @@
+{% extends 'mysite/base.html' %}
+{% block nav-content %}
+<div class="nav-content">
+  <ul class="tabs tabs-transparent">
+    <li class="tab"><a target="_self" href="/goalgoal/yesterday/" class="{% if request_tom == 'yesterday' %} active {% endif %} black-text">Yesterday</a></li>
+    <li class="tab"><a target="_self" href="/goalgoal/today/" class="{% if request_tom == 'today' %} active {% endif %} black-text">Today</a></li>
+    <li class="tab"><a target="_self" href="/goalgoal/tomorrow/" class="black-text {% if request_tom == 'tomorrow' %} active {% endif %}">Tomorrow</a></li>
+  </ul>
+</div>
+{% endblock %}
+{% block content %}
+<div class="forecasts">
+  <div class="forecasts__title">
+    <i class="icon icon_soccer"></i>
+    <span class="forecasts__sport">Football</span>
+    <!-- Getting Predicated Date From Url  -->
+    {% if request_tom == "yesterday" %}
+    <span class="forecasts__day">Yesterday</span>
+    {% endif %}
+    {% if request_tom == "today" %}
+    <span class="forecasts__day">Today</span>
+    {% endif %}
+    {% if request_tom == "tomorrow" %}
+    <span class="forecasts__day">Tomorrow</span>
+    {% endif %}
+    <span class="forecasts__day_num" style="letter-spacing: 2px;">{{ match_date }}</span>
+    <span class="forecasts__coefficient center">Odds</span>
+  </div>
+  <div class="forecasts__list">
+    {% for game in games %}
+    <div class="forecasts__item">
+      <h4 class="forecasts__teams">
+        <a href="#">{{ game.teams }}</a>
+      </h4>
+      <div class="forecasts__league">
+        <span class="forecasts__date"><b>{{ game.time }}</b></span>
+        <!-- tip  -->
+        <span>Pick <b><a href="#">{{ pick }}</a></b> </span>
+        <!-- Game Status text and icon -->
+        <a href="#">
+          {% if game.outcome_text == 'homewin' or game.outcome_text == 'awaywin' or game.outcome_text == '12win' or game.outcome_text == '1Xwin' or game.outcome_text == 'X2win' %}
+          <span>Result</span> <b style="color: green;">WOOON</b>
+          <i class="forecasts__result icon icon_success" title="won"></i>
+          {% endif %}
+          {% if game.outcome_text == 'drawwin' %}
+          <span>Result</span> <b style="color: green;">WOOON</b>
+          <i class="forecasts__result icon icon_success" title="won"></i>
+          {% endif %}
+          {% if game.outcome_text == 'drawlose' or game.outcome_text == 'homelose' or game.outcome_text == 'awaylose' or game.outcome_text == '12lose' or game.outcome_text == '1Xlose' or game.outcome_text == 'X2lose' %}
+          <span>Result</span> <b style="color: red;">LOST</b>
+          <i class="forecasts__result icon icon_failure" title="lost"></i>
+          {% endif %}
+          {% if game.outcome_text == 'no_results_yet' %}
+          <span>Result</span> <b>...</b>
+          <i class="forecasts__result icon icon_pending" title="waiting"></i>
+          {% endif %}
+        </a>
+      </div>
+      <!--Game odd  -->
+      <a href="#">
+        <span class="forecasts__coeff center">{{ game.tip_ov_odd }}</span>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
