@@ -18,6 +18,7 @@ def all_games(request):
     return render(request, 'mysite/index.html',
                   {"games": games, "request_tom": request_from, "match_date": match_date})
 def updater(request):
+    print("request from %s" % request.path)
     if request.path == "/" or request.path == "/goalgoal/" or request.path == "/goalgoal/today/" or request.path == "/featured/" or request.path == "/featured/today/" :
         today = topnavselector()
         request_from = 'today'

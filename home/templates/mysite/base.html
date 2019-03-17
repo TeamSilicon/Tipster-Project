@@ -39,8 +39,8 @@
   </div>
   <!--footer  -->
   <div class="navigation">
-    <ul class="tabs tabs-transparent">
-      <li class="tab"><a target="_self" href="{% url 'today' %}" title="All Games" class="black-text{% if '/today/' == request.path or '/yesterday/' == request.path or '/tomorrow/' == request.path %} active{% endif %}">
+    <ul class="tabs">
+      <li class="tab"><a target="_self" href="{% url 'today' %}" title="All Games" class="black-text{% if '/' == request.path or '/yesterday/' == request.path or '/tomorrow/' == request.path %} active{% endif %}">
         <i class="feather" data-feather="home"></i><span class="hide-on-small-only">All Games</span></a>
       </li>
       <li class="tab"><a target="_self" href="/goalgoal/" title="G-G" class="black-text{% if '/goalgoal/' == request.path or request.path == '/goalgoal/today/' or request.path == '/goalgoal/yesterday/' or request.path == '/goalgoal/tomorrow/' %} active{% endif %}">
@@ -52,7 +52,7 @@
       <li class="tab"><a target="_self" href="{% url 'jackpot' %}" title="Jackpot" class="black-text{% if '/jackpot/' == request.path %} active{% endif %}" >
         <i class="feather hide-on-small-only" style="color:#73D216" data-feather="target"></i>Jackpot</a>
       </li>
-      <li class="tab">
+      <li class="tab" id="showTips">
         <a target="_self" href="#" title="Over" class="black-text{% if '/Over2.5/' == request.path %} active{% endif %}">
           <i class="feather" data-feather="plus"></i>
           <span class="hide-on-small-only">Over Tips</span>
@@ -61,7 +61,7 @@
     </ul>
   </div>
   <div id='overTips' class='dropdown-content white center'>
-    <div><a href="{% url 'overTips' %}">Over 3.5</a></div>
+    <div onclick="openTip(event)"><a href="{% url 'overTips' %}">Over 3.5</a></div>
     <div class="divider" tabindex="-1"></div>
     <div><a href="{% url 'overTips' %}">Over 2.5</a></div>
     <div class="divider" tabindex="-1"></div>
@@ -82,12 +82,19 @@
       // Get all elements with class="tab" and remove the class "active"
       var tablinks = $('.tab a');
       for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace("active", "");
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
       }
       // showing active Tab
-      $(this).children('a').className += "active";
+      $(this).children('a')[0].className += " active";
 
     });
+      $("#showTips").hover(
+        function () {
+          $("#overTips").css('display',"block");
+        }, function () {
+          $("#overTips").css('display',"none");
+        }
+      );
   });
 </script>
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>

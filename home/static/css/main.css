@@ -147,65 +147,13 @@ a {
 	text-decoration: none;
 	color: #000;
 }
-.tabs {
-	position: relative;
-	overflow-x: auto;
-	overflow-y: hidden;
-	height: 48px;
-	width: 100%;
-	background-color: #fff;
-	margin: 0 auto;
-	white-space: nowrap;
-}
-.tabs.tabs-transparent {
-	background-color: transparent;
-}
-.tabs.tabs-transparent .tab a:hover,
-.tabs.tabs-transparent .tab a.active {
-	color: #fff;
-}
-.tabs.tabs-transparent {
-	background-color: darkgrey;
-}
-
-.tabs .tab {
-	display: inline-block;
-	text-align: center;
-	line-height: 48px;
-	background-color: #e5e5e5;
-	height: 48px;
-	padding: 0;
-	margin: 0;
-	text-transform: uppercase;
-}
-
-.tabs .tab a {
-	display: block;
-	width: 100%;
-	height: 100%;
-	padding: 0 24px;
-	font-size: 14px;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	-webkit-transition: color .28s ease, background-color .28s ease;
-	transition: color .28s ease, background-color .28s ease;
-}
-
-.tabs .tab a:focus, .tabs .tab a:focus.active {
-	background-color: #fff;
-	outline: none;
-}
-
-.tabs .tab a:hover, .tabs .tab a.active {
-	background-color: transparent;
-	color: #ee6e73;
-}
 /*For dropdown  */
 .dropdown-content {
 	right: 0;
 	bottom: 0;
 	width: 162.5px;
 	position: fixed;
+	display: none;
 	margin-bottom: 50px;
 	z-index: 4;
 }
@@ -220,31 +168,57 @@ a {
 }
 /* bg color for active */
 .dropdown-content div:active {
-  background-color: #ccc;
+	background-color: #ccc;
 }
 .divider {
-  height: 1px;
-  overflow: hidden;
-  background-color: #e0e0e0;
+	height: 1px;
+	overflow: hidden;
+	background-color: #e0e0e0;
 }
 .dropdown-content li.divider {
-  min-height: 0;
-  height: 1px;
+	min-height: 0;
+	height: 1px;
 }
 /*End of dropdown  */
-/*for Tabs  */
-.tabs{
+/*Styling tabs  */
+.tabs {
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+	white-space: nowrap;
+	list-style: none;
+	background-color: #e5e5e5;
 	display:-ms-flexbox;
 	display:flex;
 	overflow:hidden;
+	margin-block-start:0;
+	margin-block-end:0;
 }
-.tab{
+.tabs .tab {
+	display: inline-block;
+	line-height: 50px;
+	background-color: #e5e5e5;
+	height: 50px;
+	text-transform: uppercase;
 	-ms-flex-preferred-size:100%;
 	flex-basis:100%;
-	font-size:13px;
 	text-align:center;
-  transition: 0.3s;
+	transition: 0.3s;
 	cursor: pointer;
+	border-right: 0.5px dotted #bbb;
+}
+.tabs .tab a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	font-size: 14px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+	background-color: #fff;
+	outline: none;
 }
 /* ENd for tabs global */
 /*********************
@@ -268,13 +242,6 @@ Media Query Classes
 		-ms-flex-positive: 1;
 		flex-grow: 1;
 	}
-	.tabs .tab a {
-		padding: 0 12px;
-	}
-}
-/* for nav-content */
-.nav-content{
-	position: relative;
 }
 /* main body css */
 body .wrapper{
@@ -500,13 +467,13 @@ body .wrapper{
 	background-color: #f8f8f8;
 	border-top: 1px solid rgba(19,21,58,.15);
 }
-.tabs.tabs-transparent .tab a.active {
+.tabs .tab a.active {
 	background-color: #fff;
 }
-.tabs.tabs-transparent .tab a.active:hover{
+.tabs .tab a.active:hover{
 	background-color: white;
 }
-.tabs.tabs-transparent .tab a:hover{
+.tabs .tab a:hover{
 	background-color: rgba(0,0,0,0.15);
 }
 
@@ -551,8 +518,8 @@ div.item {
 div.item:hover {
 	margin-left: -14px;
 }
- div.item .flag {
-/*	width: 82px;
+div.item .flag {
+	/*	width: 82px;
 	height: 80px;
 	line-height: 80px; */
 	padding: 4px 0 0 19px;
@@ -560,7 +527,7 @@ div.item:hover {
 	float: left;
 }
 /* div.item .info {
-	float: left;
+float: left;
 } */
 
 div.item .info .name {
