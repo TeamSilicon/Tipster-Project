@@ -1,9 +1,11 @@
 import datetime
 from datetime import timedelta
 from django.shortcuts import render, get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 from home.models import AllGames, Featured,TipGG
 from home.jackpot import possible_combinations
 from home.boilerplate import boiler
+from django.http import HttpResponse
 import time
 import requests
 
@@ -18,13 +20,14 @@ def all_games(request):
     return render(request, 'mysite/index.html',
                   {"games": games, "request_tom": request_from, "match_date": match_date})
 def updater(request):
-    if request.path == "/" or request.path == "/goalgoal/" or request.path == "/goalgoal/today/" or request.path == "/featured/" or request.path == "/featured/today/" :
+    print(request.path)
+    if request.path == "/" or request.path == "/goalgoal/" or request.path == "/goalgoal/today/" or request.path == "/featured/" or request.path == "/featured/today/" or request.path == "/over/":
         today = topnavselector()
         request_from = 'today'
-    elif request.path == "/tomorrow/" or request.path == "/goalgoal/tomorrow/" or request.path == "/featured/tomorrow/":
+    elif request.path == "/tomorrow/" or request.path == "/goalgoal/tomorrow/" or request.path == "/featured/tomorrow/" or request.path == "/over/tomorrow/":
         today = topnavselector() + timedelta(days=1)
         request_from = 'tomorrow'
-    elif request.path == "/yesterday/" or request.path == "/goalgoal/yesterday/" or request.path == "/featured/yesterday/":
+    elif request.path == "/yesterday/" or request.path == "/goalgoal/yesterday/" or request.path == "/featured/yesterday/" or request.path == "/over/yesterday":
         today = topnavselector() + timedelta(days=-1)
         request_from = 'yesterday'
     match_date = today.strftime("%d-%m").replace('-', '/')  # date when the match is played in / formart
@@ -93,9 +96,31 @@ def jackpot(request):
         "games": games
         })
 
+def over(request):
+    today, request_from, match_date = updater(request)
+    games = Over15.object.filter(match_date=today),order_by('time', 'teams')
+    return render(request, 'mysite/over.html', {'games': games})
 
-def overTips(request):
-    pass
+@csrf_exempt
+def overtips(request):
+    today, request_from, match_date = updater(request)
+    if request.method == "POST" and request.is_ajax():
+        selected_tab = request.POST.get('sel_tab', False)
+        print
+        if selected_tab == "over35":
+            data = Over35.object.filter(match_date=today),order_by('time', 'teams')
+            pick = " Over 3.5"
+        elif selected_tab == "over25":
+            data = Over25.object.filter(match_date=today),order_by('time', 'teams')
+            pick = " Over 2.5"
+        elif selected_tab == "over25":
+            data = Over15.object.filter(match_date=today),order_by('time', 'teams')
+            pick = " Over 1.5"
+        else:
+            data = "there was an error"
+    else:
+        data = "Not Safe"
+    return HttpResponse([pick, data])
 
 def slip(request):
     pass
