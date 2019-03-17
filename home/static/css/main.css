@@ -167,7 +167,7 @@ a {
 	background-color: #ddd;
 }
 /* bg color for active */
-.dropdown-content .taboption :active {
+.dropdown-content .taboption.activeoption {
 	background-color: #ccc;
 }
 .divider {
