@@ -13,7 +13,8 @@ urlpatterns = [
     url(r'^goalgoal/tomorrow/$', views.goal_Goal, name='goalgoal'),
     url(r'^featured/$', views.featured, name='featured'),
     url(r'^jackpot/$', views.jackpot, name='jackpot'),
-    url(r'^over/$', views.overTips, name='overTips'),
+    url(r'^over/$', views.over, name='over'),
+    url(r'^overtips/$', views.overtips, name='overtips'),
     url(r'^betslip/', views.slip, name='betslip'),
     url(r'^comingsoon/', views.comingsoon, name='comingsoon'),
 ]
