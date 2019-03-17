@@ -18,7 +18,6 @@ def all_games(request):
     return render(request, 'mysite/index.html',
                   {"games": games, "request_tom": request_from, "match_date": match_date})
 def updater(request):
-    print("request from %s" % request.path)
     if request.path == "/" or request.path == "/goalgoal/" or request.path == "/goalgoal/today/" or request.path == "/featured/" or request.path == "/featured/today/" :
         today = topnavselector()
         request_from = 'today'
@@ -35,40 +34,40 @@ def updater(request):
     page_urls = [zulu_page, arena_page, featured_page]
     headers = {'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36' }
     page_names= []
-    # while True:
-    #     page_names= []
-    #     for index, page in  enumerate(page_urls):
-    #         try:
-    #             page_name = requests.get(page, headers=headers, timeout=10)
-    #             try:
-    #                 page_name.raise_for_status()
-    #             except Exception as error:
-    #                 print('There was a problem getting web data: %s' % error)
-    #             if page_name.status_code != 200:
-    #                 print('There was a problem getting web data: %s' % error)
-    #                 break
-    #             print("Page %d done!!!. Proceeding to the next trial" % index)
-    #             page_names.append(page_name)
-    #         except requests.ConnectionError as e:
-    #             print("OOPS!! Connection Error. Make sure you are connected to Internet. Technical Details given below.\n")
-    #             print(str(e))
-    #             time.sleep(4) # wait 4 seconds before we make the next request
-    #             break
-    #         except requests.Timeout as e:
-    #             print("OOPS!! Timeout Error")
-    #             print(str(e))
-    #             time.sleep(4) # wait 4 seconds before we make the next request
-    #             break
-    #         except requests.RequestException as e:
-    #             print("OOPS!! General Error")
-    #             print(str(e))
-    #             time.sleep(4) # wait 4 seconds before we make the next request
-    #             break
-    #         except KeyboardInterrupt:
-    #             print("Someone closed the program")
-    #     if len(page_names) == 3:
-    #         break
-    # boiler(page_names[0], page_names[1], page_names[2], today)
+    while True:
+        page_names= []
+        for index, page in  enumerate(page_urls):
+            try:
+                page_name = requests.get(page, headers=headers, timeout=10)
+                try:
+                    page_name.raise_for_status()
+                except Exception as error:
+                    print('There was a problem getting web data: %s' % error)
+                if page_name.status_code != 200:
+                    print('There was a problem getting web data: %s' % error)
+                    break
+                print("Page %d done!!!. Proceeding to the next trial" % index)
+                page_names.append(page_name)
+            except requests.ConnectionError as e:
+                print("OOPS!! Connection Error. Make sure you are connected to Internet. Technical Details given below.\n")
+                print(str(e))
+                time.sleep(4) # wait 4 seconds before we make the next request
+                break
+            except requests.Timeout as e:
+                print("OOPS!! Timeout Error")
+                print(str(e))
+                time.sleep(4) # wait 4 seconds before we make the next request
+                break
+            except requests.RequestException as e:
+                print("OOPS!! General Error")
+                print(str(e))
+                time.sleep(4) # wait 4 seconds before we make the next request
+                break
+            except KeyboardInterrupt:
+                print("Someone closed the program")
+        if len(page_names) == 3:
+            break
+    boiler(page_names[0], page_names[1], page_names[2], today)
     return [today, request_from, match_date]
 
 

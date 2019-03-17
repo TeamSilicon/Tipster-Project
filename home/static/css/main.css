@@ -157,17 +157,17 @@ a {
 	margin-bottom: 50px;
 	z-index: 4;
 }
-.dropdown-content div {
+.dropdown-content .taboption {
 	line-height: 40px;
 	cursor: pointer;
 	transition: 0.3s
 }
 /* change bg color on hover  */
-.dropdown-content div:hover {
+.dropdown-content .taboption:hover {
 	background-color: #ddd;
 }
 /* bg color for active */
-.dropdown-content div:active {
+.dropdown-content .taboption :active {
 	background-color: #ccc;
 }
 .divider {
