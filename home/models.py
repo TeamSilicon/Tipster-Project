@@ -15,7 +15,7 @@ class TipGG(models.Model):
     match_date = models.CharField(max_length=40)
     time = models.CharField(max_length=40)
     teams = models.CharField(max_length=400, primary_key=True)
-    tip_gg = models.BooleanField(default=False)
+    tip_gg = models.CharField(max_length=10)
     tip_gg_odd = models.CharField(max_length=10, default="0.00")
     ft_results = models.CharField(max_length=40)
     outcome_text = models.CharField(max_length=40)

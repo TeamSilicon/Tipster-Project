@@ -35,7 +35,7 @@
       <div class="forecasts__league">
         <span class="forecasts__date"><b>{{ game.time }}</b></span>
         <!-- tip  -->
-        <span>Pick <b><a href="#">{{ game.tip }}</a></b> </span>
+        <span>Pick <b><a href="#" class="picks">{{ game.tip }}</a></b> </span>
         <!-- Game Status text and icon -->
         <a href="#">
           {% if game.outcome_text == 'homewin' or game.outcome_text == 'awaywin' or game.outcome_text == '12win' or game.outcome_text == '1Xwin' or game.outcome_text == 'X2win' %}

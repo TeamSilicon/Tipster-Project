@@ -150,12 +150,11 @@ a {
 /*For dropdown  */
 .dropdown-content {
 	right: 0;
-	bottom: 0;
+	top: 50%;
 	width: 162.5px;
 	position: fixed;
-	display: none;
-	margin-bottom: 50px;
-	z-index: 4;
+	display: block;
+	z-index: 50;
 }
 .dropdown-content .taboption {
 	line-height: 40px;

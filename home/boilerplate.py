@@ -74,7 +74,7 @@ def boiler(zulu_page, page, page2, today):
                     'match_date': each[0],
                     'time': each[1],
                     'teams': each[4],
-                    'tip_gg': each[7],
+                    'tip_gg': 'G-G',
                     'tip_gg_odd': each[5],
                     'ft_results': each[3],
                     'outcome_text': each[6]
@@ -87,7 +87,7 @@ def boiler(zulu_page, page, page2, today):
                     'match_date': each[0],
                     'time': each[1],
                     'teams': each[4],
-                    'tip_ov': each[8],
+                    'tip_ov': 'Over 1.5',
                     'tip_ov_odd': each[5],
                     'ft_results': each[3],
                     'outcome_text': each[6]
@@ -100,7 +100,7 @@ def boiler(zulu_page, page, page2, today):
                     'match_date': each[0],
                     'time': each[1],
                     'teams': each[4],
-                    'tip_ov': each[9],
+                    'tip_ov': 'Over 2.5',
                     'tip_ov_odd': each[5],
                     'ft_results': each[3],
                     'outcome_text': each[6]
@@ -113,7 +113,7 @@ def boiler(zulu_page, page, page2, today):
                     'match_date': each[0],
                     'time': each[1],
                     'teams': each[4],
-                    'tip_ov': each[10],
+                    'tip_ov': 'Over 3.5',
                     'tip_ov_odd': each[5],
                     'ft_results': each[3],
                     'outcome_text': each[6]
