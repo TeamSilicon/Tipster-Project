@@ -101,7 +101,7 @@ def over(request):
     over15 = Over15.objects.filter(match_date=today).order_by('time', 'teams')
     over25 = Over25.objects.filter(match_date=today).order_by('time', 'teams')
     over35 = Over35.objects.filter(match_date=today).order_by('time', 'teams')
-    games = over15 | over25 | over35
+    games = over15 
     return render(request, 'mysite/over.html', {'games': games, 'request_tom': request_from, 'match_date': match_date})
 
 
