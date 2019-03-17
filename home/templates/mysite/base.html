@@ -53,7 +53,7 @@
         <i class="feather hide-on-small-only" style="color:#73D216" data-feather="target"></i>Jackpot</a>
       </li>
       <li class="tab" id="showTips" onclick="toggleElem('overTips')">
-        <a target="_self" href="#" title="Over" class="black-text{% if '/Over2.5/' == request.path %} active{% endif %}">
+        <a target="_self" href="{% url 'over' %}" title="Over" class="black-text{% if '/over/' == request.path %} active{% endif %}">
           <i class="feather" data-feather="plus"></i>
           <span class="hide-on-small-only">Over Tips</span>
         </a>
@@ -61,11 +61,11 @@
     </ul>
   </div>
   <div id='overTips' class='dropdown-content white center'>
-    <div  class="taboption" onclick="openTip(event)"><a href="{% url 'overTips' %}">Over 3.5</a></div>
+    <div  class="taboption"><a href="" id='over35'>Over 3.5</a></div>
     <div class="divider" tabindex="-1"></div>
-    <div class="taboption"><a href="{% url 'overTips' %}">Over 2.5</a></div>
+    <div class="taboption"><a href="" id='over25'>Over 2.5</a></div>
     <div class="divider" tabindex="-1"></div>
-    <div class="taboption"> <a href="{% url 'overTips' %}">Over 1.5</a></div>
+    <div class="taboption"> <a href="" id='over15'>Over 1.5</a></div>
     <div class="divider" tabindex="-1"></div>
   </div>
   <!-- For optimized loading-->
@@ -93,18 +93,28 @@
       $(this).children('a')[0].className += " active";
 
     });
-    // function openTip(event) {
-    //   // Get all elements with class="taboption" and remove the class "active"
-    //   taboption = document.getElementsByClassName("taboption");
-    //   for (i = 0; i < taboption.length; i++) {
-    //     taboption[i].className = taboption[i].className.replace(" active", "");
-    //   }
-    //
-    //   // Show the current tab, and add an "active" class to the button that opened the tab
-    //   document.getElementById(cityName).style.display = "block";
-    //   event.currentTarget.className += " active";
-    //
-    // }
+    $("div.taboption").on("click", function(){
+      // Get all elements with class="tab" and remove the class "active"
+      var taboption = $('.taboption');
+      for (i = 0; i < taboption.length; i++) {
+        taboption[i].className = taboption[i].className.replace(" activeoption", "");
+      }
+      // showing active Tab
+      $(this)[0].className += " activeoption";
+      // $('#overTips').delay(800).hide(500);
+      $.ajax({
+        type: "POST",
+        url: "{% url 'overtips' %}",
+        data: {
+          "sel_tab":$(this).children("a").attr("id"),
+        },
+        success: function(result){
+          console.log(result);
+        },
+
+      });
+
+    });
   });
 </script>
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
