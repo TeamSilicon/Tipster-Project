@@ -1,112 +1,116 @@
-<!DOCTYPE html>
-{% load staticfiles %}
-<html lang="en">
-<head>
-  <!--Lets the browser know website is optimized for mobile-->
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="Description" content="High accuracy games, For Serious Investors"/>
-  <meta name="author" content="Dennis Peterson"/>
-  <meta name="copyright" content="© Dennis Peterson 2015-2019"/>
-  <title>The Belters | All In One</title>
-  <link rel="shortcut icon" type="image/png" href="{% static 'css/favs/favicon.png' %}"/>
-  <!--Font Family  -->
-  <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
-  <!--custom css-->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-</head>
-<body>
-  <!-- navbar -->
-  <div class="navbar-fixed">
-    <nav class="nav-extended">
-      <div class="nav-wrapper">
-        <a href="/" class="brand-logo black-text left">TheBelters</a>
-        <!-- <span class="show-on-medium-and-up">The hustle never stops!</span> -->
-        <ul class="right">
-          <li><a href="/comingsoon/" class="black-text" title="Betslip" aria-label="BetSlip">{{ games.count }}<i class="feather" data-feather="list"></i></a></li>
-          <li><a href="#" class="black-text" title="Account" aria-label="Account"><i class="feather" data-feather="user"></i></a></li>
-        </ul>
-      </div>
-      {% block nav-content %}
+  <!DOCTYPE html>
+  {% load staticfiles %}
+  <html lang="en">
+  <head>
+    <!--Lets the browser know website is optimized for mobile-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="Description" content="High accuracy games, For Serious Investors"/>
+    <meta name="author" content="Dennis Peterson"/>
+    <meta name="copyright" content="© Dennis Peterson 2015-2019"/>
+    <title>The Belters | All In One</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'css/favs/favicon.png' %}"/>
+    <!--Font Family  -->
+    <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+    <!--custom css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  </head>
+  <body>
+    <!-- navbar -->
+    <div class="navbar-fixed">
+      <nav class="nav-extended">
+        <div class="nav-wrapper">
+          <a href="/" class="brand-logo black-text left">TheBelters</a>
+          <!-- <span class="show-on-medium-and-up">The hustle never stops!</span> -->
+          <ul class="right">
+            <li><a href="/comingsoon/" class="black-text" title="Betslip" aria-label="BetSlip">{{ games.count }}<i class="feather" data-feather="list"></i></a></li>
+            <li><a href="#" class="black-text" title="Account" aria-label="Account"><i class="feather" data-feather="user"></i></a></li>
+          </ul>
+        </div>
+        {% block nav-content %}
+        {% endblock %}
+      </nav>
+    </div>
+    {% comment %} End of navbar {% endcomment %}
+    <!--main content  -->
+    <div class="wrapper">
+      {% block content %}
       {% endblock %}
-    </nav>
-  </div>
-  {% comment %} End of navbar {% endcomment %}
-  <!--main content  -->
-  <div class="wrapper">
-    {% block content %}
-    {% endblock %}
-  </div>
-  <!--footer  -->
-  <div class="navigation">
-    <ul class="tabs">
-      <li class="tab"><a target="_self" href="{% url 'today' %}" title="All Games" class="black-text{% if '/' == request.path or '/yesterday/' == request.path or '/tomorrow/' == request.path %} active{% endif %}">
-        <i class="feather" data-feather="home"></i><span class="hide-on-small-only">All Games</span></a>
-      </li>
-      <li class="tab"><a target="_self" href="{% url 'goalgoal' %}" title="G-G" class="black-text{% if '/goalgoal/' == request.path or request.path == '/goalgoal/today/' or request.path == '/goalgoal/yesterday/' or request.path == '/goalgoal/tomorrow/' %} active{% endif %}">
-        <i class="feather hide-on-small-only" style="color:#DB1A25" data-feather="heart"></i>G-G</a>
-      </li>
-      <li class="tab"><a target="_self" href="{% url 'featured' %}" title="Featured" class="black-text{% if '/featured/' == request.path or request.path == '/featured/today/' or request.path == '/featured/yesterday/' or request.path == '/featured/tomorrow/' %} active{% endif %}">
-        <i class="feather" style="color:#DB1A25" data-feather="zap"></i><span class="hide-on-small-only">Featured</span></a>
-      </li>
-      <li class="tab"><a target="_self" href="{% url 'jackpot' %}" title="Jackpot" class="black-text{% if '/jackpot/' == request.path %} active{% endif %}" >
-        <i class="feather hide-on-small-only" style="color:#73D216" data-feather="target"></i>Jackpot</a>
-      </li>
-      <li class="tab" id="showTips">
-        <a target="_self" href="{% url 'over' %}" title="Over" class="black-text{% if '/over/' == request.path or request.path == '/over/today/' or request.path == '/over/yesterday/' or request.path == '/over/tomorrow/' %} active{% endif %}">
-          <i class="feather" data-feather="plus"></i>
-          <span class="hide-on-small-only">Over Tips</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-  <!-- For optimized loading-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!-- feather icons -->
-  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    </div>
+    <!--footer  -->
+    <div class="navigation">
+      <ul class="tabs">
+        <li class="tab"><a target="_self" href="{% url 'today' %}" title="All Games" class="black-text{% if '/' == request.path or '/yesterday/' == request.path or '/tomorrow/' == request.path %} active{% endif %}">
+          <i class="feather" data-feather="home"></i><span class="hide-on-small-only">All Games</span></a>
+        </li>
+        <li class="tab"><a target="_self" href="{% url 'goalgoal' %}" title="G-G" class="black-text{% if '/goalgoal/' == request.path or request.path == '/goalgoal/today/' or request.path == '/goalgoal/yesterday/' or request.path == '/goalgoal/tomorrow/' %} active{% endif %}">
+          <i class="feather hide-on-small-only" style="color:#DB1A25" data-feather="heart"></i>G-G</a>
+        </li>
+        <li class="tab"><a target="_self" href="{% url 'featured' %}" title="Featured" class="black-text{% if '/featured/' == request.path or request.path == '/featured/today/' or request.path == '/featured/yesterday/' or request.path == '/featured/tomorrow/' %} active{% endif %}">
+          <i class="feather" style="color:#DB1A25" data-feather="zap"></i><span class="hide-on-small-only">Featured</span></a>
+        </li>
+        <li class="tab"><a target="_self" href="{% url 'jackpot' %}" title="Jackpot" class="black-text{% if '/jackpot/' == request.path %} active{% endif %}" >
+          <i class="feather hide-on-small-only" style="color:#73D216" data-feather="target"></i>Jackpot</a>
+        </li>
+        <li class="tab" id="showTips">
+          <a target="_self" href="{% url 'over' %}" title="Over" class="black-text{% if '/over/' == request.path or request.path == '/over/today/' or request.path == '/over/yesterday/' or request.path == '/over/tomorrow/' %} active{% endif %}">
+            <i class="feather" data-feather="plus"></i>
+            <span class="hide-on-small-only">Over Tips</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- For optimized loading-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- feather icons -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
-  <!--custom js-->
-  <script type="text/javascript">
+    <!--custom js-->
+    <script type="text/javascript">
 
-  function toggleElem(id) {
-    var elem = document.getElementById(id);
-    elem.style.display = elem.style.display == "block" ? "none" : "block";
-  }
-  $(document).ready(function(){
-    //for feather Icons
-    feather.replace();
-    $("li.tab").on("click", function(){
-      // Get all elements with class="tab" and remove the class "active"
-      var tablinks = $('.tab a');
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-      // showing active Tab
-      $(this).children('a')[0].className += " active";
+    function toggleElem(id) {
+      var elem = document.getElementById(id);
+      elem.style.display = elem.style.display == "block" ? "none" : "block";
+    }
+    $(document).ready(function(){
+      //for feather Icons
+      feather.replace();
+      $("li.tab").on("click", function(){
+        // Get all elements with class="tab" and remove the class "active"
+        var tablinks = $('.tab a');
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        // showing active Tab
+        $(this).children('a')[0].className += " active";
+      });
     });
-  });
 
-  $(document).ready(function(){
-    $("div.taboption").on("click", function(){
-      // Get all elements with class="tab" and remove the class "active"
-      var taboption = $('.taboption');
-      for (i = 0; i < taboption.length; i++) {
-        taboption[i].className = taboption[i].className.replace(" activeoption", "");
-      }
-      // showing active Tab
-      $(this)[0].className += " activeoption";
-      // $('#overTips').delay(800).hide(500);
-      var pick = $(this).children('a').html();
-      var forecasts__list = $('.forecasts__list');
-      for (i = 0; i < forecasts__list.length; i++) {
-        forecasts__list[i].className = forecasts__list[i].className.replace(" visible", "");
-      }
-      $('.forecasts__list')[$('.taboption').index(this)].className += " visible";
-      console.log($('.forecasts__list')[$('.taboption').index(this)]);
+    $(document).ready(function(){
+      $("div.taboption").on("click", function(){
+        // Get all elements with class="tab" and remove the class "active"
+        var taboption = $('.taboption');
+        for (i = 0; i < taboption.length; i++) {
+          taboption[i].className = taboption[i].className.replace(" activeoption", "");
+        }
+        // showing active Tab
+        $(this)[0].className += " activeoption";
+        // $('#overTips').delay(800).hide(500);
+        var pick = $(this).children('a').html();
+        var forecasts__list = $('.forecasts__list');
+        for (i = 0; i < forecasts__list.length; i++) {
+          forecasts__list[i].className = forecasts__list[i].className.replace(" visible", "");
+        }
+        $('.forecasts__list')[$('.taboption').index(this)].className += " visible";
+        console.log($('.forecasts__list')[$('.taboption').index(this)]);
+      });
     });
-  });
-  document.getElementById("over25").click();
-</script>
-<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-</body>
-</html>
+  </script>
+  <script>
+  $(window).on('load', function(){
+    document.getElementById('over25').click();
+  })
+  </script>
+  {% comment %} <script type="text/javascript" src="{% static 'js/main.js' %}"></script> {% endcomment %}
+  </body>
+  </html>
