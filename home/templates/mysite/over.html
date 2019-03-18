@@ -1,13 +1,13 @@
 {% extends 'mysite/base.html' %}
-{% block nav-content %}
+<!-- {% block nav-content %}
 <div class="nav-content">
   <ul class="tabs tabs-transparent">
-    <li class="tab"><a target="_self" href="/goalgoal/yesterday/" class="{% if request_tom == 'yesterday' %} active {% endif %} black-text">Yesterday</a></li>
-    <li class="tab"><a target="_self" href="/goalgoal/today/" class="{% if request_tom == 'today' %} active {% endif %} black-text">Today</a></li>
-    <li class="tab"><a target="_self" href="/goalgoal/tomorrow/" class="black-text {% if request_tom == 'tomorrow' %} active {% endif %}">Tomorrow</a></li>
+    <li class="tab"><a target="_self" href="/over/yesterday/" class="{% if request_tom == 'yesterday' %} active {% endif %} black-text">Yesterday</a></li>
+    <li class="tab"><a target="_self" href="/over/today/" class="{% if request_tom == 'today' %} active {% endif %} black-text">Today</a></li>
+    <li class="tab"><a target="_self" href="/over/tomorrow/" class="black-text {% if request_tom == 'tomorrow' %} active {% endif %}">Tomorrow</a></li>
   </ul>
 </div>
-{% endblock %}
+{% endblock %} -->
 {% block content %}
 <div class="forecasts">
   <div class="forecasts__title">
@@ -27,7 +27,89 @@
     <span class="forecasts__coefficient center">Odds</span>
   </div>
   <div class="forecasts__list">
-    {% for game in games %}
+    {% for game in over35 %}
+    <div class="forecasts__item">
+      <h4 class="forecasts__teams">
+        <a href="#">{{ game.teams }}</a>
+      </h4>
+      <div class="forecasts__league">
+        <span class="forecasts__date"><b>{{ game.time }}</b></span>
+        <!-- tip  -->
+        <span>Pick <b><a href="#">{{ game.tip_ov }}</a></b> </span>
+        <!-- Game Status text and icon -->
+        <a href="#">
+          {% if game.outcome_text == 'homewin' or game.outcome_text == 'awaywin' or game.outcome_text == '12win' or game.outcome_text == '1Xwin' or game.outcome_text == 'X2win' %}
+          <span>Result: {{ game.ft_results }}</span> <b style="color: green;">WOOON</b>
+          <i class="forecasts__result icon icon_success" title="won"></i>
+          {% endif %}
+          {% if game.outcome_text == 'drawwin' %}
+          <span>Result: {{ game.ft_results }}</span> <b style="color: green;">WOOON</b>
+          <i class="forecasts__result icon icon_success" title="won"></i>
+          {% endif %}
+          {% if game.outcome_text == 'drawlose' or game.outcome_text == 'homelose' or game.outcome_text == 'awaylose' or game.outcome_text == '12lose' or game.outcome_text == '1Xlose' or game.outcome_text == 'X2lose' %}
+          <span>Result: {{ game.ft_results }}</span> <b style="color: red;">LOST</b>
+          <i class="forecasts__result icon icon_failure" title="lost"></i>
+          {% endif %}
+          {% if game.outcome_text == 'no_results_yet' %}
+          <span>Result: {{ game.ft_results }}</span> <b>...</b>
+          <i class="forecasts__result icon icon_pending" title="waiting"></i>
+          {% endif %}
+          {% if game.outcome_text == 'postponed' %}
+          <span>Result: {{ game.ft_results }}</span> <b style="color: #000; text-decoration: line-through;">postponed</b>
+          <i class="forecasts__result icon icon_post" title="post"></i>
+          {% endif %}
+        </a>
+      </div>
+      <!--Game odd  -->
+      <a href="#">
+        <span class="forecasts__coeff center">{{ game.tip_ov_odd }}</span>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="forecasts__list">
+    {% for game in over25 %}
+    <div class="forecasts__item">
+      <h4 class="forecasts__teams">
+        <a href="#">{{ game.teams }}</a>
+      </h4>
+      <div class="forecasts__league">
+        <span class="forecasts__date"><b>{{ game.time }}</b></span>
+        <!-- tip  -->
+        <span>Pick <b><a href="#">{{ game.tip_ov }}</a></b> </span>
+        <!-- Game Status text and icon -->
+        <a href="#">
+          {% if game.outcome_text == 'homewin' or game.outcome_text == 'awaywin' or game.outcome_text == '12win' or game.outcome_text == '1Xwin' or game.outcome_text == 'X2win' %}
+          <span>Result: {{ game.ft_results }}</span> <b style="color: green;">WOOON</b>
+          <i class="forecasts__result icon icon_success" title="won"></i>
+          {% endif %}
+          {% if game.outcome_text == 'drawwin' %}
+          <span>Result: {{ game.ft_results }}</span> <b style="color: green;">WOOON</b>
+          <i class="forecasts__result icon icon_success" title="won"></i>
+          {% endif %}
+          {% if game.outcome_text == 'drawlose' or game.outcome_text == 'homelose' or game.outcome_text == 'awaylose' or game.outcome_text == '12lose' or game.outcome_text == '1Xlose' or game.outcome_text == 'X2lose' %}
+          <span>Result: {{ game.ft_results }}</span> <b style="color: red;">LOST</b>
+          <i class="forecasts__result icon icon_failure" title="lost"></i>
+          {% endif %}
+          {% if game.outcome_text == 'no_results_yet' %}
+          <span>Result: {{ game.ft_results }}</span> <b>...</b>
+          <i class="forecasts__result icon icon_pending" title="waiting"></i>
+          {% endif %}
+          {% if game.outcome_text == 'postponed' %}
+          <span>Result: {{ game.ft_results }}</span> <b style="color: #000; text-decoration: line-through;">postponed</b>
+          <i class="forecasts__result icon icon_post" title="post"></i>
+          {% endif %}
+        </a>
+      </div>
+      <!--Game odd  -->
+      <a href="#">
+        <span class="forecasts__coeff center">{{ game.tip_ov_odd }}</span>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="forecasts__list">
+    {% for game in over15 %}
     <div class="forecasts__item">
       <h4 class="forecasts__teams">
         <a href="#">{{ game.teams }}</a>
@@ -72,11 +154,11 @@
 
 </div>
 <div id='overTips' class='dropdown-content white center'>
-  <div  class="taboption"><a href="" id='over35'>Over 3.5</a></div>
+  <div  class="taboption"><span id='over35'>Over 3.5</span></div>
   <div class="divider" tabindex="-1"></div>
-  <div class="taboption"><a href="" id='over25'>Over 2.5</a></div>
+  <div class="taboption" id="over25"><span>Over 2.5</span></div>
   <div class="divider" tabindex="-1"></div>
-  <div class="taboption"> <a href="" id='over15'>Over 1.5</a></div>
+  <div class="taboption"> <span id='over15'>Over 1.5</span></div>
   <div class="divider" tabindex="-1"></div>
 </div>
 {% endblock %}

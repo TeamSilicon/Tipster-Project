@@ -21,13 +21,13 @@ def all_games(request):
                   {"games": games, "request_tom": request_from, "match_date": match_date})
 def updater(request):
     print(request.path)
-    if request.path == "/" or request.path == "/goalgoal/" or request.path == "/goalgoal/today/" or request.path == "/featured/" or request.path == "/featured/today/" or request.path == "/over/":
+    if request.path == "/" or request.path == "/goalgoal/" or request.path == "/goalgoal/today/" or request.path == "/featured/" or request.path == "/featured/today/" or request.path == "/over/" or request.path == "/over/today/":
         today = topnavselector()
         request_from = 'today'
     elif request.path == "/tomorrow/" or request.path == "/goalgoal/tomorrow/" or request.path == "/featured/tomorrow/" or request.path == "/over/tomorrow/":
         today = topnavselector() + timedelta(days=1)
         request_from = 'tomorrow'
-    elif request.path == "/yesterday/" or request.path == "/goalgoal/yesterday/" or request.path == "/featured/yesterday/" or request.path == "/over/yesterday":
+    elif request.path == "/yesterday/" or request.path == "/goalgoal/yesterday/" or request.path == "/featured/yesterday/" or request.path == "/over/yesterday/":
         today = topnavselector() + timedelta(days=-1)
         request_from = 'yesterday'
     match_date = today.strftime("%d-%m").replace('-', '/')  # date when the match is played in / formart
@@ -101,8 +101,7 @@ def over(request):
     over15 = Over15.objects.filter(match_date=today).order_by('time', 'teams')
     over25 = Over25.objects.filter(match_date=today).order_by('time', 'teams')
     over35 = Over35.objects.filter(match_date=today).order_by('time', 'teams')
-    games = over15 
-    return render(request, 'mysite/over.html', {'games': games, 'request_tom': request_from, 'match_date': match_date})
+    return render(request, 'mysite/over.html', {'over15': over15, 'over25': over25,'over35': over35, 'request_tom': request_from, 'match_date': match_date})
 
 
 def slip(request):

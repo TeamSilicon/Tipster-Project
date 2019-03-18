@@ -83,7 +83,6 @@
       }
       // showing active Tab
       $(this).children('a')[0].className += " active";
-
     });
   });
 
@@ -98,16 +97,15 @@
       $(this)[0].className += " activeoption";
       // $('#overTips').delay(800).hide(500);
       var pick = $(this).children('a').html();
-      var all_picks = $(".picks");
-      for (var i=0; i<all_picks.length; i++){
-        if (pick != $(all_picks[i]).html()) {
-          $(".forecasts__item").eq(i).hide();
-        }else {
-          $(".forecasts__item").eq(i).show();
-        }
+      var forecasts__list = $('.forecasts__list');
+      for (i = 0; i < forecasts__list.length; i++) {
+        forecasts__list[i].className = forecasts__list[i].className.replace(" visible", "");
       }
+      $('.forecasts__list')[$('.taboption').index(this)].className += " visible";
+      console.log($('.forecasts__list')[$('.taboption').index(this)]);
     });
-});
+  });
+  document.getElementById("over25").click();
 </script>
 <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </body>

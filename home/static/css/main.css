@@ -358,7 +358,12 @@ body .wrapper{
 	border-right: 2px solid #279d79;
 	border-left: 2px solid #279d79;
 }
-
+.forecasts__list{
+	display: none;
+}
+.forecasts__list.visible{
+	display: block;
+}
 .forecasts__result{
 	position:absolute;
 	right:85px;top:50%;
