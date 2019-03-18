@@ -361,6 +361,14 @@ body .wrapper{
 .forecasts__list{
 	display: none;
 }
+.forecasts__list .nothing{
+	background: url(assets/nothing_to_show.jpg) 50% 50% no-repeat;
+	background-size: cover ;
+	position: fixed;
+	height:100vh;
+	width: 100%;
+
+}
 .forecasts__list.visible{
 	display: block;
 }

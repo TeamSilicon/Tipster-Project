@@ -1,11 +1,11 @@
 {% extends 'mysite/base.html' %}
 <!-- {% block nav-content %}
 <div class="nav-content">
-  <ul class="tabs tabs-transparent">
-    <li class="tab"><a target="_self" href="/over/yesterday/" class="{% if request_tom == 'yesterday' %} active {% endif %} black-text">Yesterday</a></li>
-    <li class="tab"><a target="_self" href="/over/today/" class="{% if request_tom == 'today' %} active {% endif %} black-text">Today</a></li>
-    <li class="tab"><a target="_self" href="/over/tomorrow/" class="black-text {% if request_tom == 'tomorrow' %} active {% endif %}">Tomorrow</a></li>
-  </ul>
+<ul class="tabs tabs-transparent">
+<li class="tab"><a target="_self" href="/over/yesterday/" class="{% if request_tom == 'yesterday' %} active {% endif %} black-text">Yesterday</a></li>
+<li class="tab"><a target="_self" href="/over/today/" class="{% if request_tom == 'today' %} active {% endif %} black-text">Today</a></li>
+<li class="tab"><a target="_self" href="/over/tomorrow/" class="black-text {% if request_tom == 'tomorrow' %} active {% endif %}">Tomorrow</a></li>
+</ul>
 </div>
 {% endblock %} -->
 {% block content %}
@@ -27,6 +27,7 @@
     <span class="forecasts__coefficient center">Odds</span>
   </div>
   <div class="forecasts__list">
+    {% if over35.count != 0 %}
     {% for game in over35 %}
     <div class="forecasts__item">
       <h4 class="forecasts__teams">
@@ -66,8 +67,12 @@
       </a>
     </div>
     {% endfor %}
+    {% else %}
+    <div class="nothing"></div>
+    {% endif %}
   </div>
   <div class="forecasts__list">
+    {% if over25.count != 0 %}
     {% for game in over25 %}
     <div class="forecasts__item">
       <h4 class="forecasts__teams">
@@ -107,8 +112,12 @@
       </a>
     </div>
     {% endfor %}
+    {% else %}
+    <div class="nothing"></div>
+    {% endif %}
   </div>
   <div class="forecasts__list">
+    {% if over15.count != 0 %}
     {% for game in over15 %}
     <div class="forecasts__item">
       <h4 class="forecasts__teams">
@@ -148,6 +157,9 @@
       </a>
     </div>
     {% endfor %}
+    {% else %}
+    <div class="nothing"></div>
+    {% endif %}
   </div>
 </div>
 <div class="" onclick="toggleElem('overTips')">
@@ -160,5 +172,5 @@
   <div class="divider" tabindex="-1"></div>
   <div class="taboption" id='over15'> <span>Over 1.5</span></div>
   <div class="divider" tabindex="-1"></div>
-</div
-{% endblock %}
+  </div
+  {% endblock %}
