@@ -566,7 +566,7 @@ div.item .info .y span {
 }
 div.item .clr {
 	width:60px;
-	height: 70px;
+	height: 79px;
 	background-color:#efefef;
 	line-height:60px;
 	font-size:14px;
@@ -574,7 +574,7 @@ div.item .clr {
 	color:#4b4b4b;
 	border-right: 2px solid #279d79;
 	border-left: 2px solid #279d79;
-	border-bottom: 2px solid black;
+	border-bottom: 2px solid #ccc;
 	float: right;
 	position: absolute;
 	right: 0;
@@ -598,7 +598,9 @@ div.item .clr {
 		line-height: 70px;
 		float: none;
 	}
-
+div.item .clr {
+	height: 70px;
+}
 	div.item:hover{
 		margin-left: 0;
 	}
