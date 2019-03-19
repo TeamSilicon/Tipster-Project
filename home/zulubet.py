@@ -37,6 +37,7 @@ def zulu_procedure(zulu_page, match_date):
                 result_home = int(results[0])
                 result_away = int(results[1])
             else:
+                score = "-:-"
                 result_home = 'no_result'
                 result_away = 'no_result'
             if tip == "" and home_team_odd !="" and away_odd !="" and draw_odd !="": # Quickfix for where tip is none

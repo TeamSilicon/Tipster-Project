@@ -52,6 +52,22 @@ def boiler(zulu_page, page, page2, today):
     combined_games = zulu_arr + success_compr
     # + stat_arr_clean removed
     # for allgames
+    def outcome_case(outcome_text, score, case):
+        if outcome_text != "no_results_yet":
+            home_team_guest_team = [int(x) for x in score.split(":")]
+            if case !='bts':
+                if sum(home_team_guest_team) > case:
+                    return "homewin"
+                else:
+                    return "homelose"
+            else:
+                if 0 not in home_team_guest_team:
+                    return "homewin"
+                else:
+                    return "homelose"
+        else:
+            return "no_results_yet"
+
     for each in combined_games:
         obj, created = AllGames.objects.update_or_create(
             teams=each[4],
@@ -67,6 +83,7 @@ def boiler(zulu_page, page, page2, today):
     print("allgames done")
     # for tipGG
     for each in stat_arr_orign:
+        outcome = outcome_case(each[6],each[3], 'bts')
         if each[7]:
             TipGG.objects.update_or_create(
                 teams=each[4],
@@ -77,10 +94,11 @@ def boiler(zulu_page, page, page2, today):
                     'tip_gg': 'G-G',
                     'tip_gg_odd': each[5],
                     'ft_results': each[3],
-                    'outcome_text': each[6]
+                    'outcome_text': outcome
                 })
         # for Over15
         if each[8]:
+            outcome = outcome_case(each[6],each[3], 1.5)
             Over15.objects.update_or_create(
                 teams=each[4],
                 defaults={
@@ -90,10 +108,11 @@ def boiler(zulu_page, page, page2, today):
                     'tip_ov': 'Over 1.5',
                     'tip_ov_odd': each[5],
                     'ft_results': each[3],
-                    'outcome_text': each[6]
+                    'outcome_text':outcome
                 })
         # for Over25:
         if each[9]:
+            outcome = outcome_case(each[6],each[3], 2.5)
             Over25.objects.update_or_create(
                 teams=each[4],
                 defaults={
@@ -103,10 +122,11 @@ def boiler(zulu_page, page, page2, today):
                     'tip_ov': 'Over 2.5',
                     'tip_ov_odd': each[5],
                     'ft_results': each[3],
-                    'outcome_text': each[6]
+                    'outcome_text': outcome
                 })
         # for Over35
         if each[10]:
+            outcome = outcome_case(each[6],each[3], 3.5)
             Over35.objects.update_or_create(
                 teams=each[4],
                 defaults={
@@ -116,7 +136,7 @@ def boiler(zulu_page, page, page2, today):
                     'tip_ov': 'Over 3.5',
                     'tip_ov_odd': each[5],
                     'ft_results': each[3],
-                    'outcome_text': each[6]
+                    'outcome_text': outcome
                 })
     print("Big Thing done")
     # for Featured Games
