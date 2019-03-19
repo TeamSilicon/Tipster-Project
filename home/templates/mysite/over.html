@@ -26,7 +26,7 @@
     <span class="forecasts__day_num" style="letter-spacing: 2px;">{{ match_date }}</span>
     <span class="forecasts__coefficient center">Odds</span>
   </div>
-  <div class="forecasts__list">
+  <div class="forecasts__list hidden">
     {% if over35.count != 0 %}
     {% for game in over35 %}
     <div class="forecasts__item">
@@ -71,7 +71,7 @@
     <div class="nothing"></div>
     {% endif %}
   </div>
-  <div class="forecasts__list">
+  <div class="forecasts__list hidden">
     {% if over25.count != 0 %}
     {% for game in over25 %}
     <div class="forecasts__item">
@@ -116,7 +116,7 @@
     <div class="nothing"></div>
     {% endif %}
   </div>
-  <div class="forecasts__list">
+  <div class="forecasts__list hidden">
     {% if over15.count != 0 %}
     {% for game in over15 %}
     <div class="forecasts__item">
