@@ -33,7 +33,7 @@ def zulu_procedure(zulu_page, match_date):
             full_date = full_date + timedelta(hours=3)
             formatted_time = full_date.strftime("%H:%M")
             results = score.split(':')
-            if len(results) == 2:
+            if len(results) == 2 and '-' not in results:
                 result_home = int(results[0])
                 result_away = int(results[1])
             else:
@@ -55,7 +55,7 @@ def zulu_procedure(zulu_page, match_date):
             games_collec.append([match_date, formatted_time, tip, score, teams, str(tip_odd).strip(), outcome, False])
 
     print("%d Games could not be parsed" % len(error_games))
-    print(error_games)
+    # print(error_games)
     print("Today games are " + str(games_number-len(error_games)))
     return games_collec
 #         # send_mail(len(error_games))
