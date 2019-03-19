@@ -3,9 +3,9 @@
 {% block nav-content %}
 <div class="nav-content">
   <ul class="tabs tabs-transparent">
-    <li class="tab"><a target="_self" href="{% url 'yesterday' %}" class="{% if request_tom == 'yesterday' %} active {% endif %} black-text">Yesterday</a></li>
-    <li class="tab"><a target="_self" href="{% url 'today' %}" class="{% if request_tom == 'today' %} active {% endif %} black-text">Today</a></li>
-    <li class="tab"><a target="_self" href="{% url 'tomorrow' %}" class="black-text {% if request_tom == 'tomorrow' %} active {% endif %}">Tomorrow</a></li>
+    <li class="tab"><a target="_self" href="/featured/yesterday/" class="{% if request_tom == 'yesterday' %} active {% endif %} black-text">Yesterday</a></li>
+    <li class="tab"><a target="_self" href="/featured/today/" class="{% if request_tom == 'today' %} active {% endif %} black-text">Today</a></li>
+    <li class="tab"><a target="_self" href="/featured/tomorrow/" class="black-text {% if request_tom == 'tomorrow' %} active {% endif %}">Tomorrow</a></li>
   </ul>
 </div>
 {% endblock %}
