@@ -549,7 +549,6 @@ div.item .info .name {
 	font-size: 18px;
 	padding: 19px 0 0 0;
 	font-weight: 800;
-	/* overflow: hidden; */
 
 }
 
@@ -566,15 +565,16 @@ div.item .info .y span {
 
 }
 div.item .clr {
-	width:70px;
-	height: 80px;
-	background-color:#e5e5e5;
+	width:60px;
+	height: 70px;
+	background-color:#efefef;
 	line-height:60px;
 	font-size:14px;
 	font-weight:500;
 	color:#4b4b4b;
 	border-right: 2px solid #279d79;
 	border-left: 2px solid #279d79;
+	border-bottom: 2px solid black;
 	float: right;
 	position: absolute;
 	right: 0;
