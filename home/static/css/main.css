@@ -225,7 +225,8 @@ nav ul.left {
 .dropdown-content .taboption {
 	line-height: 40px;
 	cursor: pointer;
-	transition: 0.3s
+	transition: 0.3s;
+	background-color: rgba(0,0,0,0.05);
 }
 /* change bg color on hover  */
 .dropdown-content .taboption:hover {
@@ -233,7 +234,7 @@ nav ul.left {
 }
 /* bg color for active */
 .dropdown-content .taboption.activeoption {
-	background-color: #ccc;
+	background-color: rgba(0,0,0,0.5);
 }
 .divider {
 	height: 1px;

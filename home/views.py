@@ -33,10 +33,10 @@ def updater(request):
     arena_page ="https://www.statarea.com/predictions/date/%s-%s-%s/starttime" % (today.year, today.month, today.day)
     featured_page ="https://www.statarea.com/toppredictions/date/%s-%s-%s/" % (today.year, today.month, today.day)
     page_urls = [[zulu_page], [arena_page], [featured_page]]
-    page_content1 = requester(page_urls[0], 1)
-    page_content2 = requester(page_urls[1], 2)
-    page_content3 = requester(page_urls[2], 3)
-    boiler(page_content1, page_content2, page_content3, today)
+    # page_content1 = requester(page_urls[0], 1)
+    # page_content2 = requester(page_urls[1], 2)
+    # page_content3 = requester(page_urls[2], 3)
+    # boiler(page_content1, page_content2, page_content3, today)
     return [today, request_from, match_date]
 
 
