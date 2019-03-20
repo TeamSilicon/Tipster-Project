@@ -204,13 +204,12 @@ nav .brand-logo {
 .right {
 	float: right !important;
 }
-nav ul li {
+nav .right div{
 	-webkit-transition: background-color .3s;
 	transition: background-color .3s;
 	float: left;
-	list-style: none;
 }
-nav ul.left {
+nav div a.left {
 	float: left;
 }
 /*For dropdown  */
