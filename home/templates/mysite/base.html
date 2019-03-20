@@ -21,8 +21,10 @@
       <nav class="nav-extended">
         <div class="nav-wrapper">
           <a href="/" class="brand-logo black-text left">TheBelters</a>
-          <!-- <span class="show-on-medium-and-up">The hustle never stops!</span> -->
+          {% comment %} <span class="show-on-medium-and-up">The hustle never stops!</span> {% endcomment %}
           <ul class="right">
+            <li><a href="/comingsoon/" class="black-text" title="Betslip" aria-label="BetSlip">{{ games.count }}<i class="feather" data-feather="list"></i></a></li>
+            <li><a href="/comingsoon/" class="black-text" title="Betslip" aria-label="BetSlip">{{ games.count }}<i class="feather" data-feather="list"></i></a></li>
             <li><a href="/comingsoon/" class="black-text" title="Betslip" aria-label="BetSlip">{{ games.count }}<i class="feather" data-feather="list"></i></a></li>
             <li><a href="#" class="black-text" title="Account" aria-label="Account"><i class="feather" data-feather="user"></i></a></li>
           </ul>
