@@ -22,7 +22,21 @@
       </div>
     </div>
     <div class="clr center">
-      {{ each.tip_odd }}
+      {% if each.outcome_text == 'homewin' or each.outcome_text == 'awaywin' or each.outcome_text == '12win' or each.outcome_text == '1Xwin' or each.outcome_text == 'X2win' %}
+      <i class="icon icon_success" title="won"></i>
+      {% endif %}
+      {% if each.outcome_text == 'drawwin' %}
+      <i class="icon icon_success" title="won"></i>
+      {% endif %}
+      {% if each.outcome_text == 'drawlose' or each.outcome_text == 'homelose' or each.outcome_text == 'awaylose' or each.outcome_text == '12lose' or each.outcome_text == '1Xlose' or each.outcome_text == 'X2lose' %}
+      <i class="icon icon_failure" title="lost"></i>
+      {% endif %}
+      {% if each.outcome_text == 'no_results_yet' %}
+      <i class="icon icon_pending" title="waiting"></i>
+      {% endif %}
+      {% if each.outcome_text == 'postponed' %}
+      <i class="icon icon_post" title="post"></i>
+      {% endif %}
     </div>
   </div>
   {% endfor %}
