@@ -8,7 +8,7 @@
     <meta name="Description" content="High accuracy games, For Serious Investors"/>
     <meta name="author" content="Dennis Peterson"/>
     <meta name="copyright" content="© Dennis Peterson 2015-2019"/>
-    <title>The Belters | All In One</title>
+    <title>The Belters | All In One </title>
     <link rel="shortcut icon" type="image/png" href="{% static 'css/favs/favicon.png' %}"/>
     <!--Font Family  -->
     <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
@@ -20,13 +20,13 @@
     <div class="navbar-fixed">
       <nav class="nav-extended">
         <div class="nav-wrapper">
-          <a href="/" class="brand-logo black-text left">TheBelters</a>
+          <a href="/" class="brand-logo black-text left">TheBelters <i class="icon-peace"></i></a>
           {% comment %} <span class="show-on-medium-and-up">The hustle never stops!</span> {% endcomment %}
           <ul class="right">
-            <li><a href="/comingsoon/" class="black-text" title="Betslip" aria-label="BetSlip">{{ games.count }}<i class="feather" data-feather="list"></i></a></li>
-            <li><a href="/comingsoon/" class="black-text" title="Betslip" aria-label="BetSlip">{{ games.count }}<i class="feather" data-feather="list"></i></a></li>
-            <li><a href="/comingsoon/" class="black-text" title="Betslip" aria-label="BetSlip">{{ games.count }}<i class="feather" data-feather="list"></i></a></li>
-            <li><a href="#" class="black-text" title="Account" aria-label="Account"><i class="feather" data-feather="user"></i></a></li>
+            <li><a href="/comingsoon/" class="black-text" title="Won_count" aria-label="won"><i class="icon-won hide-on-small-only space_in_icons green-text"></i><span class="hide-on-med-and-up space_in_icons green-text">W</span>{{ games.count }}</a></li>
+            <li><a href="/comingsoon/" class="black-text" title="Lost_count" aria-label="lost"><i class="icon-lost hide-on-small-only space_in_icons red-text"></i><span class="hide-on-med-and-up space_in_icons red-text">L</span>{{ games.count }}</a></li>
+            <li><a href="/comingsoon/" class="black-text" title="Betslip" aria-label="BetSlip"><i class="icon-list"></i></a></li>
+            <li><a href="#" class="black-text" title="Account" aria-label="Account"><i class="icon-prof"></i></a></li>
           </ul>
         </div>
         {% block nav-content %}
@@ -43,20 +43,20 @@
     <div class="navigation">
       <ul class="tabs">
         <li class="tab"><a target="_self" href="{% url 'today' %}" title="All Games" class="black-text{% if '/' == request.path or '/yesterday/' == request.path or '/tomorrow/' == request.path %} active{% endif %}">
-          <i class="feather" data-feather="home"></i><span class="hide-on-small-only">All Games</span></a>
+          <i class="icon-home"></i><span class="hide-on-small-only">All Games</span></a>
         </li>
         <li class="tab"><a target="_self" href="{% url 'goalgoal' %}" title="G-G" class="black-text{% if '/goalgoal/' == request.path or request.path == '/goalgoal/today/' or request.path == '/goalgoal/yesterday/' or request.path == '/goalgoal/tomorrow/' %} active{% endif %}">
-          <i class="feather hide-on-small-only" style="color:#DB1A25" data-feather="heart"></i>G-G</a>
+          <i class="icon-featured hide-on-small-only" style="color:#DB1A25"></i>G - G</a>
         </li>
         <li class="tab"><a target="_self" href="{% url 'featured' %}" title="Featured" class="black-text{% if '/featured/' == request.path or request.path == '/featured/today/' or request.path == '/featured/yesterday/' or request.path == '/featured/tomorrow/' %} active{% endif %}">
-          <i class="feather" style="color:#DB1A25" data-feather="zap"></i><span class="hide-on-small-only">Featured</span></a>
+          <i class="icon-hot" style="color:#DB1A25"></i><span class="hide-on-small-only">Featured</span></a>
         </li>
         <li class="tab"><a target="_self" href="{% url 'jackpot' %}" title="Jackpot" class="black-text{% if '/jackpot/' == request.path %} active{% endif %}" >
-          <i class="feather hide-on-small-only" style="color:#73D216" data-feather="target"></i>Jackpot</a>
+          <i class="icon-jackpot" style="color:#73D216"></i><span class="hide-on-small-only">Jackpot</span></a>
         </li>
         <li class="tab" id="showTips">
           <a target="_self" href="{% url 'over' %}" title="Over" class="black-text{% if '/over/' == request.path or request.path == '/over/today/' or request.path == '/over/yesterday/' or request.path == '/over/tomorrow/' %} active{% endif %}">
-            <i class="feather" data-feather="plus"></i>
+            <i class="icon-over"></i>
             <span class="hide-on-small-only">Over Tips</span>
           </a>
         </li>
@@ -64,9 +64,6 @@
     </div>
     <!-- For optimized loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- feather icons -->
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-
     <!--custom js-->
     <script type="text/javascript">
 
@@ -75,8 +72,6 @@
       elem.style.display = elem.style.display == "block" ? "none" : "block";
     }
     $(document).ready(function(){
-      //for feather Icons
-      feather.replace();
       $("li.tab").on("click", function(){
         // Get all elements with class="tab" and remove the class "active"
         var tablinks = $('.tab a');

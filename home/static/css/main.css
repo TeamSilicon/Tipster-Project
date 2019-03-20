@@ -4,22 +4,102 @@
 	padding: 0;
 	text-decoration: none;
 }
+/* custom icons  */
+@font-face {
+	font-family: 'icomoon';
+	src:  url('../fonts/icomoon.eot?21t4w6');
+	src:  url('../fonts/icomoon.eot?21t4w6#iefix') format('embedded-opentype'),
+	url('../fonts/icomoon.ttf?21t4w6') format('truetype'),
+	url('../fonts/icomoon.woff?21t4w6') format('woff'),
+	url('../fonts/icomoon.svg?21t4w6#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'icomoon' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	font-size: 27px;
+	vertical-align: middle;
+	padding:0 6px 0 0;
+
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-jackpot:before {
+	content: "\e90a";
+}
+.icon-hot:before {
+	content: "\e900";
+}
+.icon-peace:before {
+	content: "\e901";
+	font-size: 24px;
+}
+.icon-check:before {
+	content: "\e902";
+}
+.icon-home:before {
+	content: "\e903";
+}
+.icon-list:before {
+	content: "\e904";
+	padding: 0 2px 0 8px;
+	font-size: 29px;
+}
+.icon-over:before {
+	content: "\e905";
+}
+.icon-search:before {
+	content: "\e906";
+}
+.icon-share:before {
+	content: "\e907";
+}
+.icon-remove:before {
+	content: "\e908";
+}
+.icon-featured:before {
+	content: "\e909";
+}
+.icon-prof:before {
+	content: "\f007";
+	font-size: 30px;
+	padding: 0 8px 0 4px;
+}
+.icon-fire:before {
+	content: "\e9a9";
+}
+.icon-won:before {
+	content: "\e9eb";
+	font-size: 24px;
+}
+.icon-lost:before {
+	content: "\e9fb";
+	font-size: 24px;
+}
+.icon-cross:before {
+	content: "\ea0f";
+}
+.space_in_icons {
+	padding: 0 4px 0 6px;
+}
+/* End of custome icons */
 body{
 	font-family: 'Play', sans-serif;
 	font-size:1em;
 	background-color: #e5e5e5;
 
-}
-.feather {
-	width: 24px;
-	height: 24px;
-	stroke: currentColor;
-	stroke-width: 2;
-	stroke-linecap: round;
-	stroke-linejoin: round;
-	fill: none;
-	padding-right: 10px;
-	vertical-align: middle;
 }
 .navbar-fixed {
 	position: relative;
@@ -67,14 +147,27 @@ nav a {
 .black {
 	background-color: #FFFFFF !important;
 }
+.green {
+	background-color: #4CAF50 !important;
+}
 .black-text {
 	color: #000000 !important;
+}
+.green-text {
+	color: #4CAF50 !important;
 }
 .white {
 	background-color: #FFFFFF !important;
 }
 .white-text {
 	color: #FFFFFF !important;
+}
+.red {
+	background-color: #F44336 !important;
+}
+
+.red-text {
+	color: #E3452A !important;
 }
 /*  */
 nav .nav-wrapper {
@@ -202,6 +295,11 @@ Media Query Classes
 	}
 	nav .brand-logo.left {
 		font-size: 1.3rem;
+	}
+}
+@media only screen and (min-width: 601px) {
+	.hide-on-med-and-up {
+		display: none !important;
 	}
 }
 @media only screen and (max-width: 992px) {
