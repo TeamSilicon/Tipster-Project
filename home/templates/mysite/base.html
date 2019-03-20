@@ -23,8 +23,8 @@
           <a href="/" class="brand-logo black-text left">TheBelters <i class="icon-peace"></i></a>
           {% comment %} <span class="show-on-medium-and-up">The hustle never stops!</span> {% endcomment %}
           <ul class="right">
-            <li><a href="/comingsoon/" class="black-text" title="Won_count" aria-label="won"><i class="icon-won hide-on-small-only space_in_icons green-text"></i><span class="hide-on-med-and-up space_in_icons green-text">W</span>{{ games.count }}</a></li>
-            <li><a href="/comingsoon/" class="black-text" title="Lost_count" aria-label="lost"><i class="icon-lost hide-on-small-only space_in_icons red-text"></i><span class="hide-on-med-and-up space_in_icons red-text">L</span>{{ games.count }}</a></li>
+            <li><span class="black-text" title="Won_count" aria-label="won"><i class="icon-won hide-on-small-only space_in_icons green-text"></i><span class="hide-on-med-and-up space_in_icons green-text">W</span><span class="won_count"></span></span></li>
+            <li><span class="black-text" title="Lost_count" aria-label="lost"><i class="icon-lost hide-on-small-only space_in_icons red-text"></i><span class="hide-on-med-and-up space_in_icons red-text">L</span><span class="lost_count"></span></span></li>
             <li><a href="/comingsoon/" class="black-text" title="Betslip" aria-label="BetSlip"><i class="icon-list"></i></a></li>
             <li><a href="#" class="black-text" title="Account" aria-label="Account"><i class="icon-prof"></i></a></li>
           </ul>
@@ -106,7 +106,11 @@
   <script>
   $(window).on('load', function(){
     $('#over25').click();
-  })
+  });
+  won_count = $('.icon_success').length
+  lost_count = $('.icon_failure').length
+  $('.won_count').html(won_count);
+  $('.lost_count').html(lost_count);
   </script>
   {% comment %} <script type="text/javascript" src="{% static 'js/main.js' %}"></script> {% endcomment %}
   </body>
