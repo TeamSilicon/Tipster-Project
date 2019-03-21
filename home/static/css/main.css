@@ -105,7 +105,7 @@
   content: "\f08b";
 }
 .space_in_icons {
-	padding: 0 4px 0 6px;
+	padding: 0 8px 0 6px;
 }
 /* End of custome icons */
 body{
@@ -291,7 +291,7 @@ div.submenu {
 	position: fixed;
 	height: 100%;
 	background: rgba(0, 0, 0, 0.9);
-	z-index: 999;
+	z-index: 200;
 	top: 0;
   left: 0;
   right: 0;
@@ -374,7 +374,7 @@ Media Query Classes
 	}
 }
 /* main body css */
-body .wrapper{
+body .wrapper, betlist{
 	padding-top: 49px;
 	padding-bottom: 50px;
 	border-bottom-left-radius:5px;
@@ -493,13 +493,20 @@ body .wrapper{
 .forecasts__list.hidden{
 	display: none;
 }
-.forecasts__list .nothing{
-	background: url(assets/nothing_to_show.jpg) 50% 50% no-repeat;
-	background-size: cover ;
-	position: fixed;
+.nothing {
 	height:100vh;
+	background: #efefef;
 	width: 100%;
 
+}
+.nothing .text {
+	top: 50%;
+	left: 40%;
+	position: absolute;
+	font-size: 30px;
+	color: black;
+	transform: translate(-50% -50%);
+	-ms-transform: translate(-50% -50%);
 }
 .forecasts__list.visible{
 	display: block;

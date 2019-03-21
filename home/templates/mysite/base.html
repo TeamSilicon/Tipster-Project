@@ -25,8 +25,8 @@
         <div class="right">
           <div><span class="black-text" title="Won_count" aria-label="won"><i class="icon-won hide-on-small-only space_in_icons green-text"></i><span class="hide-on-med-and-up space_in_icons green-text">W</span><span class="won_count"></span></span></div>
           <div><span class="black-text" title="Lost_count" aria-label="lost"><i class="icon-lost hide-on-small-only space_in_icons red-text"></i><span class="hide-on-med-and-up space_in_icons red-text">L</span><span class="lost_count"></span></span></div>
-          <div class="black-text betslip" onclick="displayer('.betslip', '.betlist')" id="0"><i class="icon-list"></i></div>
-          <div class="black-text account" onclick="displayer('.account', '.submenu')" id="0"><i class="icon-prof"></i></div>
+          <div onclick="displayer('.betlist')" class="black-text betslip" id="0"><i class="icon-list space_in_icons"></i><span class="betlist_count"></span> </div>
+          <div onclick="displayer('.submenu')" class="black-text account" id="0"><i class="icon-prof space_in_icons"></i></div>
           <div class="submenu">
             <div class="root">
               <div>
@@ -52,9 +52,7 @@
       {% endblock %}
     </nav>
   </div>
-  <div class="betlist">
-
-  </div>
+  <div class="betlist"></div>
   {% comment %} End of navbar {% endcomment %}
   <!--main content  -->
   <div class="wrapper">
@@ -129,8 +127,8 @@
   $(window).on('load', function(){
     $('#over25').click();
   });
-  won_count = $('.icon_success').length
-  lost_count = $('.icon_failure').length
+  var won_count = $('.icon_success').length
+  var lost_count = $('.icon_failure').length
   $('.won_count').html(won_count);
   $('.lost_count').html(lost_count);
   $(document).ready(function()
@@ -146,18 +144,19 @@
     });
   });
   // for  menu/block toggle
-  function displayer(source, target) {
-    $(source).on('click', function(){
-      var X = $(this).attr('id');
-      if(X==1){
-        $(target).hide();
-        $(this).attr('id', '0');
-      }else {
-        $(target).show();
-        $(this).attr('id', '1');
-      }
-    });
+  function displayer(target) {
+    var X = $(this).attr('id');
+    if(X==1){
+      $(target).hide();
+      $(this).attr('id', '0');
+    }else {
+      $(target).show();
+      $(this).attr('id', '1');
+    }
   }
+  // getting total items in betlist
+  betlist_count = $('.betlist forecasts__list').length
+  $('.betlist_count').html(betlist_count)
 </script>
 
 {% comment %} <script type="text/javascript" src="{% static 'js/main.js' %}"></script> {% endcomment %}

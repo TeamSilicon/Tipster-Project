@@ -27,6 +27,7 @@
     <span class="forecasts__coefficient center">Odds</span>
   </div>
   <div class="forecasts__list">
+    {% if games.count != 0 %}
     {% for game in games %}
     <div class="forecasts__item" id="0">
       <h4 class="forecasts__teams">
@@ -62,6 +63,9 @@
       <span class="forecasts__coeff center">{{ game.tip_odd }}</span>
     </div>
     {% endfor %}
+    {% else %}
+    <div class="nothing"> <div class="text">Nothing to Display!</div></div>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

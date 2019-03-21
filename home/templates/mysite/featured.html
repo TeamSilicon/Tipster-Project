@@ -11,6 +11,7 @@
 {% endblock %}
 {% block content %}
 <div class="wrap">
+  {% if games.count != 0 %}
   {% for each in games %}
   <div class="item">
     <div class="flag center"><img src="{% static 'css/assets/flag_default.png' %}"></div>
@@ -40,5 +41,8 @@
     </div>
   </div>
   {% endfor %}
+  {% else %}
+  <div class="nothing"> <div class="text">Nothing to Display!</div></div>
+  {% endif %}
 </div>
 {% endblock %}
