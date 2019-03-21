@@ -25,8 +25,8 @@
         <div class="right">
           <div><span class="black-text" title="Won_count" aria-label="won"><i class="icon-won hide-on-small-only space_in_icons green-text"></i><span class="hide-on-med-and-up space_in_icons green-text">W</span><span class="won_count"></span></span></div>
           <div><span class="black-text" title="Lost_count" aria-label="lost"><i class="icon-lost hide-on-small-only space_in_icons red-text"></i><span class="hide-on-med-and-up space_in_icons red-text">L</span><span class="lost_count"></span></span></div>
-          <div><a href="/comingsoon/" class="black-text" title="Betslip" aria-label="BetSlip"><i class="icon-list"></i></a></div>
-          <div class="black-text account" id="0"><i class="icon-prof"></i></div>
+          <div class="black-text betslip" onclick="displayer('.betslip', '.betlist')" id="0"><i class="icon-list"></i></div>
+          <div class="black-text account" onclick="displayer('.account', '.submenu')" id="0"><i class="icon-prof"></i></div>
           <div class="submenu">
             <div class="root">
               <div>
@@ -51,6 +51,9 @@
       {% block nav-content %}
       {% endblock %}
     </nav>
+  </div>
+  <div class="betlist">
+
   </div>
   {% comment %} End of navbar {% endcomment %}
   <!--main content  -->
@@ -130,22 +133,33 @@
   lost_count = $('.icon_failure').length
   $('.won_count').html(won_count);
   $('.lost_count').html(lost_count);
-  // for  menu dropdown
   $(document).ready(function()
   {
-    $('.account').on('click', function(){
-      var X = $(this).attr('id');
-      if(X==1){
-        $('.submenu').hide();
+    $('.forecasts__item').on('dblclick', function(){
+      if($(this).attr('id') == '1'){
+        $(this).removeClass('is_selected');
         $(this).attr('id', '0');
-      }else {
-        $(".submenu").show();
+      }else{
+        $(this).addClass('is_selected');
         $(this).attr('id', '1');
       }
     });
   });
-  </script>
+  // for  menu/block toggle
+  function displayer(source, target) {
+    $(source).on('click', function(){
+      var X = $(this).attr('id');
+      if(X==1){
+        $(target).hide();
+        $(this).attr('id', '0');
+      }else {
+        $(target).show();
+        $(this).attr('id', '1');
+      }
+    });
+  }
+</script>
 
-  {% comment %} <script type="text/javascript" src="{% static 'js/main.js' %}"></script> {% endcomment %}
+{% comment %} <script type="text/javascript" src="{% static 'js/main.js' %}"></script> {% endcomment %}
 </body>
 </html>

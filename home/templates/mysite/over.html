@@ -29,7 +29,7 @@
   <div class="forecasts__list hidden">
     {% if over35.count != 0 %}
     {% for game in over35 %}
-    <div class="forecasts__item">
+    <div class="forecasts__item" id="0">
       <h4 class="forecasts__teams">
       {{ game.teams }}
       </h4>
@@ -70,7 +70,7 @@
   <div class="forecasts__list hidden">
     {% if over25.count != 0 %}
     {% for game in over25 %}
-    <div class="forecasts__item">
+    <div class="forecasts__item" id="0">
       <h4 class="forecasts__teams">
         {{ game.teams }}
       </h4>
@@ -111,7 +111,7 @@
   <div class="forecasts__list hidden">
     {% if over15.count != 0 %}
     {% for game in over15 %}
-    <div class="forecasts__item">
+    <div class="forecasts__item" id="0">
       <h4 class="forecasts__teams">
         {{ game.teams }}
       </h4>

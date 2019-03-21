@@ -285,6 +285,20 @@ div.submenu {
 	height: 1px;
 }
 /*End of dropdown  */
+/* betlist modal */
+.betlist {
+	width: 100%;
+	position: fixed;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.9);
+	z-index: 999;
+	top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+	display: none;
+	overflow: hidden;
+}
 /*Styling tabs  */
 .tabs {
 	position: relative;
@@ -426,9 +440,11 @@ body .wrapper{
 	border-top:1px solid rgba(32,35,95,.2);
 	padding-left:15px;
 }
+.forecasts__item.is_selected {
+  background-color: #ddd;
+}
 .forecasts__item:nth-child(odd){
 	border-top:1px solid green;
-	/* border-bottom:1px solid green; */
 
 }
 .forecasts__teams{
