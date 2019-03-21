@@ -22,27 +22,30 @@
       <div class="nav-wrapper">
         <a href="/" class="brand-logo black-text left">TheBelters <i class="icon-peace"></i></a>
         {% comment %} <span class="show-on-medium-and-up">The hustle never stops!</span> {% endcomment %}
-        <div class="right dropdown">
+        <div class="right">
           <div><span class="black-text" title="Won_count" aria-label="won"><i class="icon-won hide-on-small-only space_in_icons green-text"></i><span class="hide-on-med-and-up space_in_icons green-text">W</span><span class="won_count"></span></span></div>
           <div><span class="black-text" title="Lost_count" aria-label="lost"><i class="icon-lost hide-on-small-only space_in_icons red-text"></i><span class="hide-on-med-and-up space_in_icons red-text">L</span><span class="lost_count"></span></span></div>
           <div><a href="/comingsoon/" class="black-text" title="Betslip" aria-label="BetSlip"><i class="icon-list"></i></a></div>
-          <div><a href="#" class="black-text" title="Account" aria-label="Account"><i class="icon-prof"></i></a></div>
-          {% comment %} <div class="submenu" style="display: none; ">
-            <ul class="root">
-              <li >
-                <a href="#" >Dashboard</a>
-              </li>
-              <li >
-                <a href="#" >Profile</a>
-              </li>
-              <li >
-                <a href="#">Settings</a>
-              </li>
-              <li>
-                <a href="#">Sign Out</a>
-              </li>
-            </ul>
-          </div> {% endcomment %}
+          <div class="black-text account" id="0"><i class="icon-prof"></i></div>
+          <div class="submenu">
+            <div class="root">
+              <div>
+                <a href="#"><i class="icon-prof"></i>Profile</a>
+              </div>
+              <div>
+                <a href="#"><i class="icon-setting"></i>Settings</a>
+              </div>
+              <div>
+                <a href="#"><i class="icon-share"></i>Share</a>
+              </div>
+              <div>
+                <a href="#"><i class="icon-feedback"></i>Send Feedback</a>
+              </div>
+              <div>
+                <a href="#"><i class="icon-sign-out"></i>Sign Out</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       {% block nav-content %}
@@ -127,7 +130,22 @@
   lost_count = $('.icon_failure').length
   $('.won_count').html(won_count);
   $('.lost_count').html(lost_count);
+  // for  menu dropdown
+  $(document).ready(function()
+  {
+    $('.account').on('click', function(){
+      var X = $(this).attr('id');
+      if(X==1){
+        $('.submenu').hide();
+        $(this).attr('id', '0');
+      }else {
+        $(".submenu").show();
+        $(this).attr('id', '1');
+      }
+    });
+  });
   </script>
+
   {% comment %} <script type="text/javascript" src="{% static 'js/main.js' %}"></script> {% endcomment %}
 </body>
 </html>

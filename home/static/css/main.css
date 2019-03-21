@@ -73,7 +73,7 @@
 	content: "\e909";
 }
 .icon-prof:before {
-	content: "\f007";
+	content: "\e90d";
 	font-size: 30px;
 	padding: 0 8px 0 4px;
 }
@@ -90,6 +90,19 @@
 }
 .icon-cross:before {
 	content: "\ea0f";
+}
+.icon-setting:before {
+  content: "\e90b";
+}
+.icon-feedback:before {
+  content: "\e90c";
+	font-size: 24px;
+}
+.icon-mail:before {
+  content: "\f003";
+}
+.icon-sign-out:before {
+  content: "\f08b";
 }
 .space_in_icons {
 	padding: 0 4px 0 6px;
@@ -207,10 +220,37 @@ nav .brand-logo {
 nav .right div{
 	-webkit-transition: background-color .3s;
 	transition: background-color .3s;
+	cursor: pointer;
 	float: left;
 }
 nav div a.left {
 	float: left;
+}
+div.submenu {
+	position: absolute;
+	z-index: 100;
+	width: 165px;
+	margin-top:65px;
+	display: none;
+	right: 0;
+	background: white;
+	border-radius: 6px;
+}
+.submenu div a {
+	width: 165px;
+	border-bottom: 1px solid #ddd;
+	color: #555555;
+	display: block;
+	font-family: arial;
+	font-weight: bold;
+	padding: 4px;
+	cursor: pointer;
+	text-decoration: none;
+}
+.submenu div a:hover {
+	background: rgba(0,0,0,0.1);
+	color: black;
+	text-decoration: none;
 }
 /*For dropdown  */
 .dropdown-content {
@@ -295,6 +335,9 @@ Media Query Classes
 	}
 	nav .brand-logo.left {
 		font-size: 1.3rem;
+	}
+	div.submenu {
+		margin-top: 55px;
 	}
 }
 @media only screen and (min-width: 601px) {
