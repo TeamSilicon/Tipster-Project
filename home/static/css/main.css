@@ -156,6 +156,9 @@ nav a {
 	.navbar-fixed {
 		height: 64px;
 	}
+	.betlist {
+		margin-top: 59px;
+	}
 }
 .black {
 	background-color: #FFFFFF !important;
@@ -290,7 +293,10 @@ div.submenu {
 	width: 100%;
 	position: fixed;
 	height: 100%;
-	background: rgba(0, 0, 0, 0.9);
+	background: url(assets/bg4.jpg) 50% 50% no-repeat;
+	background-size: cover;
+	/* background: rgba(0, 0, 0, 0.9); */
+	margin-top: 68px;
 	z-index: 200;
 	top: 0;
   left: 0;
@@ -374,7 +380,7 @@ Media Query Classes
 	}
 }
 /* main body css */
-body .wrapper, betlist{
+body .wrapper, .betlist {
 	padding-top: 49px;
 	padding-bottom: 50px;
 	border-bottom-left-radius:5px;
@@ -425,7 +431,7 @@ body .wrapper, betlist{
 	text-align: center;
 }
 /* Game card list  */
-.forecasts__item{
+.forecasts__item {
 	position:relative;
 	height:60px;
 	display:-webkit-box;
@@ -440,8 +446,11 @@ body .wrapper, betlist{
 	border-top:1px solid rgba(32,35,95,.2);
 	padding-left:15px;
 }
-.forecasts__item.is_selected {
+.forecasts__list .forecasts__item.is_selected {
   background-color: #ddd;
+}
+.betlist .forecasts__item {
+background: ghostwhite;
 }
 .forecasts__item:nth-child(odd){
 	border-top:1px solid green;

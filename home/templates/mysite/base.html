@@ -133,14 +133,20 @@
   $('.lost_count').html(lost_count);
   $(document).ready(function()
   {
-    $('.forecasts__item').on('dblclick', function(){
+    $('.forecasts__list .forecasts__item').on('dblclick', function(){
       if($(this).attr('id') == '1'){
+        $('.betlist').remove(this);
         $(this).removeClass('is_selected');
         $(this).attr('id', '0');
       }else{
+        $('.betlist').append(this);
         $(this).addClass('is_selected');
         $(this).attr('id', '1');
+        // console.log($(this));
       }
+      // getting total items in betlist
+      betlist_count = $('.betlist .forecasts__item.is_selected').length;
+      $('.betlist_count').html(betlist_count);
     });
   });
   // for  menu/block toggle
@@ -154,9 +160,6 @@
       $(this).attr('id', '1');
     }
   }
-  // getting total items in betlist
-  betlist_count = $('.betlist forecasts__list').length
-  $('.betlist_count').html(betlist_count)
 </script>
 
 {% comment %} <script type="text/javascript" src="{% static 'js/main.js' %}"></script> {% endcomment %}
