@@ -141,17 +141,34 @@
         $('.betlist div').each(function() {
           if ($(this).attr('id') == id){
             $(this).remove();
-
           }
         });
         $(this).attr('id', '');
+        $(this).children('span.forecasts__coeff').removeClass("icon-check");
 
       }else{
         $(this).addClass('is_selected');
         $(this).attr('id', index);
         $('.betlist').append($(this).clone());
-        // console.log($(this));
+        // adding selected icon
+        $(this).children('span.forecasts__coeff').addClass("icon-check");
+
       }
+      // adding delete icon
+      $('.betlist .forecasts__item.is_selected').children('span.forecasts__coeff').addClass("icon-remove");
+      // Remove Items From betslip
+      $('span.forecasts__coeff.icon-remove').on('dblclick',function(){
+        $( this ).parent().remove();
+        // $('.forecasts div').each(function() {
+          // if ($(this).attr('id') == id){
+            // console.log($(id));
+            //to work on removing items from betslip and removing selected class
+          // }
+        // });
+        // getting total items in betlist
+        betlist_count = $('.betlist .forecasts__item.is_selected').length;
+        $('.betlist_count').html(betlist_count);
+      });
       // getting total items in betlist
       betlist_count = $('.betlist .forecasts__item.is_selected').length;
       $('.betlist_count').html(betlist_count);
@@ -168,6 +185,11 @@
       $(this).attr('id', '1');
     }
   }
+  $('.remove').click(function(){
+    event.preventDefault();
+    $(this).hide(400);
+
+  });
 </script>
 
 {% comment %} <script type="text/javascript" src="{% static 'js/main.js' %}"></script> {% endcomment %}

@@ -68,6 +68,7 @@
 }
 .icon-remove:before {
 	content: "\e908";
+	cursor: pointer;
 }
 .icon-featured:before {
 	content: "\e909";
@@ -522,9 +523,28 @@ body .wrapper, .betlist {
 }
 .forecasts__result{
 	position:absolute;
-	right:85px;top:50%;
+	right:85px;
+	top:50%;
 	-webkit-transform:translateY(-50%);
 	transform:translateY(-50%)
+}
+.icon-remove {
+	text-decoration: none;
+	font-family: "Montserrat", sans-serif;
+	color: #000000;
+	font-weight: bold;
+	background: #e0e0e0;
+	font-size: 1.75em;
+	display: inline-block;
+	-webkit-transition: all 0.25s linear;
+	-moz-transition: all 0.25s linear;
+	-ms-transition: all 0.25s linear;
+	-o-transition: all 0.25s linear;
+	transition: all 0.25s linear;
+}
+.icon-remove:hover {
+
+	background: #f30;
 }
 .calc{
 	position:relative;
