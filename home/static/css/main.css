@@ -156,9 +156,6 @@ nav a {
 	.navbar-fixed {
 		height: 64px;
 	}
-	.betlist {
-		margin-top: 59px;
-	}
 }
 .black {
 	background-color: #FFFFFF !important;
@@ -358,6 +355,9 @@ Media Query Classes
 	}
 	div.submenu {
 		margin-top: 55px;
+	}
+	.betlist {
+		margin-top: 59px;
 	}
 }
 @media only screen and (min-width: 601px) {

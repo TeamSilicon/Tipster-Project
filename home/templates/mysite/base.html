@@ -138,8 +138,11 @@
       var id = $(this).attr('id');
       if(id != ''){
         $(this).removeClass('is_selected');
-        $(this).attr('id', index);
-        console.log($('.betlist #0'));
+        console.log(this);
+        if($('.betlist div').attr('id') == id){
+          $('.betlist div').remove();
+        }
+        $(this).attr('id', '');
 
       }else{
         $(this).addClass('is_selected');
