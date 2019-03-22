@@ -134,14 +134,17 @@
   $(document).ready(function()
   {
     $('.forecasts__list .forecasts__item').on('dblclick', function(){
-      if($(this).attr('id') == '1'){
-        $('.betlist').remove(this);
+      var index = $('.forecasts__list .forecasts__item').index(this);
+      var id = $(this).attr('id');
+      if(id != ''){
         $(this).removeClass('is_selected');
-        $(this).attr('id', '0');
+        $(this).attr('id', index);
+        console.log($('.betlist #0'));
+
       }else{
-        $('.betlist').append(this);
         $(this).addClass('is_selected');
-        $(this).attr('id', '1');
+        $(this).attr('id', index);
+        $('.betlist').append($(this).clone());
         // console.log($(this));
       }
       // getting total items in betlist
