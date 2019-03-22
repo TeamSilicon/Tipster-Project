@@ -92,17 +92,17 @@
 	content: "\ea0f";
 }
 .icon-setting:before {
-  content: "\e90b";
+	content: "\e90b";
 }
 .icon-feedback:before {
-  content: "\e90c";
+	content: "\e90c";
 	font-size: 24px;
 }
 .icon-mail:before {
-  content: "\f003";
+	content: "\f003";
 }
 .icon-sign-out:before {
-  content: "\f08b";
+	content: "\f08b";
 }
 .space_in_icons {
 	padding: 0 8px 0 6px;
@@ -296,9 +296,9 @@ div.submenu {
 	margin-top: 68px;
 	z-index: 200;
 	top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	display: none;
 	overflow: hidden;
 }
@@ -447,10 +447,10 @@ body .wrapper, .betlist {
 	padding-left:15px;
 }
 .forecasts__list .forecasts__item.is_selected {
-  background-color: #ddd;
+	background-color: #ddd;
 }
 .betlist .forecasts__item {
-background: ghostwhite;
+	background: ghostwhite;
 }
 .forecasts__item:nth-child(odd){
 	border-top:1px solid green;
@@ -510,7 +510,7 @@ background: ghostwhite;
 }
 .nothing .text {
 	top: 50%;
-	left: 40%;
+	left: 50%;
 	position: absolute;
 	font-size: 30px;
 	color: black;
