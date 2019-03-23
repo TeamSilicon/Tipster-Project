@@ -4,9 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from home.models import AllGames, Featured, TipGG, Over35, Over25, Over15
 from home.jackpot import possible_combinations
-from home.boilerplate import boiler
 from django.http import HttpResponse
-from home.fetcher import requester
 
 
 def topnavselector():
@@ -29,14 +27,6 @@ def updater(request):
         today = topnavselector() + timedelta(days=-1)
         request_from = 'yesterday'
     match_date = today.strftime("%d-%m").replace('-', '/')  # date when the match is played in / formart
-    zulu_page = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
-    arena_page ="https://www.statarea.com/predictions/date/%s-%s-%s/starttime" % (today.year, today.month, today.day)
-    featured_page ="https://www.statarea.com/toppredictions/date/%s-%s-%s/" % (today.year, today.month, today.day)
-    page_urls = [[zulu_page], [arena_page], [featured_page]]
-    page_content1 = requester(page_urls[0], 1)
-    page_content2 = requester(page_urls[1], 2)
-    page_content3 = requester(page_urls[2], 3)
-    boiler(page_content1, page_content2, page_content3, today)
     return [today, request_from, match_date]
 
 
