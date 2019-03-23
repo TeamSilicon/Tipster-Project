@@ -1,10 +1,12 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
-from home.views import topnavselector
 from datetime import timedelta
 from home.boilerplate import boiler
 from home.fetcher import requester
+import datetime
 
-
+def topnavselector():
+    date = datetime.date.today() # to get current date yy-mm-dd
+    return date
 
 sched = BlockingScheduler()
 
