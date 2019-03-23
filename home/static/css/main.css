@@ -511,7 +511,7 @@ body .wrapper, .betlist {
 }
 .nothing .text {
 	top: 50%;
-	left: 50%;
+	left: 40%;
 	position: absolute;
 	font-size: 30px;
 	color: black;

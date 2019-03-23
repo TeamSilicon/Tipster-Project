@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.blocking import BlockingScheduler
 from home.views import topnavselector
 from datetime import timedelta
 from home.boilerplate import boiler
@@ -9,7 +9,7 @@ class Command(BaseCommand):
     help = 'Updates games in db'
 
     def handle(self, *args, **options):
-        sched = BackgroundScheduler()
+        sched = BlockingScheduler()
         print("nothing going on")
         @sched.scheduled_job('interval', minutes=1)
         def tester():
