@@ -12,8 +12,8 @@ class Command(BaseCommand):
         sched = BlockingScheduler()
         print("nothing going on")
         @sched.scheduled_job('interval', minutes=1)
-        def tester():
-            print("nothing going on from tester")
+        # def tester():
+            # print("nothing going on from tester")
         @sched.scheduled_job('interval', minutes=15)
         def update_games_today():
             today = topnavselector()
