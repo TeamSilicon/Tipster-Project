@@ -1,14 +1,9 @@
-from apscheduler.schedulers.blocking import BlockingScheduler
+from apscheduler.schedulers.background import BackgroundScheduler
+from home.views import topnavselector
 from datetime import timedelta
 from home.boilerplate import boiler
 from home.fetcher import requester
-import datetime
-
-def topnavselector():
-    date = datetime.date.today() # to get current date yy-mm-dd
-    return date
-
-sched = BlockingScheduler()
+sched = BackgroundScheduler()
 
 @sched.scheduled_job('interval', minutes=15)
 def update_games_today():
