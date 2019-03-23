@@ -3,6 +3,10 @@ from home.views import topnavselector
 from datetime import timedelta
 from home.boilerplate import boiler
 from home.fetcher import requester
+import django
+
+
+django.setup()
 
 sched = BackgroundScheduler()
 
