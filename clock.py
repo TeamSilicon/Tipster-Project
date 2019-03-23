@@ -1,14 +1,12 @@
-from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.blocking import BlockingScheduler
 from home.views import topnavselector
 from datetime import timedelta
 from home.boilerplate import boiler
 from home.fetcher import requester
-import django
 
 
-django.setup()
 
-sched = BackgroundScheduler()
+sched = BlockingScheduler()
 
 @sched.scheduled_job('interval', minutes=15)
 def update_games_today():
