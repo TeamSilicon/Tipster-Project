@@ -1,2 +1,2 @@
 web: gunicorn iCrawl.wsgi --log-file -
-clock: python clock.py
+clock: python clock.py --loglevel=INFO
