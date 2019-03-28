@@ -82,7 +82,7 @@
       <li class="tab"><a target="_self" href="{% url 'featured' %}" title="Featured" class="black-text{% if '/featured/' == request.path or request.path == '/featured/today/' or request.path == '/featured/yesterday/' or request.path == '/featured/tomorrow/' %} active{% endif %}">
         <i class="icon-hot" style="color:#DB1A25"></i><span class="hide-on-small-only">Featured</span></a>
       </li>
-      <li class="tab"><a target="_self" href="{% url 'jackpot' %}" title="Jackpot" class="black-text{% if '/jackpot/' == request.path %} active{% endif %}" >
+      <li class="tab"><a target="_self" href="{% url 'comingsoon' %}" title="Jackpot" class="black-text{% if '/jackpot/' == request.path %} active{% endif %}" >
         <i class="icon-jackpot" style="color:#73D216"></i><span class="hide-on-small-only">Jackpot</span></a>
       </li>
       <li class="tab" id="showTips">
