@@ -110,7 +110,7 @@
 }
 /* End of custome icons */
 body{
-	font-family: 'Play', sans-serif;
+	font-family: 'Rajdhani', sans-serif;
 	font-size:1em;
 	background-color: #e5e5e5;
 
@@ -242,7 +242,7 @@ div.submenu {
 	border-bottom: 1px solid #ddd;
 	color: #555555;
 	display: block;
-	font-family: arial;
+	font-family: 'Rajdhani', sans-serif;
 	font-weight: bold;
 	padding: 4px;
 	cursor: pointer;
@@ -530,7 +530,7 @@ body .wrapper, .betlist {
 }
 .icon-remove {
 	text-decoration: none;
-	font-family: "Montserrat", sans-serif;
+	font-family: 'Rajdhani', sans-serif;
 	color: #000000;
 	font-weight: bold;
 	background: #e0e0e0;
