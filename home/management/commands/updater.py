@@ -36,6 +36,7 @@ class Command(BaseCommand):
             page_content1 = requester(page_urls[0], 1)
             page_content2 = requester(page_urls[1], 2)
             page_content3 = requester(page_urls[2], 3)
+            print([page_content1, page_content2, page_content3, today])
             boiler(page_content1, page_content2, page_content3, today)
 
         @sched.scheduled_job('interval', hours=4)
