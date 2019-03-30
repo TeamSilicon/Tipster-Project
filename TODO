@@ -1,9 +1,10 @@
 
-Improve Code Structure, Optimize it and remove junk code(I really wrote this when I was new to Python and Web:P)
-Add Game Sites from 2 to 3
-Divide games into their respective categories i.e over 2.5, g-g etc
-Add Error Informer via mail
-Add time correcting technique
+~Improve Code Structure, Optimize it and remove junk code(I really wrote this when I was new to Python and Web:P)
+Add Game Sites from 2 to 3~ Done
+~Divide games into their respective categories i.e over 2.5, g-g etc done~
+~Add time correcting technique~ Done
+~Make a program to find the games with high probability of winning and group them in groups of 3~<br>
+~Figure Out how to automate the Betting Process and make it autonomous~ Done <br>
 Make a program to check whether am losing or winning(Give daily, report and graphs)
-Make a program to find the games with high probability of winning and group them in groups of 3
-Figure Out how to automate the Betting Process and make it autonomous
+Add Error Informer via mail.
+Make A Mobile Version.
