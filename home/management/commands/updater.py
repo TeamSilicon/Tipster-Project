@@ -26,7 +26,7 @@ class Command(BaseCommand):
             page_content3 = requester(page_urls[2], 3)
             boiler(page_content1, page_content2, page_content3, today)
 
-        @sched.scheduled_job('interval', hours=2)
+        @sched.scheduled_job('interval', minutes=2)
         def update_games_yest():
             today = topnavselector() + timedelta(days=-1)
             zulu_page = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
@@ -39,7 +39,7 @@ class Command(BaseCommand):
             # print([page_content1, page_content2, page_content3, today])
             boiler(page_content1, page_content2, page_content3, today)
 
-        @sched.scheduled_job('interval', hours=3)
+        @sched.scheduled_job('interval', minutes=1)
         def update_games_tom():
             today = topnavselector() + timedelta(days=1)
             zulu_page = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
