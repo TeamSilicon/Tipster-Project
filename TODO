@@ -8,3 +8,9 @@ Add Game Sites from 2 to 3~ Done
 Make a program to check whether am losing or winning(Give daily, report and graphs)
 Add Error Informer via mail.
 Make A Mobile Version.
+fix overflow error of games.
+Add Toasts
+Implement mail |sms system
+finish Jackpot section
+Improve the Efficiency of comparing games and remove the overflow
+Work on the UI/UX a little bit 
