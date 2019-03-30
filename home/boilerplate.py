@@ -21,13 +21,10 @@ def boiler(zulu_page, page, page2, today):
             if s.ratio() > 0.5:
                 if SequenceMatcher(None, zulu_arr[each][1], stat_arr[each2][1]).ratio() > 0.6:
                     # print("%s / %s  Efficiency %s" % (zulu_arr[each][4], stat_arr[each2][3], SequenceMatcher(None, zulu_arr[each][4], stat_arr[each2][3]).ratio()))
-                    if stat_arr[each2][3].strip() != "":
+                    if stat_arr[each2][3].strip() != "-:-":
                         res = stat_arr[each2][3]
                     else:
-                        if stat_arr[each2][3] == "":
-                            res = zulu_arr[each][3]
-                        else:
-                            res = stat_arr[each2][3]
+                        res = zulu_arr[each][3]
                     success_compr.append([zulu_arr[each][0],zulu_arr[each][1],"%s,%s" % (zulu_arr[each][2],stat_arr[each2][2]),res,stat_arr[each2][4],zulu_arr[each][5], zulu_arr[each][6], stat_arr[each2][7]])
                     # print("index for each %d" % each)
                     del zulu_arr[each]
