@@ -16,6 +16,7 @@ class Command(BaseCommand):
             # print("nothing going on from tester")
         @sched.scheduled_job('interval', minutes=7)
         def update_games_today():
+            print("Updating today Games")
             today = topnavselector()
             zulu_page = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
             arena_page ="https://www.statarea.com/predictions/date/%s-%s-%s/starttime" % (today.year, today.month, today.day)
@@ -28,6 +29,7 @@ class Command(BaseCommand):
 
         @sched.scheduled_job('interval', hours=2)
         def update_games_yest():
+            print("Updating Yesterday Games")
             today = topnavselector() + timedelta(days=-1)
             zulu_page = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
             arena_page ="https://www.statarea.com/predictions/date/%s-%s-%s/starttime" % (today.year, today.month, today.day)
@@ -41,6 +43,7 @@ class Command(BaseCommand):
 
         @sched.scheduled_job('interval', hours=3)
         def update_games_tom():
+            print("Updating Tomorrow Games")
             today = topnavselector() + timedelta(days=1)
             zulu_page = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
             arena_page ="https://www.statarea.com/predictions/date/%s-%s-%s/starttime" % (today.year, today.month, today.day)
