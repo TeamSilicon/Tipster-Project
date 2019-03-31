@@ -14,7 +14,7 @@ class Command(BaseCommand):
         # @sched.scheduled_job('interval', minutes=1)
         # def tester():
             # print("nothing going on from tester")
-        @sched.scheduled_job('interval', minutes=10)
+        @sched.scheduled_job('interval', minutes=7)
         def update_games_today():
             today = topnavselector()
             zulu_page = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
