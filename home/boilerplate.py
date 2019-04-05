@@ -9,7 +9,7 @@ def boiler(zulu_page, page, page2, today):
     stat_arr_orign = stat_arena(page, today)
     stat_arr = stat_arena(page, today)
     featured_arr = stat_arena(page2, today)
-    print("Games One length: %s\nGames two length: %s" % (len(zulu_arr), len(stat_arr)))
+    # print("Games One length: %s\nGames two length: %s" % (len(zulu_arr), len(stat_arr)))
     success_compr = []
     status = 0
     for each2 in range(len(stat_arr)):
@@ -43,9 +43,9 @@ def boiler(zulu_page, page, page2, today):
             stat_arr[each2] = 'remv'
             status = 0
         # print("Inner Loop remaining %d" % len(zulu_arr))
-    print("Games that could be compared are %d out of %d" % (len(success_compr), len(stat_arr)))
+    # print("Games that could be compared are %d out of %d" % (len(success_compr), len(stat_arr)))
     stat_arr_clean = [x for x in stat_arr if x!="remv"]
-    print("Games one length unmatched: %s\nGames two length unmatched: %s" %(len(zulu_arr), len(stat_arr_clean)))
+    # print("Games one length unmatched: %s\nGames two length unmatched: %s" %(len(zulu_arr), len(stat_arr_clean)))
     combined_games = zulu_arr + success_compr
     # + stat_arr_clean removed
     # for allgames
@@ -77,7 +77,7 @@ def boiler(zulu_page, page, page2, today):
                 'ft_results': each[3],
                 'outcome_text': each[6],
             })
-    print("allgames done")
+    # print("allgames done")
     # for tipGG
     for each in stat_arr_orign:
         outcome = outcome_case(each[6],each[3], 'bts')
@@ -135,7 +135,7 @@ def boiler(zulu_page, page, page2, today):
                     'ft_results': each[3],
                     'outcome_text': outcome
                 })
-    print("Big Thing done")
+    # print("Big Thing done")
     # for Featured Games
     for each in featured_arr:
         Featured.objects.update_or_create(
@@ -149,4 +149,4 @@ def boiler(zulu_page, page, page2, today):
                 'ft_results': each[3],
                 'outcome_text': each[6]
             })
-    print("Featured Games done")
+    # print("Featured Games done")

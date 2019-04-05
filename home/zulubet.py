@@ -17,7 +17,7 @@ def zulu_procedure(zulu_page, match_date):
                 try:
                     date, time = tr.select('td > noscript')[0].getText().split(",")
                 except ValueError:
-                    print("I have been fixed")
+                    # print("I have been fixed")
                     time = tr.select('td > noscript')[0].getText()
                 teams = tr.find_all('td')[1].getText().strip()
                 tip = tr.select("td > font > b")[0].getText()
@@ -54,8 +54,8 @@ def zulu_procedure(zulu_page, match_date):
                                # game date ,game time     ,   #tip         # score       ,    #names       ,   "game odds",        "results"
             games_collec.append([match_date, formatted_time, tip, score, teams, str(tip_odd).strip(), outcome, False])
 
-    print("%d Games could not be parsed" % len(error_games))
+    # print("%d Games could not be parsed" % len(error_games))
     # print(error_games)
-    print("Today games are " + str(games_number-len(error_games)))
+    # print("Today games are " + str(games_number-len(error_games)))
     return games_collec
 #         # send_mail(len(error_games))

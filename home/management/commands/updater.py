@@ -27,7 +27,7 @@ class Command(BaseCommand):
             page_content3 = requester(page_urls[2], 3)
             boiler(page_content1, page_content2, page_content3, today)
 
-        @sched.scheduled_job('interval', hours=2)
+        @sched.scheduled_job('interval', minutes=60)
         def update_games_yest():
             print("Updating Yesterday Games")
             today = topnavselector() + timedelta(days=-1)

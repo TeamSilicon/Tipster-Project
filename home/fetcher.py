@@ -32,7 +32,7 @@ def requester(page_url, index):
                 break
             except KeyboardInterrupt:
                 print("Someone closed the program")
-            print("Page %d done!!!. Proceeding to the next trial" % index)
+            # print("Page %d done!!!. Proceeding to the next trial" % index)
         if page_content != "":
             break
     return page_content
