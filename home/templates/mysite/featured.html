@@ -1,48 +1,71 @@
 {% extends 'mysite/base.html' %}
-{% load staticfiles %}
 {% block nav-content %}
 <div class="nav-content">
   <ul class="tabs tabs-transparent">
-    <li class="tab"><a target="_self" href="/featured/yesterday/" class="{% if request_tom == 'yesterday' %} active {% endif %} black-text">Yesterday</a></li>
-    <li class="tab"><a target="_self" href="/featured/today/" class="{% if request_tom == 'today' %} active {% endif %} black-text">Today</a></li>
-    <li class="tab"><a target="_self" href="/featured/tomorrow/" class="black-text {% if request_tom == 'tomorrow' %} active {% endif %}">Tomorrow</a></li>
+    <li class="tab"><a target="_self" href="/goalgoal/yesterday/" class="{% if request_tom == 'yesterday' %} active {% endif %} black-text">Yesterday</a></li>
+    <li class="tab"><a target="_self" href="/goalgoal/today/" class="{% if request_tom == 'today' %} active {% endif %} black-text">Today</a></li>
+    <li class="tab"><a target="_self" href="/goalgoal/tomorrow/" class="black-text {% if request_tom == 'tomorrow' %} active {% endif %}">Tomorrow</a></li>
   </ul>
 </div>
 {% endblock %}
 {% block content %}
-<div class="wrap">
-  {% if games.count != 0 %}
-  {% for each in games %}
-  <div class="item">
-    <div class="flag center"><img src="{% static 'css/assets/flag_default.png' %}"></div>
-    <div class="info">
-      <div class="name">{{ each.teams }}</div>
-      <div class="y">
-        <span><b>{{ each.time }}</b></span> Pick <span>{{ each.tip }}</span>
-        <span class="black-text">Result: {{ each.ft_results }}</span>
-      </div>
-    </div>
-    <div class="clr center">
-      {% if each.outcome_text == 'homewin' or each.outcome_text == 'awaywin' or each.outcome_text == '12win' or each.outcome_text == '1Xwin' or each.outcome_text == 'X2win' %}
-      <i class="icon icon_success" title="won"></i>
-      {% endif %}
-      {% if each.outcome_text == 'drawwin' %}
-      <i class="icon icon_success" title="won"></i>
-      {% endif %}
-      {% if each.outcome_text == 'drawlose' or each.outcome_text == 'homelose' or each.outcome_text == 'awaylose' or each.outcome_text == '12lose' or each.outcome_text == '1Xlose' or each.outcome_text == 'X2lose' %}
-      <i class="icon icon_failure" title="lost"></i>
-      {% endif %}
-      {% if each.outcome_text == 'no_results_yet' %}
-      <i class="icon icon_pending" title="waiting"></i>
-      {% endif %}
-      {% if each.outcome_text == 'postponed' %}
-      <i class="icon icon_post" title="post"></i>
-      {% endif %}
-    </div>
+<div class="forecasts">
+  <div class="forecasts__title">
+    <i class="icon icon_soccer"></i>
+    <span class="forecasts__sport">Football</span>
+    <!-- Getting Predicated Date From Url  -->
+    {% if request_tom == "yesterday" %}
+    <span class="forecasts__day">Yesterday</span>
+    {% endif %}
+    {% if request_tom == "today" %}
+    <span class="forecasts__day">Today</span>
+    {% endif %}
+    {% if request_tom == "tomorrow" %}
+    <span class="forecasts__day">Tomorrow</span>
+    {% endif %}
+    <span class="forecasts__day_num" style="letter-spacing: 2px;">{{ match_date }}</span>
+    <span class="forecasts__coefficient center">Odds</span>
   </div>
-  {% endfor %}
-  {% else %}
-  <div class="nothing"> <div class="text">Nothing to Display!</div></div>
-  {% endif %}
+  <div class="forecasts__list">
+    {% if games.count != 0 %}
+    {% for game in games %}
+    <div class="forecasts__item" id="">
+      <h4 class="forecasts__teams">
+        {{ game.teams }}
+      </h4>
+      <div class="forecasts__league">
+        <span class="forecasts__date"><b>{{ game.time }}</b></span>
+        <!-- tip  -->
+        <span>Pick <b><span>{{ game.tip_ov }}</span></b> </span>
+        <!-- Game Status text and icon -->
+        {% if game.outcome_text == 'homewin' or game.outcome_text == 'awaywin' or game.outcome_text == '12win' or game.outcome_text == '1Xwin' or game.outcome_text == 'X2win' %}
+        <span>Result: {{ game.ft_results }}</span> <b style="color: green;">WOOON</b>
+        <i class="forecasts__result icon icon_success" title="won"></i>
+        {% endif %}
+        {% if game.outcome_text == 'drawwin' %}
+        <span>Result: {{ game.ft_results }}</span> <b style="color: green;">WOOON</b>
+        <i class="forecasts__result icon icon_success" title="won"></i>
+        {% endif %}
+        {% if game.outcome_text == 'drawlose' or game.outcome_text == 'homelose' or game.outcome_text == 'awaylose' or game.outcome_text == '12lose' or game.outcome_text == '1Xlose' or game.outcome_text == 'X2lose' %}
+        <span>Result: {{ game.ft_results }}</span> <b style="color: red;">LOST</b>
+        <i class="forecasts__result icon icon_failure" title="lost"></i>
+        {% endif %}
+        {% if game.outcome_text == 'no_results_yet' %}
+        <span>Result: {{ game.ft_results }}</span>
+        <i class="forecasts__result icon icon_pending" title="waiting"></i>
+        {% endif %}
+        {% if game.outcome_text == 'postponed' %}
+        <span>Result: {{ game.ft_results }}</span> <b style="color: #000; text-decoration: line-through;">postponed</b>
+        <i class="forecasts__result icon icon_post" title="post"></i>
+        {% endif %}
+      </div>
+      <!--Game odd  -->
+      <span class="forecasts__coeff center">{{ game.tip_odd }}</span>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="nothing"> <div class="text">Nothing to Display!</div></div>
+    {% endif %}
+  </div>
 </div>
 {% endblock %}

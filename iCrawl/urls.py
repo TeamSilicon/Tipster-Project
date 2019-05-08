@@ -8,5 +8,5 @@ urlpatterns = [
     url(r'', include('home.urls')),
 ]
 
-handler404 = my_views.error_404
+# handler404 = my_views.error_404
 handler500 = my_views.error_500
