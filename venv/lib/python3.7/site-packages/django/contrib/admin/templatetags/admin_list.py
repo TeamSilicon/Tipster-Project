@@ -32,14 +32,16 @@ def paginator_number(cl, i):
     Generate an individual page index link in a paginated list.
     """
     if i == DOT:
-        return '... '
+        return '… '
     elif i == cl.page_num:
         return format_html('<span class="this-page">{}</span> ', i + 1)
     else:
-        return format_html('<a href="{}"{}>{}</a> ',
-                           cl.get_query_string({PAGE_VAR: i}),
-                           mark_safe(' class="end"' if i == cl.paginator.num_pages - 1 else ''),
-                           i + 1)
+        return format_html(
+            '<a href="{}"{}>{}</a> ',
+            cl.get_query_string({PAGE_VAR: i}),
+            mark_safe(' class="end"' if i == cl.paginator.num_pages - 1 else ''),
+            i + 1,
+        )
 
 
 def pagination(cl):
@@ -190,8 +192,7 @@ def result_headers(cl):
 
 
 def _boolean_icon(field_val):
-    icon_url = static('admin/img/icon-%s.svg' %
-                      {True: 'yes', False: 'no', None: 'unknown'}[field_val])
+    icon_url = static('admin/img/icon-%s.svg' % {True: 'yes', False: 'no', None: 'unknown'}[field_val])
     return format_html('<img src="{}" alt="{}">', icon_url, field_val)
 
 
@@ -279,11 +280,7 @@ def items_for_result(cl, result, form):
                     ) if cl.is_popup else '',
                     result_repr)
 
-            yield format_html('<{}{}>{}</{}>',
-                              table_tag,
-                              row_class,
-                              link_or_text,
-                              table_tag)
+            yield format_html('<{}{}>{}</{}>', table_tag, row_class, link_or_text, table_tag)
         else:
             # By default the fields come from ModelAdmin.list_editable, but if we pull
             # the fields out of the form instead of list_editable custom admins
@@ -334,11 +331,13 @@ def result_list(cl):
     for h in headers:
         if h['sortable'] and h['sorted']:
             num_sorted_fields += 1
-    return {'cl': cl,
-            'result_hidden_fields': list(result_hidden_fields(cl)),
-            'result_headers': headers,
-            'num_sorted_fields': num_sorted_fields,
-            'results': list(results(cl))}
+    return {
+        'cl': cl,
+        'result_hidden_fields': list(result_hidden_fields(cl)),
+        'result_headers': headers,
+        'num_sorted_fields': num_sorted_fields,
+        'results': list(results(cl)),
+    }
 
 
 @register.tag(name='result_list')
@@ -418,6 +417,7 @@ def date_hierarchy(cl):
             years = getattr(cl.queryset, 'dates')(field_name, 'year')
             return {
                 'show': True,
+                'back': None,
                 'choices': [{
                     'link': link({year_field: str(year.year)}),
                     'title': str(year.year),

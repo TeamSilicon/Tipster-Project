@@ -51,16 +51,11 @@ class FilteredSelectMultiple(forms.SelectMultiple):
 
 
 class AdminDateWidget(forms.DateInput):
-    @property
-    def media(self):
-        extra = '' if settings.DEBUG else '.min'
+    class Media:
         js = [
-            'vendor/jquery/jquery%s.js' % extra,
-            'jquery.init.js',
-            'calendar.js',
-            'admin/DateTimeShortcuts.js',
+            'admin/js/calendar.js',
+            'admin/js/admin/DateTimeShortcuts.js',
         ]
-        return forms.Media(js=["admin/js/%s" % path for path in js])
 
     def __init__(self, attrs=None, format=None):
         attrs = {'class': 'vDateField', 'size': '10', **(attrs or {})}
@@ -68,16 +63,11 @@ class AdminDateWidget(forms.DateInput):
 
 
 class AdminTimeWidget(forms.TimeInput):
-    @property
-    def media(self):
-        extra = '' if settings.DEBUG else '.min'
+    class Media:
         js = [
-            'vendor/jquery/jquery%s.js' % extra,
-            'jquery.init.js',
-            'calendar.js',
-            'admin/DateTimeShortcuts.js',
+            'admin/js/calendar.js',
+            'admin/js/admin/DateTimeShortcuts.js',
         ]
-        return forms.Media(js=["admin/js/%s" % path for path in js])
 
     def __init__(self, attrs=None, format=None):
         attrs = {'class': 'vTimeField', 'size': '8', **(attrs or {})}
@@ -164,8 +154,12 @@ class ForeignKeyRawIdWidget(forms.TextInput):
             context['link_title'] = _('Lookup')
             # The JavaScript code looks for this class.
             context['widget']['attrs'].setdefault('class', 'vForeignKeyRawIdAdminField')
+        else:
+            context['related_url'] = None
         if context['widget']['value']:
             context['link_label'], context['link_url'] = self.label_and_url_for_value(value)
+        else:
+            context['link_label'] = None
         return context
 
     def base_url_parameters(self):
@@ -199,7 +193,7 @@ class ForeignKeyRawIdWidget(forms.TextInput):
         except NoReverseMatch:
             url = ''  # Admin not registered for target model.
 
-        return Truncator(obj).words(14, truncate='...'), url
+        return Truncator(obj).words(14), url
 
 
 class ManyToManyRawIdWidget(ForeignKeyRawIdWidget):
@@ -291,6 +285,7 @@ class RelatedFieldWidgetWrapper(forms.Widget):
         ])
         context = {
             'rendered_widget': self.widget.render(name, value, attrs),
+            'is_hidden': self.is_hidden,
             'name': name,
             'url_params': url_params,
             'model': rel_opts.verbose_name,
@@ -357,8 +352,13 @@ class AdminBigIntegerFieldWidget(AdminIntegerFieldWidget):
     class_name = 'vBigIntegerField'
 
 
-# Mapping of lower case language codes [returned by Django's get_language()]
-# to language codes supported by select2.
+class AdminUUIDInputWidget(forms.TextInput):
+    def __init__(self, attrs=None):
+        super().__init__(attrs={'class': 'vUUIDField', **(attrs or {})})
+
+
+# Mapping of lowercase language codes [returned by Django's get_language()] to
+# language codes supported by select2.
 # See django/contrib/admin/static/admin/js/vendor/select2/i18n/*
 SELECT2_TRANSLATIONS = {x.lower(): x for x in [
     'ar', 'az', 'bg', 'ca', 'cs', 'da', 'de', 'el', 'en', 'es', 'et',

@@ -1,3 +1,5 @@
+import operator
+
 from django.db.backends.base.features import BaseDatabaseFeatures
 from django.utils.functional import cached_property
 
@@ -15,6 +17,7 @@ class DatabaseFeatures(BaseDatabaseFeatures):
     supports_date_lookup_using_string = False
     can_introspect_autofield = True
     can_introspect_binary_field = False
+    can_introspect_duration_field = False
     can_introspect_small_integer_field = True
     can_introspect_positive_integer_field = True
     introspected_boolean_field_type = 'IntegerField'
@@ -22,10 +25,10 @@ class DatabaseFeatures(BaseDatabaseFeatures):
     supports_timezones = False
     requires_explicit_null_ordering_when_grouping = True
     allows_auto_pk_0 = False
-    uses_savepoints = True
     can_release_savepoints = True
     atomic_transactions = False
     supports_column_check_constraints = False
+    supports_table_check_constraints = False
     can_clone_databases = True
     supports_temporal_subtraction = True
     supports_select_intersection = False
@@ -50,6 +53,8 @@ class DatabaseFeatures(BaseDatabaseFeatures):
     db_functions_convert_bytes_to_str = True
     # Alias MySQL's TRADITIONAL to TEXT for consistency with other backends.
     supported_explain_formats = {'JSON', 'TEXT', 'TRADITIONAL'}
+    # Neither MySQL nor MariaDB support partial indexes.
+    supports_partial_indexes = False
 
     @cached_property
     def _mysql_storage_engine(self):
@@ -80,18 +85,20 @@ class DatabaseFeatures(BaseDatabaseFeatures):
 
     @cached_property
     def supports_over_clause(self):
+        if self.connection.mysql_is_mariadb:
+            return self.connection.mysql_version >= (10, 2)
         return self.connection.mysql_version >= (8, 0, 2)
 
     @cached_property
     def has_select_for_update_skip_locked(self):
-        return self.connection.mysql_version >= (8, 0, 1)
+        return not self.connection.mysql_is_mariadb and self.connection.mysql_version >= (8, 0, 1)
 
-    has_select_for_update_nowait = has_select_for_update_skip_locked
+    has_select_for_update_nowait = property(operator.attrgetter('has_select_for_update_skip_locked'))
 
     @cached_property
     def needs_explain_extended(self):
-        # EXTENDED is deprecated (and not required) in 5.7 and removed in 8.0.
-        return self.connection.mysql_version < (5, 7)
+        # EXTENDED is deprecated (and not required) in MySQL 5.7.
+        return not self.connection.mysql_is_mariadb and self.connection.mysql_version < (5, 7)
 
     @cached_property
     def supports_transactions(self):
@@ -106,3 +113,8 @@ class DatabaseFeatures(BaseDatabaseFeatures):
             cursor.execute('SELECT @@LOWER_CASE_TABLE_NAMES')
             result = cursor.fetchone()
             return result and result[0] != 0
+
+    @cached_property
+    def supports_default_in_lead_lag(self):
+        # To be added in https://jira.mariadb.org/browse/MDEV-12981.
+        return not self.connection.mysql_is_mariadb

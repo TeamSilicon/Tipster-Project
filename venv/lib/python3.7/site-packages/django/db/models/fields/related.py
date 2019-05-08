@@ -4,6 +4,7 @@ from functools import partial
 
 from django import forms
 from django.apps import apps
+from django.conf import SettingsReference
 from django.core import checks, exceptions
 from django.db import connection, router
 from django.db.backends import utils
@@ -590,7 +591,6 @@ class ForeignObject(RelatedField):
                         % (kwargs['to'].setting_name, swappable_setting)
                     )
             # Set it
-            from django.db.migrations.writer import SettingsReference
             kwargs['to'] = SettingsReference(
                 kwargs['to'],
                 swappable_setting,
@@ -977,7 +977,13 @@ class ForeignKey(ForeignObject):
         return converters
 
     def get_col(self, alias, output_field=None):
-        return super().get_col(alias, output_field or self.target_field)
+        if output_field is None:
+            output_field = self.target_field
+            while isinstance(output_field, ForeignKey):
+                output_field = output_field.target_field
+                if output_field is self:
+                    raise ValueError('Cannot resolve output_field.')
+        return super().get_col(alias, output_field)
 
 
 class OneToOneField(ForeignKey):
@@ -1404,7 +1410,7 @@ class ManyToManyField(RelatedField):
                 opts = model._meta.auto_created._meta
                 clashing_obj = '%s.%s' % (opts.label, _get_field_name(model))
             else:
-                clashing_obj = '%s' % model._meta.label
+                clashing_obj = model._meta.label
             return [
                 checks.Error(
                     "The field's intermediary table '%s' clashes with the "
@@ -1451,7 +1457,6 @@ class ManyToManyField(RelatedField):
                         "(%s and %s)" % (kwargs['to'].setting_name, swappable_setting)
                     )
 
-            from django.db.migrations.writer import SettingsReference
             kwargs['to'] = SettingsReference(
                 kwargs['to'],
                 swappable_setting,

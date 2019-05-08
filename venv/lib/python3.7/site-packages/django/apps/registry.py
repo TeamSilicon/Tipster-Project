@@ -42,6 +42,8 @@ class Apps:
 
         # Whether the registry is populated.
         self.apps_ready = self.models_ready = self.ready = False
+        # For the autoreloader.
+        self.ready_event = threading.Event()
 
         # Lock for thread-safe population.
         self._lock = threading.RLock()
@@ -120,6 +122,7 @@ class Apps:
                 app_config.ready()
 
             self.ready = True
+            self.ready_event.set()
 
     def check_apps_ready(self):
         """Raise an exception if all apps haven't been imported yet."""
@@ -176,7 +179,7 @@ class Apps:
 
         result = []
         for app_config in self.app_configs.values():
-            result.extend(list(app_config.get_models(include_auto_created, include_swapped)))
+            result.extend(app_config.get_models(include_auto_created, include_swapped))
         return result
 
     def get_model(self, app_label, model_name=None, require_ready=True):
@@ -389,7 +392,7 @@ class Apps:
         # to lazy_model_operation() along with the remaining model args and
         # repeat until all models are loaded and all arguments are applied.
         else:
-            next_model, more_models = model_keys[0], model_keys[1:]
+            next_model, *more_models = model_keys
 
             # This will be executed after the class corresponding to next_model
             # has been imported and registered. The `func` attribute provides

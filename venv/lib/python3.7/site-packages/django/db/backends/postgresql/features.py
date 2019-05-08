@@ -1,3 +1,5 @@
+import operator
+
 from django.db.backends.base.features import BaseDatabaseFeatures
 from django.db.utils import InterfaceError
 from django.utils.functional import cached_property
@@ -14,12 +16,12 @@ class DatabaseFeatures(BaseDatabaseFeatures):
     has_select_for_update = True
     has_select_for_update_nowait = True
     has_select_for_update_of = True
-    uses_savepoints = True
     can_release_savepoints = True
     supports_tablespaces = True
     supports_transactions = True
     can_introspect_autofield = True
     can_introspect_ip_address_field = True
+    can_introspect_materialized_views = True
     can_introspect_small_integer_field = True
     can_distinct_on_fields = True
     can_rollback_ddl = True
@@ -27,7 +29,6 @@ class DatabaseFeatures(BaseDatabaseFeatures):
     nulls_order_largest = True
     closed_cursor_error_class = InterfaceError
     has_case_insensitive_like = False
-    requires_sqlparse_for_splitting = False
     greatest_least_ignores_nulls = True
     can_clone_databases = True
     supports_temporal_subtraction = True
@@ -48,6 +49,7 @@ class DatabaseFeatures(BaseDatabaseFeatures):
             V_I := P_I;
         END;
     $$ LANGUAGE plpgsql;"""
+    requires_casted_case_in_updates = True
     supports_over_clause = True
     supports_aggregate_filter_clause = True
     supported_explain_formats = {'JSON', 'TEXT', 'XML', 'YAML'}
@@ -57,7 +59,19 @@ class DatabaseFeatures(BaseDatabaseFeatures):
     def is_postgresql_9_5(self):
         return self.connection.pg_version >= 90500
 
-    has_select_for_update_skip_locked = is_postgresql_9_5
-    has_brin_index_support = is_postgresql_9_5
-    has_jsonb_agg = is_postgresql_9_5
-    has_gin_pending_list_limit = is_postgresql_9_5
+    @cached_property
+    def is_postgresql_9_6(self):
+        return self.connection.pg_version >= 90600
+
+    @cached_property
+    def is_postgresql_10(self):
+        return self.connection.pg_version >= 100000
+
+    has_select_for_update_skip_locked = property(operator.attrgetter('is_postgresql_9_5'))
+    has_brin_index_support = property(operator.attrgetter('is_postgresql_9_5'))
+    has_jsonb_agg = property(operator.attrgetter('is_postgresql_9_5'))
+    has_brin_autosummarize = property(operator.attrgetter('is_postgresql_10'))
+    has_gin_pending_list_limit = property(operator.attrgetter('is_postgresql_9_5'))
+    supports_ignore_conflicts = property(operator.attrgetter('is_postgresql_9_5'))
+    has_phraseto_tsquery = property(operator.attrgetter('is_postgresql_9_6'))
+    supports_table_partitions = property(operator.attrgetter('is_postgresql_10'))
