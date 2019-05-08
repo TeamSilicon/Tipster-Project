@@ -3,12 +3,12 @@ from collections import namedtuple
 from MySQLdb.constants import FIELD_TYPE
 
 from django.db.backends.base.introspection import (
-    BaseDatabaseIntrospection, FieldInfo, TableInfo,
+    BaseDatabaseIntrospection, FieldInfo as BaseFieldInfo, TableInfo,
 )
 from django.db.models.indexes import Index
 from django.utils.datastructures import OrderedSet
 
-FieldInfo = namedtuple('FieldInfo', FieldInfo._fields + ('extra', 'is_unsigned'))
+FieldInfo = namedtuple('FieldInfo', BaseFieldInfo._fields + ('extra', 'is_unsigned'))
 InfoLine = namedtuple('InfoLine', 'col_name data_type max_len num_prec num_scale extra column_default is_unsigned')
 
 
@@ -160,6 +160,7 @@ class DatabaseIntrospection(BaseDatabaseIntrospection):
             WHERE
                 kc.table_schema = DATABASE() AND
                 kc.table_name = %s
+            ORDER BY kc.`ordinal_position`
         """
         cursor.execute(name_query, [table_name])
         for constraint, column, ref_table, ref_column in cursor.fetchall():

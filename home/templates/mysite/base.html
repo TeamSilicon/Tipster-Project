@@ -32,7 +32,6 @@
     <nav class="nav-extended">
       <div class="nav-wrapper">
         <a href="/" class="brand-logo black-text left">TheBelters <i class="icon-peace"></i></a>
-        {% comment %} <span class="show-on-medium-and-up">The hustle never stops!</span> {% endcomment %}
         <div class="right">
           <div><span class="black-text" title="Won_count" aria-label="won"><i class="icon-won hide-on-small-only space_in_icons green-text"></i><span class="hide-on-med-and-up space_in_icons green-text">W</span><span class="won_count"></span></span></div>
           <div><span class="black-text" title="Lost_count" aria-label="lost"><i class="icon-lost hide-on-small-only space_in_icons red-text"></i><span class="hide-on-med-and-up space_in_icons red-text">L</span><span class="lost_count"></span></span></div>
@@ -171,10 +170,10 @@
       $('span.forecasts__coeff.icon-remove').on('dblclick',function(){
         $( this ).parent().remove();
         // $('.forecasts div').each(function() {
-          // if ($(this).attr('id') == id){
-            // console.log($(id));
-            //to work on removing items from betslip and removing selected class
-          // }
+        // if ($(this).attr('id') == id){
+        // console.log($(id));
+        //to work on removing items from betslip and removing selected class
+        // }
         // });
         // getting total items in betlist
         betlist_count = $('.betlist .forecasts__item.is_selected').length;

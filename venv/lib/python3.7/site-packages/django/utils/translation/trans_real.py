@@ -120,7 +120,6 @@ class DjangoTranslation(gettext_module.GNUTranslations):
             domain=self.domain,
             localedir=localedir,
             languages=[self.__locale],
-            codeset='utf-8',
             fallback=use_null_fallback,
         )
 
@@ -360,7 +359,7 @@ def all_locale_paths():
         locale_path = os.path.join(app_config.path, 'locale')
         if os.path.exists(locale_path):
             app_paths.append(locale_path)
-    return [globalpath] + list(settings.LOCALE_PATHS) + app_paths
+    return [globalpath, *settings.LOCALE_PATHS, *app_paths]
 
 
 @functools.lru_cache(maxsize=1000)

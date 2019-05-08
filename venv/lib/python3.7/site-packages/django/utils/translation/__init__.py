@@ -4,6 +4,7 @@ Internationalization support.
 import re
 from contextlib import ContextDecorator
 
+from django.utils.autoreload import autoreload_started, file_changed
 from django.utils.functional import lazy
 
 __all__ = [
@@ -52,6 +53,9 @@ class Trans:
         from django.conf import settings
         if settings.USE_I18N:
             from django.utils.translation import trans_real as trans
+            from django.utils.translation.reloader import watch_for_translation_changes, translation_file_changed
+            autoreload_started.connect(watch_for_translation_changes, dispatch_uid='translation_file_changed')
+            file_changed.connect(translation_file_changed, dispatch_uid='translation_file_changed')
         else:
             from django.utils.translation import trans_null as trans
         setattr(self, real_name, getattr(trans, real_name))
@@ -110,20 +114,30 @@ def lazy_number(func, resultclass, number=None, **kwargs):
             def __bool__(self):
                 return bool(kwargs['singular'])
 
+            def _get_number_value(self, values):
+                try:
+                    return values[number]
+                except KeyError:
+                    raise KeyError(
+                        "Your dictionary lacks key '%s\'. Please provide "
+                        "it, because it is required to determine whether "
+                        "string is singular or plural." % number
+                    )
+
+            def _translate(self, number_value):
+                kwargs['number'] = number_value
+                return func(**kwargs)
+
+            def format(self, *args, **kwargs):
+                number_value = self._get_number_value(kwargs) if kwargs and number else args[0]
+                return self._translate(number_value).format(*args, **kwargs)
+
             def __mod__(self, rhs):
                 if isinstance(rhs, dict) and number:
-                    try:
-                        number_value = rhs[number]
-                    except KeyError:
-                        raise KeyError(
-                            "Your dictionary lacks key '%s\'. Please provide "
-                            "it, because it is required to determine whether "
-                            "string is singular or plural." % number
-                        )
+                    number_value = self._get_number_value(rhs)
                 else:
                     number_value = rhs
-                kwargs['number'] = number_value
-                translated = func(**kwargs)
+                translated = self._translate(number_value)
                 try:
                     translated = translated % rhs
                 except TypeError:
@@ -204,18 +218,18 @@ def to_language(locale):
 
 def to_locale(language):
     """Turn a language name (en-us) into a locale name (en_US)."""
-    language = language.lower()
-    parts = language.split('-')
-    try:
-        country = parts[1]
-    except IndexError:
+    language, _, country = language.lower().partition('-')
+    if not country:
         return language
     # A language with > 2 characters after the dash only has its first
     # character after the dash capitalized; e.g. sr-latn becomes sr_Latn.
     # A language with 2 characters after the dash has both characters
     # capitalized; e.g. en-us becomes en_US.
-    parts[1] = country.title() if len(country) > 2 else country.upper()
-    return parts[0] + '_' + '-'.join(parts[1:])
+    country, _, tail = country.partition('-')
+    country = country.title() if len(country) > 2 else country.upper()
+    if tail:
+        country += '-' + tail
+    return language + '_' + country
 
 
 def get_language_from_request(request, check_path=False):
