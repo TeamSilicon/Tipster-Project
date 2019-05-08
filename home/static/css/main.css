@@ -510,13 +510,10 @@ body .wrapper, .betlist {
 
 }
 .nothing .text {
-	top: 50%;
-	left: 35%;
-	position: absolute;
+	width: fit-content;
+	padding-top: 8.5rem;
 	font-size: 30px;
-	color: black;
-	transform: translate(-50% -50%);
-	-ms-transform: translate(-50% -50%);
+  margin: 0 auto;
 }
 .forecasts__list.visible{
 	display: block;
