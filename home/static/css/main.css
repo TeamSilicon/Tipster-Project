@@ -148,7 +148,7 @@ nav a {
 }
 @media only screen and (min-width: 601px) {
 	nav.nav-extended .nav-wrapper {
-		min-height: 64px;
+		min-height: 65px;
 	}
 	nav, nav .nav-wrapper i {
 		height: 64px;
