@@ -110,7 +110,7 @@
 }
 /* End of custome icons */
 body{
-	font-family: 'Play', sans-serif;
+	font-family: 'Philosopher', sans-serif;
 	font-size:1em;
 	background-color: #e5e5e5;
 
@@ -242,7 +242,7 @@ div.submenu {
 	border-bottom: 1px solid #ddd;
 	color: #555555;
 	display: block;
-	font-family: arial;
+	font-family: 'Philosopher', sans-serif;
 	font-weight: bold;
 	padding: 4px;
 	cursor: pointer;
@@ -510,13 +510,10 @@ body .wrapper, .betlist {
 
 }
 .nothing .text {
-	top: 50%;
-	left: 50%;
-	position: absolute;
+	width: fit-content;
+	padding-top: 8.5rem;
 	font-size: 30px;
-	color: black;
-	transform: translate(-50% -50%);
-	-ms-transform: translate(-50% -50%);
+  margin: 0 auto;
 }
 .forecasts__list.visible{
 	display: block;
@@ -530,7 +527,7 @@ body .wrapper, .betlist {
 }
 .icon-remove {
 	text-decoration: none;
-	font-family: "Montserrat", sans-serif;
+	font-family: 'Philosopher', sans-serif;
 	color: #000000;
 	font-weight: bold;
 	background: #e0e0e0;
