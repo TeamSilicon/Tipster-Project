@@ -1,4 +1,9 @@
-# Tipster-Project
+#  _____ _            ____       _ _                
+|_   _| |__   ___  | __ )  ___| | |_ ___ _ __ ___ 
+  | | | '_ \ / _ \ |  _ \ / _ \ | __/ _ \ '__/ __|
+  | | | | | |  __/ | |_) |  __/ | ||  __/ |  \__ \
+  |_| |_| |_|\___| |____/ \___|_|\__\___|_|  |___/
+
 An Aggressive :fire: Game Analyzer and Predictor website :fire::fire::fire::fire:
 
 # How To Contribute
