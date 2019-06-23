@@ -12,8 +12,6 @@ class Command(BaseCommand):
         sched = BlockingScheduler()
         # print("nothing going on")
         # @sched.scheduled_job('interval', minutes=1)
-        # def tester():
-            # print("nothing going on from tester")
         @sched.scheduled_job('interval', minutes=7)
         def update_games_today():
             print("Updating today Games")
@@ -38,7 +36,6 @@ class Command(BaseCommand):
             page_content1 = requester(page_urls[0], 1)
             page_content2 = requester(page_urls[1], 2)
             page_content3 = requester(page_urls[2], 3)
-            # print([page_content1, page_content2, page_content3, today])
             boiler(page_content1, page_content2, page_content3, today)
 
         @sched.scheduled_job('interval', hours=3)

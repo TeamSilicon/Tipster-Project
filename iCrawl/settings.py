@@ -17,7 +17,10 @@ DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
 SECRET_KEY = DJANGO_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+if "HEROKU" in os.environ:
+    DEBUG = False
+else:
+    DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", ".herokuapp.com", 'localhost']
 

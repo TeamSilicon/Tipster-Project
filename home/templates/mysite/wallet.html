@@ -1,59 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Wallet</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-     <!--for  datetime calender-->
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <!--For datetime calender -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <meta charset="UTF-8">
+  <title>Wallet</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!--for  datetime calender-->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!--For datetime calender -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
-<!-- wallet -->
-<div class="user_wallet2">
+  <!-- wallet -->
+  <div class="user_wallet2">
     <form action="" method="post">
-        {% csrf_token %}
+      {% csrf_token %}
       <div class="form-row align-items-center">
         <div class="col-auto">
           <input type="text" class="form-control mb-2 datepicker" name="From" id="inlineFormInput"
-                 placeholder='{% if confirm.submitbutton == "Apply" %} {{ confirm.from_date }} {% endif %}' required autocomplete="off">
-      </div>
-      <div class="col-auto">
+          placeholder='{% if confirm.submitbutton == "Apply" %} {{ confirm.from_date }} {% endif %}' required autocomplete="off">
+        </div>
+        <div class="col-auto">
           <div class="input-group mb-2">
             <input type="text" class="form-control datepicker" name="To" id="inlineFormInputGroup"
-                   placeholder='{% if confirm.submitbutton == "Apply" %} {{ confirm.to_date }} {% endif %}' required autocomplete="off">
+            placeholder='{% if confirm.submitbutton == "Apply" %} {{ confirm.to_date }} {% endif %}' required autocomplete="off">
+          </div>
         </div>
-    </div>
-    <div class="col-auto">
-      <input type="submit" name="Submit" class="btn btn-success mb-2" value="Apply"/>
-  </div>
-</div>
-</form>
-<div>
-    Won: {{ progress.counter_win }}<br>
-    <b>Total Straight Win: {{ progress.total_straight_win }}<br>
-        <i>Won Total Odds : {{ progress.counter_won_odd }}</i></b>
-</div>
-<div>Lost: {{ progress.counter_lose }}<br>
-    <b>Total Straight lose: {{ progress.total_straight_lose }}<br>
-        <i>Lost Total Odds : {{ progress.counter_lost_odd }}</i></b>
-</div>
-
+        <div class="col-auto">
+          <input type="submit" name="Submit" class="btn btn-success mb-2" value="Apply"/>
+        </div>
+      </div>
+    </form>
     <div>
-       <h4>Profit: {{ progress.profit }}  </h4>
-    </div>
-</div>
+      Won: {{ progress.counter_win }}<br>
+      <b>Total Straight Win: {{ progress.total_straight_win }}<br>
+        <i>Won Total Odds : {{ progress.counter_won_odd }}</i></b>
+      </div>
+      <div>Lost: {{ progress.counter_lose }}<br>
+        <b>Total Straight lose: {{ progress.total_straight_lose }}<br>
+          <i>Lost Total Odds : {{ progress.counter_lost_odd }}</i></b>
+        </div>
 
-<script>
-  $( function() {
-    $( ".datepicker" ).datepicker({ minDate:"-1M -5D", maxDate: +3 });
-    $( function() {
-      $( ".datepicker" ).datepicker( "option", "showAnim", "slideDown");
-    });
-  } );
+        <div>
+          <h4>Profit: {{ progress.profit }}  </h4>
+        </div>
+      </div>
 
-</script>
-</body>
-</html>
+      <script>
+      $( function() {
+        $( ".datepicker" ).datepicker({ minDate:"-1M -5D", maxDate: +3 });
+        $( function() {
+          $( ".datepicker" ).datepicker( "option", "showAnim", "slideDown");
+        });
+      } );
+
+    </script>
+  </body>
+  </html>
