@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import AllGames, Featured
+from .models import Match, Market, Outcome
 
 # Register your models here.
 
-admin.site.register(AllGames)
-admin.site.register(Featured)
+admin.site.register(Match)
+admin.site.register(Market)
+admin.site.register(Outcome)

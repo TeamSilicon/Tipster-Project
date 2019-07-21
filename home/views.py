@@ -2,7 +2,7 @@ import datetime
 from datetime import timedelta
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
-from home.models import AllGames, Featured, TipGG, Over35, Over25, Over15
+from home.models import Match
 from home.jackpot import possible_combinations
 from django.http import HttpResponse
 
@@ -13,7 +13,7 @@ def topnavselector():
 
 def all_games(request):
     today, request_from, match_date = updater(request)
-    games = AllGames.objects.filter(match_date=today).order_by('time', 'teams')
+    games = Match.objects.all()
     return render(request, 'mysite/index.html',
                   {"games": games, "request_tom": request_from, "match_date": match_date})
 def updater(request):
@@ -29,39 +29,35 @@ def updater(request):
     match_date = today.strftime("%d-%m").replace('-', '/')  # date when the match is played in / formart
     return [today, request_from, match_date]
 
-
-def goal_Goal(request):
-    today, request_from, match_date =updater(request)
-    games = TipGG.objects.filter(match_date=today).order_by('time', 'teams')
-    return render(request, 'mysite/goalgoal.html', {
-        "games": games, "request_tom": request_from, "match_date": match_date
-        })
-
-def featured(request):
-    today, request_from, match_date = updater(request)
-    games = Featured.objects.filter(match_date=today).order_by('time', 'teams')
-    return render(request, 'mysite/featured.html', {
-        "games": games, "request_tom": request_from, "match_date": match_date
-        })
-
-
-def jackpot(request):
-    games = possible_combinations(['Kenya - Germany', 'Spain - Italia', 'Brazil - Spain'])
-    # print (len(games))
-    return render(request, 'mysite/jackpot.html', {
-        "games": games
-        })
-
-def over(request):
-    today, request_from, match_date = updater(request)
-    over15 = Over15.objects.filter(match_date=today).order_by('time', 'teams')
-    over25 = Over25.objects.filter(match_date=today).order_by('time', 'teams')
-    over35 = Over35.objects.filter(match_date=today).order_by('time', 'teams')
-    return render(request, 'mysite/over.html', {'over15': over15, 'over25': over25,'over35': over35, 'request_tom': request_from, 'match_date': match_date})
-
-
-def slip(request):
-    pass
+# 
+# def goal_Goal(request):
+#     today, request_from, match_date =updater(request)
+#     games = TipGG.objects.filter(match_date=today).order_by('time', 'teams')
+#     return render(request, 'mysite/goalgoal.html', {
+#         "games": games, "request_tom": request_from, "match_date": match_date
+#         })
+#
+# def featured(request):
+#     today, request_from, match_date = updater(request)
+#     games = Featured.objects.filter(match_date=today).order_by('time', 'teams')
+#     return render(request, 'mysite/featured.html', {
+#         "games": games, "request_tom": request_from, "match_date": match_date
+#         })
+#
+#
+# def jackpot(request):
+#     games = possible_combinations(['Kenya - Germany', 'Spain - Italia', 'Brazil - Spain'])
+#     # print (len(games))
+#     return render(request, 'mysite/jackpot.html', {
+#         "games": games
+#         })
+#
+# def over(request):
+#     today, request_from, match_date = updater(request)
+#     over15 = Over15.objects.filter(match_date=today).order_by('time', 'teams')
+#     over25 = Over25.objects.filter(match_date=today).order_by('time', 'teams')
+#     over35 = Over35.objects.filter(match_date=today).order_by('time', 'teams')
+#     return render(request, 'mysite/over.html', {'over15': over15, 'over25': over25,'over35': over35, 'request_tom': request_from, 'match_date': match_date})
 
 
 # def game_detail(request, pk):

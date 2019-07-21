@@ -1,7 +1,7 @@
 import datetime
 import bs4
 from datetime import timedelta
-from home.models import AllGames
+from home.models import Match
 from home.results_overall import overall_result
 # from .send_mail import send_mail
 def zulu_procedure(zulu_page, match_date):
