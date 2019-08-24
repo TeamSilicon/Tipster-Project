@@ -3,8 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# C extensions
-*.so
+# migrations
+home/migrations/
 
 # Distribution / packaging
 .Python
@@ -89,7 +89,7 @@ celerybeat-schedule
 .env
 .venv
 env/
-venv/
+venv/.*
 ENV/
 env.bak/
 venv.bak/
