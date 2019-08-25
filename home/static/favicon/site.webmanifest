@@ -10,6 +10,7 @@
     ],
     "theme_color": "#00712f",
     "background_color": "#00712f",
-    "start_url": "https://chancetips.herokuapp.com/",
+    "start_url": "/",
+    "scope" : "./",
     "display": "standalone"
 }
