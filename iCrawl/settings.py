@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'pwa',
 ]
 
 MIDDLEWARE = [
@@ -73,10 +74,6 @@ WSGI_APPLICATION = 'iCrawl.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'games_db',
@@ -105,7 +102,23 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+# PWA Configuration
+PWA_APP_NAME = 'ChanceTips'
+PWA_APP_SHORT_NAME = 'ChanceTips'
+PWA_APP_DESCRIPTION = "High Chance Tips"
+PWA_APP_THEME_COLOR = '#00712f'
+PWA_APP_BACKGROUND_COLOR = '#00712f'
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_SCOPE = './'
+PWA_APP_ORIENTATION = 'any'
+PWA_APP_START_URL = '/'
+PWA_APP_ICONS = [
+    {
+        "src": "/static/favicon/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+    },
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
