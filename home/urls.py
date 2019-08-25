@@ -1,12 +1,14 @@
 from django.conf.urls import url
-from . import views
+from django.urls import path
+from home import views
+from django.views.generic import TemplateView
+
 
 urlpatterns = [
     # for AllGames
     url(r'^$', views.all_games, name='today'),
     url(r'^yesterday/$', views.all_games, name='yesterday'),
     url(r'^tomorrow/$', views.all_games, name='tomorrow'),
-    # url(r'game_detail/(?P<pk>[{\w+}* -{\w+}*]+)', views.game_detail, name="game_detail"),
     url(r'^login/$', views.login, name='login'),
     # for goalgoal
     url(r'^goalgoal/today/$', views.goal_Goal, name='goalgoal'),
@@ -29,4 +31,6 @@ urlpatterns = [
     url(r'^betslip/', views.slip, name='betslip'),
     # for comingsoon
     url(r'^comingsoon/', views.comingsoon, name='comingsoon'),
+    path('robots.txt', TemplateView.as_view(
+        template_name="robots.txt", content_type='text/plain')),
 ]
