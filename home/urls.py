@@ -10,6 +10,9 @@ urlpatterns = [
     url(r'^yesterday/$', views.all_games, name='yesterday'),
     url(r'^tomorrow/$', views.all_games, name='tomorrow'),
     url(r'^login/$', views.login, name='login'),
+
+    # path
+    path("notify", views.notify, name="notify"),
     # for goalgoal
     url(r'^goalgoal/today/$', views.goal_Goal, name='goalgoal'),
     url(r'^goalgoal/yesterday/$', views.goal_Goal, name='goalgoal'),

@@ -183,7 +183,14 @@ nav a {
 .red-text {
 	color: #E3452A !important;
 }
-/*  */
+
+ /*==================  overriding default browser styling  ==================*/
+ 
+-webkit-tap-highlight-color: transparent;
+
+
+/*==================  navbar styling  ==================*/
+ 
 nav .nav-wrapper {
 	position: relative;
 	height: 100%;

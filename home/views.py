@@ -74,10 +74,8 @@ def slip(request):
     pass
 
 
-# def game_detail(request, pk):
-#     games_detail = get_object_or_404(AllGames, pk=pk)
-#     return render(request, 'game_details.html', {'game': games_detail})
-# no risk no reward
+def notify(request):
+    return render(request, 'comingsoon.html')
 
 
 def comingsoon(request):
