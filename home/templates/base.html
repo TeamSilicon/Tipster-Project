@@ -88,7 +88,7 @@
       </li>
       <li class="tab" id="showTips">
         <a target="_self" href="{% url 'over' %}" title="Over" class="black-text{% if '/over/' == request.path or request.path == '/over/today/' or request.path == '/over/yesterday/' or request.path == '/over/tomorrow/' %} active{% endif %}">
-          <i class="icon-over"></i>
+          <i class="icon-over hide-on-small-only"></i>
           <span>Over</span>
         </a>
       </li>
