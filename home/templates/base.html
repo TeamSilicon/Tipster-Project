@@ -31,8 +31,6 @@
   <meta name="msapplication-config" content="{% static 'favicon/browserconfig.xml' %}">
   <meta name="theme-color" content="#00712f">
 
-  <!--Font Family  -->
-  <link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
   <!--custom css-->
   <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 </head>
@@ -43,25 +41,22 @@
       <div class="nav-wrapper">
         <a href="/" class="brand-logo black-text left">Chance Tips <i class="icon-peace"></i></a>
         <div class="right">
-          <div><span class="black-text" title="Won_count" aria-label="won"><i class="icon-won hide-on-small-only space_in_icons green-text"></i><span class="hide-on-med-and-up space_in_icons green-text">W</span><span class="won_count"></span></span></div>
-          <div><span class="black-text" title="Lost_count" aria-label="lost"><i class="icon-lost hide-on-small-only space_in_icons red-text"></i><span class="hide-on-med-and-up space_in_icons red-text">L</span><span class="lost_count"></span></span></div>
-          <div onclick="displayer('.betlist')" class="black-text betslip" id="0"><i class="icon-list space_in_icons"></i><span class="betlist_count"></span> </div>
-          <div onclick="displayer('.submenu')" class="black-text account" id="0"><i class="icon-prof space_in_icons"></i></div>
-          <div class="submenu">
-            <div class="root">
-              <div>
-                <a href="#"><i class="icon-setting"></i>themes</a>
-              </div>
-              <div>
-                <a href="#"><i class="icon-share"></i>share</a>
-              </div>
-              <div>
-                <a href="{% url 'notify' %}"><i class="icon-feedback"></i>notify</a>
-              </div>
-              <div>
-                <a href="#"><i class="icon-sign-out"></i>logout</a>
-              </div>
-            </div>
+          <span class="black-text" title="Won_count" aria-label="won"><i class="icon-won hide-on-small-only space_in_icons green-text"></i><span class="hide-on-med-and-up space_in_icons green-text">W</span><span class="won_count"></span></span>
+          <span class="black-text" title="Lost_count" aria-label="lost"><i class="icon-lost hide-on-small-only space_in_icons red-text"></i><span class="hide-on-med-and-up space_in_icons red-text">L</span><span class="lost_count"></span></span>
+          <span class="black-text betslip" id="0">
+            <i class="icon-list space_in_icons"></i>
+            <span class="betlist_count">
+            </span>
+          </span>
+          <span onclick="displayer('.menu')" class="black-text account" id="0">
+            <i class="icon-prof space_in_icons"></i>
+          </span> 
+          <div class="menu">
+            <span id="change-theme"><i class="icon-setting"></i>light</span>
+            <span><a href="#"><i class="icon-share"></i>share</a></span>
+            <span><a href="{% url 'notify' %}"><i class="icon-feedback"></i>notify</a></span>
+            <span><a href="#"><i class="icon-sign-out"></i>logout</a></span>
+          </div>
           </div>
         </div>
       </div>
@@ -94,7 +89,7 @@
       <li class="tab" id="showTips">
         <a target="_self" href="{% url 'over' %}" title="Over" class="black-text{% if '/over/' == request.path or request.path == '/over/today/' or request.path == '/over/yesterday/' or request.path == '/over/tomorrow/' %} active{% endif %}">
           <i class="icon-over"></i>
-          <span class="hide-on-small-only">Over Tips</span>
+          <span>Over</span>
         </a>
       </li>
     </ul>
@@ -207,6 +202,13 @@
     $(this).hide(400);
 
   });
+</script>
+<script>
+  let navy = document.getElementById("change-theme");
+  navy.addEventListener("click", function(){
+    document.body.classList.toggle('navy-theme');
+  });
+
 </script>
 
  <script type="text/javascript" src="{% static 'js/main.js' %}"></script> 
