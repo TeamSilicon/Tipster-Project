@@ -5,7 +5,7 @@ from home.boilerplate import boiler
 from home.fetcher import requester
 sched = BackgroundScheduler()
 
-@sched.scheduled_job('interval', minutes=15)
+@sched.scheduled_job('interval', minutes=10)
 def update_games_today():
     today = topnavselector()
     zulu_page = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
@@ -17,7 +17,7 @@ def update_games_today():
     page_content3 = requester(page_urls[2], 3)
     boiler(page_content1, page_content2, page_content3, today)
 
-@sched.scheduled_job('interval', hours=6)
+@sched.scheduled_job('interval', minutes=30)
 def update_games_yest():
     today = topnavselector() + timedelta(days=-1)
     zulu_page = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
@@ -29,7 +29,7 @@ def update_games_yest():
     page_content3 = requester(page_urls[2], 3)
     boiler(page_content1, page_content2, page_content3, today)
 
-@sched.scheduled_job('interval', hours=6)
+@sched.scheduled_job('interval', hours=50)
 def update_games_tom():
     today = topnavselector() + timedelta(days=1)
     zulu_page = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (today.day, today.month, today.year)
