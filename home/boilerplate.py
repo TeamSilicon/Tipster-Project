@@ -57,16 +57,16 @@ def boiler(zulu_page, page, page2, today):
             home_team_guest_team = [int(x) for x in score.split(":")]
             if case != 'bts':
                 if sum(home_team_guest_team) > case:
-                    return "homewin"
+                    return "won"
                 else:
-                    return "homelose"
+                    return "lost"
             else:
                 if 0 not in home_team_guest_team:
-                    return "homewin"
+                    return "won"
                 else:
-                    return "homelose"
+                    return "lost"
         else:
-            return "no_results_yet"
+            return "waiting"
 
     for each in combined_games:
         obj, created = AllGames.objects.update_or_create(

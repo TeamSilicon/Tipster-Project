@@ -37,19 +37,19 @@
         <!-- pick  -->
         <span>Pick <b><span class="picks">{{ game.pick }}</span></b> </span>
         <!-- Game Status text and icon -->
-          {% if game.won_or_lost == 'homewin' or game.won_or_lost == 'awaywin' or game.won_or_lost == '12win' or game.won_or_lost == '1Xwin' or game.won_or_lost == 'X2win' %}
+          {% if game.won_or_lost == 'won' or game.won_or_lost == 'won' or game.won_or_lost == '12win' or game.won_or_lost == '1Xwin' or game.won_or_lost == 'X2win' %}
           <span>Result: {{ game.score }}</span> <b style="color: green;">WOOON</b>
           <i class="forecasts__result icon icon_success" title="won"></i>
           {% endif %}
-          {% if game.won_or_lost == 'drawwin' %}
+          {% if game.won_or_lost == 'won' %}
           <span>Result: {{ game.score }}</span> <b style="color: green;">WOOON</b>
           <i class="forecasts__result icon icon_success" title="won"></i>
           {% endif %}
-          {% if game.won_or_lost == 'drawlose' or game.won_or_lost == 'homelose' or game.won_or_lost == 'awaylose' or game.won_or_lost == '12lose' or game.won_or_lost == '1Xlose' or game.won_or_lost == 'X2lose' %}
+          {% if game.won_or_lost == 'lost' or game.won_or_lost == 'lost' or game.won_or_lost == 'lost' or game.won_or_lost == '12lose' or game.won_or_lost == '1Xlose' or game.won_or_lost == 'X2lose' %}
           <span>Result: {{ game.score }}</span> <b style="color: red;">LOST</b>
           <i class="forecasts__result icon icon_failure" title="lost"></i>
           {% endif %}
-          {% if game.won_or_lost == 'no_results_yet' %}
+          {% if game.won_or_lost == 'waiting' %}
           <span>Result: {{ game.score }}</span>
           <i class="forecasts__result icon icon_pending" title="waiting"></i>
           {% endif %}
