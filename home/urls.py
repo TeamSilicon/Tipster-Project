@@ -3,7 +3,6 @@ from django.urls import path
 from home import views
 from django.views.generic import TemplateView
 
-
 urlpatterns = [
     # for AllGames
     url(r'^$', views.all_games, name='today'),
@@ -36,4 +35,11 @@ urlpatterns = [
     url(r'^comingsoon/', views.comingsoon, name='comingsoon'),
     path('robots.txt', TemplateView.as_view(
         template_name="robots.txt", content_type='text/plain')),
+    # api scope
+    path('api/c2b_results', views.c2b_payment_request, name="c2b_results"),
+    path('api/validation_callback', views.c2b_validation_callback,
+         name='validation_callback'),
+    path('api/confirmation_callback', views.c2b_confirmation_callback,
+         name='confirmation_callback'),
+
 ]
