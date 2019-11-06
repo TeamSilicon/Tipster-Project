@@ -1,12 +1,21 @@
-from django.conf.urls import url, include
+from django.urls import path, include
 from django.contrib import admin
+from home.games_api import GamesViewSet
+from rest_framework import routers
 
 from home import views as my_views
 
+
+router = routers.DefaultRouter()
+router.register('games', GamesViewSet, base_name='AllGames')
+
+
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'', include('home.urls')),
-    url('', include('pwa.urls')),
+    path('admin/', admin.site.urls),
+    path('', include('home.urls')),
+    path('', include('pwa.urls')),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/', include(router.urls))
 
 ]
 

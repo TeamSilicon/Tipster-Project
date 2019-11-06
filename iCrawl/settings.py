@@ -12,6 +12,14 @@ load_dotenv(verbose=True)
 # Getting credentials
 DJANGO_SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
+CONSUMER_KEY = os.getenv("CONSUMER_KEY")
+CONSUMER_SECRET = os.getenv("CONSUMER_SECRET")
+API_URL = os.getenv("API_URL")
+REGISTER_URL = os.getenv("REGISTER_URL")
+SHORT_CODE = os.getenv("SHORT_CODE")
+CONFIRMATION_URL = os.getenv("CONFIRMATION_URL")
+VALIDATION_URL = os.getenv("VALIDATION_URL")
+PAYMENT_URL = os.getenv("PAYMENT_URL")
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = DJANGO_SECRET_KEY
@@ -21,6 +29,7 @@ if "HEROKU" in os.environ:
     DEBUG = False
 else:
     DEBUG = True
+
 
 ALLOWED_HOSTS = ["127.0.0.1", ".herokuapp.com", 'localhost']
 
@@ -35,11 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'pwa',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
