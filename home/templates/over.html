@@ -34,33 +34,33 @@
       {{ game.teams }}
       </h4>
       <div class="forecasts__league">
-        <span class="forecasts__date"><b>{{ game.time }}</b></span>
+        <span class="forecasts__date"><b>{{ game.start_time }}</b></span>
         <!-- tip  -->
-        <span>Pick <b><span>{{ game.tip_ov }}</span></b> </span>
+        <span>Pick <b><span>{{ game.pick }}</span></b> </span>
         <!-- Game Status text and icon -->
-          {% if game.outcome_text == 'won' or game.outcome_text == 'won' or game.outcome_text == '12win' or game.outcome_text == '1Xwin' or game.outcome_text == 'X2win' %}
-          <span>Result: {{ game.ft_results }}</span> <b style="color: green;">WOOON</b>
+          {% if game.won_or_lost == 'won' or game.won_or_lost == 'won' or game.won_or_lost == '12win' or game.won_or_lost == '1Xwin' or game.won_or_lost == 'X2win' %}
+          <span>Result: {{ game.score }}</span> <b style="color: green;">WOOON</b>
           <i class="forecasts__result icon icon_success" title="won"></i>
           {% endif %}
-          {% if game.outcome_text == 'won' %}
-          <span>Result: {{ game.ft_results }}</span> <b style="color: green;">WOOON</b>
+          {% if game.won_or_lost == 'won' %}
+          <span>Result: {{ game.score }}</span> <b style="color: green;">WOOON</b>
           <i class="forecasts__result icon icon_success" title="won"></i>
           {% endif %}
-          {% if game.outcome_text == 'lost' or game.outcome_text == 'lost' or game.outcome_text == 'lost' or game.outcome_text == '12lose' or game.outcome_text == '1Xlose' or game.outcome_text == 'X2lose' %}
-          <span>Result: {{ game.ft_results }}</span> <b style="color: red;">LOST</b>
+          {% if game.won_or_lost == 'lost' or game.won_or_lost == 'lost' or game.won_or_lost == 'lost' or game.won_or_lost == '12lose' or game.won_or_lost == '1Xlose' or game.won_or_lost == 'X2lose' %}
+          <span>Result: {{ game.score }}</span> <b style="color: red;">LOST</b>
           <i class="forecasts__result icon icon_failure" title="lost"></i>
           {% endif %}
-          {% if game.outcome_text == 'waiting' %}
-          <span>Result: {{ game.ft_results }}</span> <b>...</b>
+          {% if game.won_or_lost == 'waiting' %}
+          <span>Result: {{ game.score }}</span> <b>...</b>
           <i class="forecasts__result icon icon_pending" title="waiting"></i>
           {% endif %}
-          {% if game.outcome_text == 'postponed' %}
-          <span>Result: {{ game.ft_results }}</span> <b style="color: #000; text-decoration: line-through;">postponed</b>
+          {% if game.won_or_lost == 'postponed' %}
+          <span>Result: {{ game.score }}</span> <b style="color: #000; text-decoration: line-through;">postponed</b>
           <i class="forecasts__result icon icon_post" title="post"></i>
           {% endif %}
       </div>
       <!--Game odd  -->
-        <span class="forecasts__coeff center">{{ game.tip_ov_odd }}</span>
+        <span class="forecasts__coeff center">{{ game.odds }}</span>
     </div>
     {% endfor %}
     {% else %}
@@ -75,33 +75,33 @@
         {{ game.teams }}
       </h4>
       <div class="forecasts__league">
-        <span class="forecasts__date"><b>{{ game.time }}</b></span>
+        <span class="forecasts__date"><b>{{ game.start_time }}</b></span>
         <!-- tip  -->
-        <span>Pick <b><span>{{ game.tip_ov }}</span></b> </span>
+        <span>Pick <b><span>{{ game.pick }}</span></b> </span>
         <!-- Game Status text and icon -->
-          {% if game.outcome_text == 'won' or game.outcome_text == 'won' or game.outcome_text == '12win' or game.outcome_text == '1Xwin' or game.outcome_text == 'X2win' %}
-          <span>Result: {{ game.ft_results }}</span> <b style="color: green;">WOOON</b>
+          {% if game.won_or_lost == 'won' or game.won_or_lost == 'won' or game.won_or_lost == '12win' or game.won_or_lost == '1Xwin' or game.won_or_lost == 'X2win' %}
+          <span>Result: {{ game.score }}</span> <b style="color: green;">WOOON</b>
           <i class="forecasts__result icon icon_success" title="won"></i>
           {% endif %}
-          {% if game.outcome_text == 'won' %}
-          <span>Result: {{ game.ft_results }}</span> <b style="color: green;">WOOON</b>
+          {% if game.won_or_lost == 'won' %}
+          <span>Result: {{ game.score }}</span> <b style="color: green;">WOOON</b>
           <i class="forecasts__result icon icon_success" title="won"></i>
           {% endif %}
-          {% if game.outcome_text == 'lost' or game.outcome_text == 'lost' or game.outcome_text == 'lost' or game.outcome_text == '12lose' or game.outcome_text == '1Xlose' or game.outcome_text == 'X2lose' %}
-          <span>Result: {{ game.ft_results }}</span> <b style="color: red;">LOST</b>
+          {% if game.won_or_lost == 'lost' or game.won_or_lost == 'lost' or game.won_or_lost == 'lost' or game.won_or_lost == '12lose' or game.won_or_lost == '1Xlose' or game.won_or_lost == 'X2lose' %}
+          <span>Result: {{ game.score }}</span> <b style="color: red;">LOST</b>
           <i class="forecasts__result icon icon_failure" title="lost"></i>
           {% endif %}
-          {% if game.outcome_text == 'waiting' %}
-          <span>Result: {{ game.ft_results }}</span>
+          {% if game.won_or_lost == 'waiting' %}
+          <span>Result: {{ game.score }}</span>
           <i class="forecasts__result icon icon_pending" title="waiting"></i>
           {% endif %}
-          {% if game.outcome_text == 'postponed' %}
-          <span>Result: {{ game.ft_results }}</span> <b style="color: #000; text-decoration: line-through;">postponed</b>
+          {% if game.won_or_lost == 'postponed' %}
+          <span>Result: {{ game.score }}</span> <b style="color: #000; text-decoration: line-through;">postponed</b>
           <i class="forecasts__result icon icon_post" title="post"></i>
           {% endif %}
       </div>
       <!--Game odd  -->
-        <span class="forecasts__coeff center">{{ game.tip_ov_odd }}</span>
+        <span class="forecasts__coeff center">{{ game.odds }}</span>
     </div>
     {% endfor %}
     {% else %}
@@ -116,33 +116,33 @@
         {{ game.teams }}
       </h4>
       <div class="forecasts__league">
-        <span class="forecasts__date"><b>{{ game.time }}</b></span>
+        <span class="forecasts__date"><b>{{ game.start_time }}</b></span>
         <!-- tip  -->
-        <span>Pick <b><span>{{ game.tip_ov }}</span></b> </span>
+        <span>Pick <b><span>{{ game.pick }}</span></b> </span>
         <!-- Game Status text and icon -->
-          {% if game.outcome_text == 'won' or game.outcome_text == 'won' or game.outcome_text == '12win' or game.outcome_text == '1Xwin' or game.outcome_text == 'X2win' %}
-          <span>Result: {{ game.ft_results }}</span> <b style="color: green;">WOOON</b>
+          {% if game.won_or_lost == 'won' or game.won_or_lost == 'won' or game.won_or_lost == '12win' or game.won_or_lost == '1Xwin' or game.won_or_lost == 'X2win' %}
+          <span>Result: {{ game.score }}</span> <b style="color: green;">WOOON</b>
           <i class="forecasts__result icon icon_success" title="won"></i>
           {% endif %}
-          {% if game.outcome_text == 'won' %}
-          <span>Result: {{ game.ft_results }}</span> <b style="color: green;">WOOON</b>
+          {% if game.won_or_lost == 'won' %}
+          <span>Result: {{ game.score }}</span> <b style="color: green;">WOOON</b>
           <i class="forecasts__result icon icon_success" title="won"></i>
           {% endif %}
-          {% if game.outcome_text == 'lost' or game.outcome_text == 'lost' or game.outcome_text == 'lost' or game.outcome_text == '12lose' or game.outcome_text == '1Xlose' or game.outcome_text == 'X2lose' %}
-          <span>Result: {{ game.ft_results }}</span> <b style="color: red;">LOST</b>
+          {% if game.won_or_lost == 'lost' or game.won_or_lost == 'lost' or game.won_or_lost == 'lost' or game.won_or_lost == '12lose' or game.won_or_lost == '1Xlose' or game.won_or_lost == 'X2lose' %}
+          <span>Result: {{ game.score }}</span> <b style="color: red;">LOST</b>
           <i class="forecasts__result icon icon_failure" title="lost"></i>
           {% endif %}
-          {% if game.outcome_text == 'waiting' %}
-          <span>Result: {{ game.ft_results }}</span> <b>...</b>
+          {% if game.won_or_lost == 'waiting' %}
+          <span>Result: {{ game.score }}</span> <b>...</b>
           <i class="forecasts__result icon icon_pending" title="waiting"></i>
           {% endif %}
-          {% if game.outcome_text == 'postponed' %}
-          <span>Result: {{ game.ft_results }}</span> <b style="color: #000; text-decoration: line-through;">postponed</b>
+          {% if game.won_or_lost == 'postponed' %}
+          <span>Result: {{ game.score }}</span> <b style="color: #000; text-decoration: line-through;">postponed</b>
           <i class="forecasts__result icon icon_post" title="post"></i>
           {% endif %}
       </div>
       <!--Game odd  -->
-        <span class="forecasts__coeff center">{{ game.tip_ov_odd }}</span>
+        <span class="forecasts__coeff center">{{ game.odds }}</span>
     </div>
     {% endfor %}
     {% else %}
