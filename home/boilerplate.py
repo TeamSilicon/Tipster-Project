@@ -53,7 +53,7 @@ def boiler(zulu_page, page, page2, today):
     # for allgames
 
     def outcome_case(outcome_text, score, case):
-        if outcome_text != "no_results_yet":
+        if outcome_text != "waiting":
             home_team_guest_team = [int(x) for x in score.split(":")]
             if case != 'bts':
                 if sum(home_team_guest_team) > case:
@@ -91,8 +91,8 @@ def boiler(zulu_page, page, page2, today):
                     'date': each[0],
                     'start_time': each[1],
                     'teams': each[4],
-                    'tip_gg': 'G-G',
-                    'tip_gg_odds': each[5],
+                    'pick': 'G-G',
+                    'odds': each[5],
                     'score': each[3],
                     'won_or_lost': outcome
                 })
@@ -105,8 +105,8 @@ def boiler(zulu_page, page, page2, today):
                     'date': each[0],
                     'start_time': each[1],
                     'teams': each[4],
-                    'tip_ov': 'Over 1.5',
-                    'tip_ov_odds': each[5],
+                    'pick': 'Over 1.5',
+                    'odds': each[5],
                     'score': each[3],
                     'won_or_lost': outcome
                 })
@@ -119,8 +119,8 @@ def boiler(zulu_page, page, page2, today):
                     'date': each[0],
                     'start_time': each[1],
                     'teams': each[4],
-                    'tip_ov': 'Over 2.5',
-                    'tip_ov_odds': each[5],
+                    'pick': 'Over 2.5',
+                    'odds': each[5],
                     'score': each[3],
                     'won_or_lost': outcome
                 })
@@ -133,8 +133,8 @@ def boiler(zulu_page, page, page2, today):
                     'date': each[0],
                     'start_time': each[1],
                     'teams': each[4],
-                    'tip_ov': 'Over 3.5',
-                    'tip_ov_odds': each[5],
+                    'pick': 'Over 3.5',
+                    'odds': each[5],
                     'score': each[3],
                     'won_or_lost': outcome
                 })

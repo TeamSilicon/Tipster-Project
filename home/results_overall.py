@@ -20,41 +20,41 @@ def overall_result(result_home, result_away, tip, tipx_odd,tip1_odd,tip2_odd):
         elif tip == 'X2':
             win_odd = 0
             # get odd for double chance
-        return ['no_results_yet', win_odd]
+        return ['waiting', win_odd]
     else:
         if tip == 'X':
             win_odd = tipx_odd
             if result_home == result_away:
-                return ['drawwin', win_odd]
+                return ['won', win_odd]
             else:
-                return ['drawlose', win_odd]
+                return ['lost', win_odd]
         elif tip == '1':
             win_odd = tip1_odd
             if result_home > result_away:
-                return ['homewin', win_odd]
+                return ['won', win_odd]
             else:
-                return ['homelose', win_odd]
+                return ['lost', win_odd]
         elif tip == '2':
             win_odd = tip2_odd
             if result_away > result_home:
-                return ['awaywin', win_odd]
+                return ['won', win_odd]
             else:
-                return ['awaylose', win_odd]
+                return ['lost', win_odd]
         elif tip == '12':
             win_odd = 0
             if result_away != result_home:
-                return ['12win', win_odd]
+                return ['won', win_odd]
             else:
-                return ['12lose', win_odd]
+                return ['lost', win_odd]
         elif tip == '1X':
             win_odd = 0
             if result_home >= result_away:
-                return ['1Xwin', win_odd]
+                return ['won', win_odd]
             else:
-                return ['1Xlose', win_odd]
+                return ['lost', win_odd]
         elif tip == 'X2':
             win_odd = 0
             if result_home <= result_away:
-                return ['X2win', win_odd]
+                return ['won', win_odd]
             else:
-                return ['X2lose', win_odd]
+                return ['lost', win_odd]
