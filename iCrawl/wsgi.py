@@ -1,9 +1,9 @@
 
-import os
-
 from django.core.wsgi import get_wsgi_application
 
+from iCrawl.settings.conf import setDefaultEnv
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "iCrawl.settings")
+setDefaultEnv()
+
 
 application = get_wsgi_application()
