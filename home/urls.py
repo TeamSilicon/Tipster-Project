@@ -1,38 +1,37 @@
-from django.conf.urls import url
 from django.urls import path
 from home import views
 from django.views.generic import TemplateView
 
 urlpatterns = [
     # for AllGames
-    url(r'^$', views.all_games, name='today'),
-    url(r'^yesterday/$', views.all_games, name='yesterday'),
-    url(r'^tomorrow/$', views.all_games, name='tomorrow'),
-    url(r'^login/$', views.login, name='login'),
+    path('', views.all_games, name='today'),
+    path('yesterday/', views.all_games, name='yesterday'),
+    path('tomorrow/', views.all_games, name='tomorrow'),
+    path('login/', views.login, name='login'),
 
     # path
     path("notify", views.notify, name="notify"),
     # for goalgoal
-    url(r'^goalgoal/today/$', views.goal_Goal, name='goalgoal'),
-    url(r'^goalgoal/yesterday/$', views.goal_Goal, name='goalgoal'),
-    url(r'^goalgoal/tomorrow/$', views.goal_Goal, name='goalgoal'),
-    url(r'^goalgoal/$', views.goal_Goal, name='goalgoal'),
+    path('goalgoal/today/', views.goal_Goal, name='goalgoal'),
+    path('goalgoal/yesterday/', views.goal_Goal, name='goalgoal'),
+    path('goalgoal/tomorrow/', views.goal_Goal, name='goalgoal'),
+    path('goalgoal/', views.goal_Goal, name='goalgoal'),
     # for featured
-    url(r'^featured/today/$', views.featured, name='featured'),
-    url(r'^featured/yesterday/$', views.featured, name='featured'),
-    url(r'^featured/tomorrow/$', views.featured, name='featured'),
-    url(r'^featured/$', views.featured, name='featured'),
+    path('featured/today/', views.featured, name='featured'),
+    path('featured/yesterday/', views.featured, name='featured'),
+    path('featured/tomorrow/', views.featured, name='featured'),
+    path('featured/', views.featured, name='featured'),
     # for jackpot
-    url(r'^jackpot/$', views.jackpot, name='jackpot'),
+    path('jackpot/', views.jackpot, name='jackpot'),
     # for overtips
-    url(r'^over/today/$', views.over, name='over'),
-    url(r'^over/yesterday/$', views.over, name='over'),
-    url(r'^over/tomorrow/$', views.over, name='over'),
-    url(r'^over/$', views.over, name='over'),
+    path('over/today/', views.over, name='over'),
+    path('over/yesterday/', views.over, name='over'),
+    path('over/tomorrow/', views.over, name='over'),
+    path('over/', views.over, name='over'),
     # for betslip
-    url(r'^betslip/', views.slip, name='betslip'),
+    path('betslip/', views.slip, name='betslip'),
     # for comingsoon
-    url(r'^comingsoon/', views.comingsoon, name='comingsoon'),
+    path('comingsoon/', views.comingsoon, name='comingsoon'),
     path('robots.txt', TemplateView.as_view(
         template_name="robots.txt", content_type='text/plain')),
     # api scope
