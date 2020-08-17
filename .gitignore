@@ -131,3 +131,4 @@ dmypy.json
 static/
 .vscode/
 data.json
+serviceAccount.json
