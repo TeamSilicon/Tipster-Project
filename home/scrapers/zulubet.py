@@ -40,7 +40,7 @@ def zulubet(page, match_date):
 
             game_time = time.strip()  # updating time to EAT
             full_date = datetime.datetime.strptime(game_time, "%H:%M")
-            full_date = full_date + timedelta(hours=3)
+            full_date = full_date + timedelta(hours=2)
             startTime = full_date.strftime("%H:%M")
             results = result.split(':')
             if len(results) == 2 and '-' not in results:
