@@ -7,7 +7,7 @@ from home import views as my_views
 
 
 router = routers.DefaultRouter()
-router.register('games', GamesViewSet, basename='AllGames')
+router.register('games', GamesViewSet, basename='Match')
 
 
 urlpatterns = [

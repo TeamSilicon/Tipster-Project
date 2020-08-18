@@ -29,3 +29,7 @@ sentry_sdk.init(
     # To associate users to errors
     send_default_pii=True
 )
+
+TODAY_FETCH_INTERVAL_MINS=7
+YEST_FETCH_INTERVAL_MINS=60
+TMRW_FETCH_INTERVAL_MINS=45
