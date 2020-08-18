@@ -68,8 +68,8 @@ def zulubet(page, match_date):
                  "startTime": startTime,
                  "pick": tip,
                  "result": result,
-                 "homeTeam": homeTeam,
-                 "awayTeam": awayTeam,
+                 "homeTeam": homeTeam.strip(),
+                 "awayTeam": awayTeam.strip(),
                  "odds": odds,
                  "status": outcome
                  }
