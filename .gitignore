@@ -132,3 +132,4 @@ static/
 .vscode/
 data.json
 serviceAccount.json
+migrations/
