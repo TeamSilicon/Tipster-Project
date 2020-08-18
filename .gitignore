@@ -131,5 +131,5 @@ dmypy.json
 static/
 .vscode/
 data.json
-serviceAccount.json
+# serviceAccount.json
 migrations/
