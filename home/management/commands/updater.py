@@ -7,7 +7,7 @@ from django.conf import settings
 
 
 class Command(BaseCommand):
-    help = 'Updates games in heroku db'
+    help = 'Initiates scrapers to get games'
 
     def handle(self, *args, **options):
         sched = BlockingScheduler()

@@ -6,6 +6,7 @@ from django.template.defaultfilters import slugify
 
 from home.models import Match
 from home.scrapers.zulubet import zulubet
+from django.core.management import call_command
 
 
 def boiler(zulu_page, page, page2, today):
@@ -64,6 +65,10 @@ def boiler(zulu_page, page, page2, today):
                 f'{match.get("date")}-{match.get("homeTeam")}-{match.get("awayTeam")}'),
             defaults=match
         )
+
+
+    # call firestore update command
+    call_command("firestore")
 
     # print("allgames done")
     # for tipGG
