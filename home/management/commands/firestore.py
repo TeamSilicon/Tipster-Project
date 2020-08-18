@@ -9,15 +9,12 @@ from django.core.management.base import BaseCommand, CommandError
 class Command(BaseCommand):
     help = "Updates games in firestore db"
 
-    def __init__(self, *args, **kwargs):
-        super(Command, self).__init__(*args, **kwargs)
+    cred = credentials.Certificate(settings.SERVICE_ACCOUNT_JSON_FILE)
+    firebase_admin.initialize_app(cred)
 
-        cred = credentials.Certificate(settings.SERVICE_ACCOUNT_JSON_FILE)
-        firebase_admin.initialize_app(cred)
+    db = firestore.client()
 
-        db = firestore.client()
-
-        self.databaseRefence = db.collection('football')
+    databaseRefence = db.collection('football')
 
     def handle(self, *args, **options):
         matches = Match.objects.filter(date__gte=date.today())
