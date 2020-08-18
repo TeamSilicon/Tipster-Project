@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import AllGames, Featured
+from .models import Match, Featured
 
 # Register your models here.
 
-admin.site.register(AllGames)
+admin.site.register(Match)
 admin.site.register(Featured)

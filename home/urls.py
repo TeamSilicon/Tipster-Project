@@ -3,7 +3,7 @@ from home import views
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    # for AllGames
+    # for Match
     path('', views.all_games, name='today'),
     path('yesterday/', views.all_games, name='yesterday'),
     path('tomorrow/', views.all_games, name='tomorrow'),

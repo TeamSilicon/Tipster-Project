@@ -2,7 +2,7 @@ import datetime
 from datetime import timedelta
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
-from home.models import AllGames, Featured, TipGG, Over35, Over25, Over15
+from home.models import Match, Featured, TipGG, Over35, Over25, Over15
 from home.jackpot import possible_combinations
 from django.http import HttpResponse
 from home.c2b import C2B
@@ -15,7 +15,7 @@ def date_picker(days=0):
 
 def all_games(request):
     today, request_from, date = updater(request)
-    games = AllGames.objects.filter(date=today).order_by('start_time', 'teams')
+    games = Match.objects.filter(date=today).order_by('startTime')
     context = {"games": games, "request_tom": request_from,
                "date": date}
     return render(request, 'index.html', context)
@@ -38,7 +38,7 @@ def updater(request):
 
 def goal_Goal(request):
     today, request_from, date = updater(request)
-    games = TipGG.objects.filter(date=today).order_by('start_time', 'teams')
+    games = TipGG.objects.filter(date=today).order_by('startTime')
     return render(request, 'goalgoal.html', {
         "games": games, "request_tom": request_from, "date": date
     })
@@ -46,7 +46,7 @@ def goal_Goal(request):
 
 def featured(request):
     today, request_from, date = updater(request)
-    games = Featured.objects.filter(date=today).order_by('start_time', 'teams')
+    games = Featured.objects.filter(date=today).order_by('startTime')
     return render(request, 'featured.html', {
         "games": games, "request_tom": request_from, "date": date
     })
@@ -63,9 +63,9 @@ def jackpot(request):
 
 def over(request):
     today, request_from, date = updater(request)
-    over15 = Over15.objects.filter(date=today).order_by('start_time', 'teams')
-    over25 = Over25.objects.filter(date=today).order_by('start_time', 'teams')
-    over35 = Over35.objects.filter(date=today).order_by('start_time', 'teams')
+    over15 = Over15.objects.filter(date=today).order_by('startTime')
+    over25 = Over25.objects.filter(date=today).order_by('startTime')
+    over35 = Over35.objects.filter(date=today).order_by('startTime')
     context = {'over15': over15, 'over25': over25, 'over35': over35,
                'request_tom': request_from, 'date': date}
     return render(request, 'over.html', context)
