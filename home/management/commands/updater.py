@@ -3,20 +3,19 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 from home.views import date_picker
 from home.boilerplate import boiler
 from home.fetcher import requester
+from django.conf import settings
 
 
 class Command(BaseCommand):
-    help = 'Updates games in db'
+    help = 'Updates games in heroku db'
 
     def handle(self, *args, **options):
         sched = BlockingScheduler()
-        # print("nothing going on")
-        # @sched.scheduled_job('interval', minutes=2)
 
-        @sched.scheduled_job('interval', minutes=7)
+        @sched.scheduled_job('interval', minutes=settings.TODAY_FETCH_INTERVAL_MINS)
         def update_games_today():
-            print("Updating today Games")
             today = date_picker()
+            print(f"Updating today Games - {today}")
             zulu_page = 'http://www.zulubet.com/tips-%d-%d-%d.html' % (
                 today.day, today.month, today.year)
             arena_page = "https://www.statarea.com/predictions/date/%s-%s-%s/starttime" % (
@@ -29,7 +28,7 @@ class Command(BaseCommand):
             page_content3 = requester(page_urls[2], 3)
             boiler(page_content1, page_content2, page_content3, today)
 
-        @sched.scheduled_job('interval', hours=1)
+        @sched.scheduled_job('interval', minutes=settings.YEST_FETCH_INTERVAL_MINS)
         def update_games_yest():
             print("Updating Yesterday Games")
             today = date_picker(-1)
@@ -45,7 +44,7 @@ class Command(BaseCommand):
             page_content3 = requester(page_urls[2], 3)
             boiler(page_content1, page_content2, page_content3, today)
 
-        @sched.scheduled_job('interval', minutes=45)
+        @sched.scheduled_job('interval', minutes=settings.TMRW_FETCH_INTERVAL_MINS)
         def update_games_tom():
             print("Updating Tomorrow Games")
             today = date_picker(1)
