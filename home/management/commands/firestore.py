@@ -34,4 +34,5 @@ class Command(BaseCommand):
                 'odds': match.odds,
                 'result': match.result,
                 'status': match.status,
+                'isLive': match.isLive,
             })
