@@ -59,7 +59,6 @@ def boiler(zulu_page, page, page2, today):
     # for allgames
 
     for match in zulubet_games:
-        print(match)
         Match.objects.update_or_create(
             slug=slugify(
                 f'{match.get("date")}-{match.get("homeTeam")}-{match.get("awayTeam")}'),
